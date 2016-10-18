@@ -1,0 +1,2 @@
+include ':app','base'
+project(':base').projectDir = new File(settingsDir, '../base/base')

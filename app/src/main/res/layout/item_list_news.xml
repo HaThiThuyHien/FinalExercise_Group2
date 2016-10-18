@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="example.jp.socical.fragment.NewFragment">
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@color/base_green"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/imgAvatar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Jennifer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgAvatar"
+        android:layout_toEndOf="@+id/imgAvatar"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/txtUser" />
+
+    <Button
+        android:text="Following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgAvatar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:textAllCaps="false"
+        android:id="@+id/btnFollow" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:srcCompat="@color/colorAccent"
+        android:layout_below="@+id/imgAvatar"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/imgPicture" />
+
+    <TextView
+        android:text="Isle of Man, UK"
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:background="#FF13212D"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:drawableLeft="@drawable/icon_pin_map"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgPicture"
+        android:layout_alignStart="@+id/imgAvatar"
+        android:layout_marginBottom="18dp"
+        android:id="@+id/txtPinMap" />
+
+    <TextView
+        android:text="This is beautiful street, good"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgPicture"
+        android:layout_alignStart="@+id/txtPinMap"
+        android:layout_marginTop="15dp"
+        android:id="@+id/txtCmt" />
+
+    <TextView
+        android:text="#Shooping #UK #Stree"
+        android:textColor="#39b1f1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCmt"
+        android:layout_alignStart="@+id/txtCmt"
+        android:layout_marginTop="7dp"
+        android:id="@+id/txtAddress" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/icon_favorite"
+        android:layout_alignTop="@+id/txtCmt"
+        android:id="@+id/imgLike"
+        android:layout_alignEnd="@+id/btnFollow" />
+</RelativeLayout>
