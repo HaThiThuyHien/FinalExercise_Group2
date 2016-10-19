@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -164,7 +165,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
      * @param fragmentId   The android:id of this fragment in its activity's layout.
      * @param drawerLayout The DrawerLayout containing this fragment's UI.
      */
- //   public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
     public void setUp(int fragmentId, DrawerLayout drawerLayout) {
 
         mFragmentContainerView = getActivity().findViewById(fragmentId);
@@ -174,20 +174,20 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
         mDrawerLayout.setScrimColor(Color.TRANSPARENT);
 
-//        ImageView imgDrawer = (ImageView)toolbar.findViewById(R.id.toolbar_left_icon_menu);
-//
-//        imgDrawer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-//                    mDrawerLayout.closeDrawers();
-//                } else {
-//                    mDrawerLayout.openDrawer(GravityCompat.START);
-//                }
-//
-//                getActivity().invalidateOptionsMenu();
-//            }
-//        });
+        ImageView imgDrawer = (ImageView)getActivity().findViewById(R.id.headerMenu);
+
+        imgDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    mDrawerLayout.closeDrawers();
+                } else {
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                }
+
+                getActivity().invalidateOptionsMenu();
+            }
+        });
 
         mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
