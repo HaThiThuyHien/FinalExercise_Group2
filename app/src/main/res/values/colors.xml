@@ -6,8 +6,12 @@
 
 
     <color name="purple_backgroud">#aba3c8</color>
-    <color name="purple_view">#594993</color>
+    <color name="purple_view">#7e68d3</color>
     <color name="white">#f0f0f2</color>
     <color name="linemenu">#2c2449</color>
     <color name="colortoolbar">#7e68d3</color>
+
+    <color name="upload_background">#7e68d3</color>
+    <color name="upload_view_background">#4d3e7f</color>
+    <color name="blue">#4bc0fe</color>
 </resources>
