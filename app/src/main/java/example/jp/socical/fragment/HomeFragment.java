@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import butterknife.BindView;
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.HomePagerAdapter;
+import example.jp.socical.constant.HeaderOption;
 
 public class HomeFragment extends HeaderFragment implements MenuFragment.NavigationDrawerCallbacks{
 
@@ -45,6 +47,8 @@ public class HomeFragment extends HeaderFragment implements MenuFragment.Navigat
     @Override
     protected void initView(View root) {
         super.initView(root);
+
+        ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_HOME);
 
         viewPager = (ViewPager)root.findViewById(R.id.vpPager);
         tabLayout = (TabLayout)root.findViewById(R.id.layout_tab);

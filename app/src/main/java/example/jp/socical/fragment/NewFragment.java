@@ -16,6 +16,7 @@ import example.jp.socical.R;
 import example.jp.socical.adapter.NewListAdapter;
 import example.jp.socical.bean.NewBean;
 import vn.app.base.callback.OnRecyclerViewItemClick;
+import vn.app.base.util.FragmentUtil;
 
 public class NewFragment extends NoHeaderFragment implements OnRecyclerViewItemClick{
 
@@ -60,7 +61,7 @@ public class NewFragment extends NoHeaderFragment implements OnRecyclerViewItemC
             @Override
             public void onClick(View view) {
                 // Di chuyển đến màn hình Detail
-                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content, new DetailFragment()).addToBackStack(null).commit();
+                FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null);
             }
         });
 

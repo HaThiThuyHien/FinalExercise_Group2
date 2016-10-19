@@ -21,66 +21,49 @@
         android:padding="5dp"
         android:visibility="visible">
 
-        <View
-            android:id="@+id/headerIconLeft"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:padding="5dp"/>
-
         <ImageView
             android:id="@+id/headerMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/headerIconLeft"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:padding="5dp"
-            android:src="@drawable/icon_menu"/>
+            android:src="@drawable/icon_menu"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/headerBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/headerIconLeft"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:padding="5dp"
             android:src="@drawable/header_back"
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/headerUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:padding="5dp"
-            android:text="Update"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/headerDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:padding="5dp"
-            android:text="Delete"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
-
-        <TextView
             android:id="@+id/headerTitle"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/headerIconLeft"
-            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/headerRight"
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
