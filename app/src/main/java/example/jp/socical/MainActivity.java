@@ -30,14 +30,11 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @BindView(R.id.headerBack)
     ImageView ivBack;
 
-    @BindView(R.id.headerUpdate)
-    TextView tvUpdate;
-
-    @BindView(R.id.headerDelete)
-    TextView tvDelete;
-
     @BindView(R.id.headerTitle)
     TextView tvTitle;
+
+    @BindView(R.id.headerRight)
+    TextView tvHeaderRight;
 
     private MenuFragment menuFragment;
 
@@ -63,6 +60,12 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
     @Override
     public void initView() {
+
+        ivBack = (ImageView)findViewById(R.id.headerBack);
+        ivMenu = (ImageView)findViewById(R.id.headerMenu);
+        tvTitle = (TextView)findViewById(R.id.headerTitle);
+        tvHeaderRight = (TextView)findViewById(R.id.headerRight);
+
         setUpInitScreen(LoginFragment.newInstance(), null);
 
 //        menuFragment = (MenuFragment)getSupportFragmentManager().findFragmentById(R.id.nagigation_drawer);
@@ -116,17 +119,17 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 showAdnHideRightView(null);
                 break;
             case HeaderOption.RIGHT_UPDATE:
-                showAdnHideRightView(tvUpdate);
+                //showAdnHideRightView(tvUpdate);
                 break;
             case HeaderOption.RIGHT_DELETE:
-                showAdnHideRightView(tvDelete);
+                //showAdnHideRightView(tvDelete);
                 break;
         }
     }
 
     private void showAdnHideRightView(View target) {
-        showOrHide(tvUpdate, target);
-        showOrHide(tvUpdate, target);
+        //showOrHide(tvUpdate, target);
+        //showOrHide(tvUpdate, target);
     }
 
     protected void showOrHide(View subject, View target) {
@@ -136,6 +139,66 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
+    }
+
+    public void setToolbar(int screenNo) {
+
+        ivBack.setVisibility(View.GONE);
+        ivMenu.setVisibility(View.GONE);
+        tvTitle.setVisibility(View.GONE);
+        tvHeaderRight.setVisibility(View.GONE);
+
+        switch (screenNo) {
+            case HeaderOption.MENU_HOME:
+                ivMenu.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Home");
+                break;
+            case HeaderOption.MENU_PROFILE:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Profile");
+                break;
+            case HeaderOption.MENU_PROFILE_USER:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Profile");
+                tvHeaderRight.setVisibility(View.VISIBLE);
+                tvHeaderRight.setText("Update");
+                break;
+            case HeaderOption.MENU_FAVOURITE:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Favourite");
+                break;
+            case HeaderOption.MENU_NEARBY:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Nearby");
+                break;
+            case HeaderOption.MENU_DETAIL:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Detail");
+                break;
+            case HeaderOption.MENU_DETAIL_USER:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Detail");
+                tvHeaderRight.setVisibility(View.VISIBLE);
+                tvHeaderRight.setText("Delete");
+                break;
+            case HeaderOption.MENU_UPLOAD:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Post Image");
+                break;
+            case HeaderOption.MENU_FOLLOW:
+                ivBack.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText("Follow");
+                break;
+        }
     }
 
 }
