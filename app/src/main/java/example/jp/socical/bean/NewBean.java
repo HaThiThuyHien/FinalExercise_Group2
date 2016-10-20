@@ -1,8 +1,5 @@
 package example.jp.socical.bean;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 /**
  * Created by HaHien on 10/17/2016.
  */
