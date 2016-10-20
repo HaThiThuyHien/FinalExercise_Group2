@@ -89,11 +89,10 @@ public class NewFragment extends NoHeaderFragment implements OnRecyclerViewItemC
 
     @Override
     public void onItemClick(View view, int position) {
-        switch (view.getId()) {
-            // Di chuyển đến màn hình User
-            case R.id.imgAvatar:
-                break;
-        }
+        FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(), null);
+    }
+    private void gotoDetail(NewBean newBean) {
+        //FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(newBean), null);
     }
 
 }
