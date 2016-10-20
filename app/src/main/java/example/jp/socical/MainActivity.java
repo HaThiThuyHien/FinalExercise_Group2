@@ -72,6 +72,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
+        rlHeader = (RelativeLayout)findViewById(R.id.toolbar);
         ivBack = (ImageView)findViewById(R.id.headerBack);
         ivMenu = (ImageView)findViewById(R.id.headerMenu);
         tvTitle = (TextView)findViewById(R.id.headerTitle);
@@ -102,6 +103,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
     public void setToolbar(int screenNo) {
 
+        rlHeader.setVisibility(View.GONE);
         ivBack.setVisibility(View.GONE);
         ivMenu.setVisibility(View.GONE);
         tvTitle.setVisibility(View.GONE);
@@ -109,16 +111,19 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
         switch (screenNo) {
             case HeaderOption.MENU_HOME:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivMenu.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Home");
                 break;
             case HeaderOption.MENU_PROFILE:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Profile");
                 break;
             case HeaderOption.MENU_PROFILE_USER:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Profile");
@@ -126,21 +131,25 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 tvHeaderRight.setText("Update");
                 break;
             case HeaderOption.MENU_FAVOURITE:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Favourite");
                 break;
             case HeaderOption.MENU_NEARBY:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Nearby");
                 break;
             case HeaderOption.MENU_DETAIL:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Detail");
                 break;
             case HeaderOption.MENU_DETAIL_USER:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Detail");
@@ -148,11 +157,13 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 tvHeaderRight.setText("Delete");
                 break;
             case HeaderOption.MENU_UPLOAD:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Post Image");
                 break;
             case HeaderOption.MENU_FOLLOW:
+                rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
                 tvTitle.setText("Follow");
