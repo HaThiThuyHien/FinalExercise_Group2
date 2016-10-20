@@ -42,7 +42,8 @@ public class LoginFragment extends NoHeaderFragment {
                 if (bcheck) {
                     FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
                 } else { // gọi đến màn hình Tutorial
-                    FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+                    //FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+                    FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
                 }
             }
         });

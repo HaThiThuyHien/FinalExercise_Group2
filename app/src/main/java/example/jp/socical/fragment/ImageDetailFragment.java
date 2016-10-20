@@ -8,10 +8,12 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.CommentAdapter;
 import example.jp.socical.bean.CommentBean;
 import example.jp.socical.bean.NewBean;
+import example.jp.socical.constant.HeaderOption;
 
 public class ImageDetailFragment extends HeaderFragment {
 
@@ -49,6 +51,8 @@ public class ImageDetailFragment extends HeaderFragment {
 
         CommentAdapter commentAdapter = new CommentAdapter(commentBeanList);
         recyclerView.setAdapter(commentAdapter);
+
+        ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_DETAIL_USER);
     }
 
     @Override
