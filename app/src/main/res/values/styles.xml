@@ -22,4 +22,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/enable_thumb_blue</item>
+        <item name="colorSwitchThumbNormal">@color/disable_thumb_grey</item>
+        <item name="android:colorForeground">@color/disable_forground_grey</item>
+    </style>
+
 </resources>
