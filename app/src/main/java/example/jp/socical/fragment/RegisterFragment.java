@@ -9,16 +9,23 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import example.jp.socical.Gson.GsonRequest;
-import example.jp.socical.Gson.NetworkUtil;
 import example.jp.socical.R;
+import example.jp.socical.api.request.RegisterRequest;
+import example.jp.socical.api.response.RegisterResponse;
 import example.jp.socical.bean.RegisterBean;
+import example.jp.socical.commonclass.StringEncryption;
+import vn.app.base.api.volley.callback.ApiObjectCallBack;
+import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.NetworkUtils;
+import vn.app.base.util.SharedPrefUtils;
 
 public class RegisterFragment extends NoHeaderFragment {
 
@@ -67,34 +74,35 @@ public class RegisterFragment extends NoHeaderFragment {
     }
 
     public void requestRegister() {
-        String url = "https://polar-plains-86888.herokuapp.com/api/regist";
 
-        strUserName = "HaHien";
-        strEmail = "thuyhienctu@gmail.com";
+        strUserName = "ThinhHoang";
+        strEmail = "ThinhHoang@gmail.com";
         strPassword = "123456789";
 
-        Map<String, String> params = new HashMap<>();
-        params.put("username", strUserName);
-        params.put("email", strEmail);
-        params.put("password", strPassword);
+        String strPassSHA1 ="";
+        StringEncryption stringEncryption = new StringEncryption();
+        try {
+            strPassSHA1 = stringEncryption.SHA1(strPassword);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
-        GsonRequest<RegisterBean> registerBeanGsonRequest = new GsonRequest<>(Request.Method.POST, url,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("Error Connect", error.getMessage());
-                    }
-                }, RegisterBean.class);
-        registerBeanGsonRequest.setListener(new Response.Listener<RegisterBean>(){
+        RegisterRequest registerRequest = new RegisterRequest(strUserName, strEmail, strPassSHA1);
+        registerRequest.setRequestCallBack(new ApiObjectCallBack<RegisterResponse>() {
+            @Override
+            public void onSuccess(RegisterResponse data) {
+                SharedPrefUtils.saveAccessToken(data.dataRegister.token);
+                FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+            }
 
             @Override
-            public void onResponse(RegisterBean response) {
-                Log.i("Connect API", response.toString());
+            public void onFail(int failCode, String message) {
+                Log.i("Connect Fail", message);
             }
         });
-
-        registerBeanGsonRequest.setParams(params);
-        NetworkUtil.getsInstance(getContext()).addToRequestQueue(registerBeanGsonRequest);
+        registerRequest.execute();
     }
 
 

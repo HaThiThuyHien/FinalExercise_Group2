@@ -14,4 +14,8 @@
     <color name="upload_background">#7e68d3</color>
     <color name="upload_view_background">#4d3e7f</color>
     <color name="blue">#4bc0fe</color>
+
+    <color name="disable_forground_grey">#42221f1f</color>
+    <color name="disable_thumb_grey">#1c000000</color>
+    <color name="enable_thumb_blue">#4cc1ff</color>
 </resources>

@@ -20,5 +20,4 @@
         android:layout_marginTop="212dp"
         android:id="@+id/btnRegister" />
 
-
 </RelativeLayout>

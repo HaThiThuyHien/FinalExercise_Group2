@@ -42,7 +42,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="21dp"
         android:id="@+id/etCaption"
-        android:layout_alignEnd="@+id/seekBar" />
+        android:layout_alignEnd="@+id/swSendLocation" />
 
     <TextView
         android:id="@+id/tvSendLocal"
@@ -57,17 +57,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"/>
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:layout_below="@id/etCaption"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="46dp"
-        android:layout_marginTop="20dp"
-        android:progressDrawable="@drawable/seekbar_bg"
-        android:id="@+id/seekBar" />
 
     <TextView
         android:id="@+id/tvhashtag"
@@ -90,14 +79,14 @@
         android:textColor="@color/white"
         android:textSize="21dp"
         android:lines="1"
-        android:text="Name"
+        android:text="Hashtag"
         android:ems="10"
         android:layout_below="@id/tvhashtag"
         android:layout_alignStart="@+id/textView"
         android:layout_marginStart="40dp"
         android:layout_marginTop="21dp"
         android:id="@+id/etHashtag"
-        android:layout_alignEnd="@+id/seekBar" />
+        android:layout_alignEnd="@+id/swSendLocation" />
 
     <Button
         android:text="Cancel"
@@ -141,5 +130,14 @@
         android:layout_alignBottom="@+id/textView"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="12dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvSendLocal"
+        android:layout_alignEnd="@+id/fbUpload"
+        android:layout_marginEnd="11dp"
+        android:theme="@style/SCBSwitch"
+        android:id="@+id/swSendLocation" />
 
 </RelativeLayout>
