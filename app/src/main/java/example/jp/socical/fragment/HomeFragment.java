@@ -68,15 +68,6 @@ public class HomeFragment extends HeaderFragment implements MenuFragment.Navigat
 
         viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-//        menuFragment.setUp(
-//                R.id.nagigation_drawer,
-//                drawerLayout, toolbar);
-
-//        menuFragment.setUp(
-//                R.id.nagigation_drawer,
-//                drawerLayout);
-
     }
 
     @Override

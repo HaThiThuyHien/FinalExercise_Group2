@@ -18,4 +18,6 @@
     <color name="disable_forground_grey">#42221f1f</color>
     <color name="disable_thumb_grey">#1c000000</color>
     <color name="enable_thumb_blue">#4cc1ff</color>
+
+    <color name="pink">#FFEC2878</color>
 </resources>

@@ -5,18 +5,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.OnClick;
-import example.jp.socical.Gson.GsonRequest;
 import example.jp.socical.R;
 import example.jp.socical.api.request.RegisterRequest;
 import example.jp.socical.api.response.RegisterResponse;
@@ -24,7 +16,6 @@ import example.jp.socical.bean.RegisterBean;
 import example.jp.socical.commonclass.StringEncryption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.FragmentUtil;
-import vn.app.base.util.NetworkUtils;
 import vn.app.base.util.SharedPrefUtils;
 
 public class RegisterFragment extends NoHeaderFragment {
