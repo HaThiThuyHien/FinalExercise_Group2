@@ -5,31 +5,25 @@ import com.android.volley.Request;
 import java.util.HashMap;
 import java.util.Map;
 
-import example.jp.socical.api.response.UploadImageResponse;
+import example.jp.socical.api.response.NewsResponse;
 import vn.app.base.api.volley.core.ObjectApiRequest;
 import vn.app.base.util.SharedPrefUtils;
 
 /**
- * Created by Toi on 10/24/2016.
+ * Created by Toi on 10/25/2016.
  */
 
-public class UploadImageRequest extends ObjectApiRequest<UploadImageResponse> {
+public class NewsRequest extends ObjectApiRequest<NewsResponse>{
 
-    String strimgPicture;
-    String strcaption;
-    String strlocation;
-    String strlat;
-    String strlong;
-    String hashtag;
+    int type;
+    long last_query_timestamp;
+    int num;
 
-    public UploadImageRequest(String strimgPicture, String strcaption, String strlocation, String strlat, String strlong, String hashtag) {
-        this.strimgPicture = strimgPicture;
-        this.strcaption = strcaption;
-        this.strlocation = strlocation;
-        this.strlat = strlat;
-        this.strlong = strlong;
-        this.hashtag = hashtag;
-    }
+//    public NewsRequest(int type, long last_query_timestamp, int num) {
+//        this.type = type;
+//        this.last_query_timestamp = last_query_timestamp;
+//        this.num = num;
+//    }
 
     @Override
     public boolean isRequiredAuthorization() {
@@ -38,7 +32,7 @@ public class UploadImageRequest extends ObjectApiRequest<UploadImageResponse> {
 
     @Override
     public String getRequestURL() {
-        String url = "https://polar-plains-86888.herokuapp.com//api/image/upload";
+        String url = "https://polar-plains-86888.herokuapp.com/api/home";
         return url;
     }
 
@@ -49,7 +43,11 @@ public class UploadImageRequest extends ObjectApiRequest<UploadImageResponse> {
 
     @Override
     public Map<String, String> getRequestParams() {
+
         Map<String, String> params = new HashMap<>();
+        params.put("type", Integer.toString(0));
+//        params.put("last_query_timestamp", Long.toString(last_query_timestamp));
+//        params.put("num", Integer.toString(num));
         return params;
     }
 
@@ -61,8 +59,8 @@ public class UploadImageRequest extends ObjectApiRequest<UploadImageResponse> {
     }
 
     @Override
-    public Class<UploadImageResponse> getResponseClass() {
-        return UploadImageResponse.class;
+    public Class<NewsResponse> getResponseClass() {
+        return NewsResponse.class;
     }
 
     @Override

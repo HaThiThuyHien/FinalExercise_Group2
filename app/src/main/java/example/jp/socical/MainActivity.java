@@ -160,7 +160,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
-                tvTitle.setText("Post Image");
+                tvTitle.setText("Post ");
                 break;
             case HeaderOption.MENU_FOLLOW:
                 rlHeader.setVisibility(View.VISIBLE);

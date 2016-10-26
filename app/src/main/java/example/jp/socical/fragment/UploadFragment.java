@@ -45,6 +45,7 @@ import example.jp.socical.api.response.UploadImageResponse;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.Base64;
+import vn.app.base.util.ImagePickerUtil;
 
 public class UploadFragment extends HeaderFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -68,6 +69,8 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     EditText etCaption;
     EditText etHashtag;
     Switch swSendLocation;
+
+    ImagePickerUtil imagePickerUtil;
 
     final Linkify.TransformFilter filter = new Linkify.TransformFilter() {
         @Override
@@ -104,7 +107,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     @Override
     public String getScreenTitle() {
-        return "Post Image";
+        return "Post ";
     }
 
     @Override
@@ -194,7 +197,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
             @Override
             public void onFail(int failCode, String message) {
-                Log.i("Connect Error", message);
+                //Log.i("Connect Error", message);
             }
         });
         uploadImageRequest.execute();

@@ -12,14 +12,14 @@ import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.CommentAdapter;
 import example.jp.socical.bean.CommentBean;
-import example.jp.socical.bean.NewBean;
+import example.jp.socical.bean.NewsBean;
 import example.jp.socical.constant.HeaderOption;
 
 public class ImageDetailFragment extends HeaderFragment {
 
     RecyclerView recyclerView;
 
-    NewBean newBean;
+    NewsBean newBean;
 
     public static ImageDetailFragment newInstance() {
         ImageDetailFragment imageDetailFragment = new ImageDetailFragment();
