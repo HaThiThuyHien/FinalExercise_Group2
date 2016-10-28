@@ -50,7 +50,11 @@ public class LoginFragment extends NoHeaderFragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                // test ++ >>
+                //login();
+                FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
+                // test ++ <<
+
                 // gọi đến màn hình Home
 //                if (bcheck) {
 //                    FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
@@ -101,7 +105,7 @@ public class LoginFragment extends NoHeaderFragment {
 
             @Override
             public void onFail(int failCode, String message) {
-                Log.i("Connect API fail", message);
+                //Log.i("Connect API fail", message);
             }
         });
 

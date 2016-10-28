@@ -78,7 +78,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         tvTitle = (TextView)findViewById(R.id.headerTitle);
         tvHeaderRight = (TextView)findViewById(R.id.headerRight);
 
-        setUpInitScreen(LoginFragment.newInstance(), null);
+        setUpInitScreen(LoginFragment.newInstance(), "LoginFragment");
     }
 
     @Override
@@ -160,7 +160,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
-                tvTitle.setText("Post ");
+                tvTitle.setText("Post Image");
                 break;
             case HeaderOption.MENU_FOLLOW:
                 rlHeader.setVisibility(View.VISIBLE);
