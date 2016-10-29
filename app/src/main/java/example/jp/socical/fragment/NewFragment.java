@@ -112,4 +112,10 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     public void onRefresh() {
 
     }
+
+    @Override
+    protected void initialResponseHandled() {
+        super.initialResponseHandled();
+        swipeRefreshLayout.setRefreshing(false);
+    }
 }

@@ -49,4 +49,5 @@ public class TutorialFragment extends NoHeaderFragment {
     protected void initData() {
 
     }
+
 }
