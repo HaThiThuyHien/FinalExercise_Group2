@@ -243,12 +243,17 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mCallbacks = (NavigationDrawerCallbacks)activity;
-        }catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = context instanceof Activity ? (Activity)context : null;
+
+        if (activity != null) {
+            try {
+                mCallbacks = (NavigationDrawerCallbacks)activity;
+            }catch (ClassCastException e){
+                throw new ClassCastException("Activity must implement NavigationDraweraCallbacks");
+            }
         }
     }
 

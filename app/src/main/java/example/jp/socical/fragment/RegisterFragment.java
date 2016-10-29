@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.RegisterRequest;
 import example.jp.socical.api.response.RegisterResponse;
@@ -49,14 +51,7 @@ public class RegisterFragment extends NoHeaderFragment {
     @Override
     protected void initView(View root) {
         super.initView(root);
-        btnRegister = (Button)root.findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Gọi đến giao diện Home
-                requestRegister();
-            }
-        });
+        ((MainActivity) getActivity()).setToolbar(0);
     }
 
     @Override
@@ -90,11 +85,13 @@ public class RegisterFragment extends NoHeaderFragment {
 
             @Override
             public void onFail(int failCode, String message) {
-                Log.i("Connect Fail", message);
             }
         });
         registerRequest.execute();
     }
 
-
+    @OnClick(R.id.btnRegister)
+    public void clickBtnRegister(){
+        requestRegister();
+    }
 }

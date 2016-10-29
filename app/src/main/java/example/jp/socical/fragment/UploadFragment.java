@@ -98,6 +98,11 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_upload;
     }
@@ -115,7 +120,9 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @Override
     protected void initView(View root) {
         super.initView(root);
+
         ((MainActivity) getActivity()).setToolbar(HeaderOption.MENU_UPLOAD);
+
         imgPicture = (ImageView) root.findViewById(R.id.imgPostPicture);
         fabCamera = (FloatingActionButton) root.findViewById(R.id.fbUpload);
         fabCamera.setOnClickListener(new View.OnClickListener() {

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import vn.app.base.util.FragmentUtil;
 
@@ -31,6 +32,8 @@ public class TutorialFragment extends NoHeaderFragment {
     @Override
     protected void initView(View root) {
         super.initView(root);
+
+        ((MainActivity) getActivity()).setToolbar(0);
 
         btnSkip = (Button)root.findViewById(R.id.btnSkip);
         btnSkip.setOnClickListener(new View.OnClickListener() {

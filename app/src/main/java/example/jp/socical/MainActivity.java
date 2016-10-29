@@ -21,6 +21,7 @@ import example.jp.socical.fragment.HomeFragment;
 import example.jp.socical.fragment.LoginFragment;
 import example.jp.socical.fragment.MenuFragment;
 import vn.app.base.activity.CommonActivity;
+import vn.app.base.util.FragmentUtil;
 
 public class MainActivity extends CommonActivity implements MenuFragment.NavigationDrawerCallbacks{
 
@@ -39,12 +40,14 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @BindView(R.id.headerRight)
     TextView tvHeaderRight;
 
-    MenuFragment menuFragment;
-
+    @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    MenuFragment menuFragment;
 
     ActionBarDrawerToggle drawerToggle;
 
+    int iScreenNo = 0;
 
     @Override
     protected String getNoConnectionMessage() {
@@ -69,15 +72,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @Override
     public void initView() {
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-        rlHeader = (RelativeLayout)findViewById(R.id.toolbar);
-        ivBack = (ImageView)findViewById(R.id.headerBack);
-        ivMenu = (ImageView)findViewById(R.id.headerMenu);
-        tvTitle = (TextView)findViewById(R.id.headerTitle);
-        tvHeaderRight = (TextView)findViewById(R.id.headerRight);
-
         setUpInitScreen(LoginFragment.newInstance(), "LoginFragment");
     }
 
@@ -108,6 +103,8 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         ivMenu.setVisibility(View.GONE);
         tvTitle.setVisibility(View.GONE);
         tvHeaderRight.setVisibility(View.GONE);
+
+        iScreenNo = screenNo;
 
         switch (screenNo) {
             case HeaderOption.MENU_HOME:
@@ -181,6 +178,21 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
         } else {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
+    }
+
+    @OnClick(R.id.headerBack)
+    public void clickHeaderBack(){
+        FragmentUtil.popBackStack(this);
+    }
+
+    @OnClick(R.id.headerRight)
+    public void clickHeaderRight(){
+        if (iScreenNo == HeaderOption.MENU_PROFILE_USER){
+            //Nhấn nút [Update] gọi API thay đổi ảnh.
+
+        }else if (iScreenNo == HeaderOption.MENU_DETAIL_USER){
+            // Nhấn nút [Delete] hiện dialog xác nhận xóa > Ok gọi API xóa
         }
     }
 

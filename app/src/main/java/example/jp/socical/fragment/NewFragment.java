@@ -10,6 +10,7 @@ import android.view.View;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import example.jp.socical.R;
 import example.jp.socical.adapter.NewListAdapter;
 import example.jp.socical.api.request.NewsRequest;
@@ -22,16 +23,18 @@ import vn.app.base.util.FragmentUtil;
 
 public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.OnRefreshListener{
 
+    @BindView(R.id.rvNew)
     RecyclerView recyclerView;
 
+    @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+
+    @BindView(R.id.fabCamera)
+    FloatingActionButton fabCamera;
 
     NewListAdapter newListAdapter;
 
     List<NewsBean> newBeanList;
-
-    @BindView(R.id.fabCamera)
-    FloatingActionButton fabCamera;
 
     int type;
     long last_query_timestamp;
@@ -55,8 +58,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     @Override
     protected void initView(View root) {
         super.initView(root);
-        swipeRefreshLayout = (SwipeRefreshLayout)root.findViewById(R.id.swipe_refresh_layout);
-        recyclerView = (RecyclerView)root.findViewById(R.id.rvNew);
+
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
             public void onLoadMore(int currentPage) {
@@ -64,9 +66,6 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        fabCamera = (FloatingActionButton)root.findViewById(R.id.fabCamera);
-
     };
 
     @Override
@@ -76,15 +75,12 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         } else {
             handleNewsData(newBeanList);
         }
+    }
 
-        fabCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Di chuyển đến màn hình Detail
-                FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null);
-            }
-        });
-
+    @OnClick(R.id.fabCamera)
+    public void clickFabCamera() {
+        // Di chuyển đến màn hình Detail
+        FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null);
     }
 
     private void getNews(final boolean isRefresh) {
