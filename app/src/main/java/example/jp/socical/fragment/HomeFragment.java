@@ -42,9 +42,6 @@ public class HomeFragment extends HeaderFragment{
 
         ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_HOME);
 
-        viewPager = (ViewPager)root.findViewById(R.id.vpPager);
-        tabLayout = (TabLayout)root.findViewById(R.id.layout_tab);
-
         menuFragment =(MenuFragment)
                 getActivity().getSupportFragmentManager().findFragmentById(R.id.nagigation_drawer);
     }
@@ -53,7 +50,7 @@ public class HomeFragment extends HeaderFragment{
     protected void initData() {
 
         HomePagerAdapter homePagerAdapter;
-        homePagerAdapter = new HomePagerAdapter(getActivity().getSupportFragmentManager());
+        homePagerAdapter = new HomePagerAdapter(getChildFragmentManager());
 
         viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
