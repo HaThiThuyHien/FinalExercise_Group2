@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.location.LocationListener;
 import android.net.Uri;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
@@ -30,8 +31,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationServices;
 
 import java.io.ByteArrayOutputStream;
 import java.util.regex.Matcher;
@@ -45,11 +44,11 @@ import example.jp.socical.api.response.UploadImageResponse;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.Base64;
-import vn.app.base.util.ImagePickerUtil;
 
 public class UploadFragment extends HeaderFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    int REQUEST_CAMERA = 999;
+    final int CAMERA_PICTURE = 91;
+    final int PIC_CROP = 92;
 
     @BindView(R.id.fbUpload)
     FloatingActionButton fabCamera;
@@ -65,12 +64,15 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     ImageView imgPicture;
     Button btnPost;
-    private Bitmap bitmap;
+
+    Bitmap bitmap;
+
     EditText etCaption;
     EditText etHashtag;
     Switch swSendLocation;
 
-    ImagePickerUtil imagePickerUtil;
+    Uri picUri;
+
 
     final Linkify.TransformFilter filter = new Linkify.TransformFilter() {
         @Override
@@ -96,6 +98,11 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_upload;
     }
@@ -113,7 +120,9 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @Override
     protected void initView(View root) {
         super.initView(root);
+
         ((MainActivity) getActivity()).setToolbar(HeaderOption.MENU_UPLOAD);
+
         imgPicture = (ImageView) root.findViewById(R.id.imgPostPicture);
         fabCamera = (FloatingActionButton) root.findViewById(R.id.fbUpload);
         fabCamera.setOnClickListener(new View.OnClickListener() {
@@ -131,11 +140,11 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
             }
         });
 
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+//                .addConnectionCallbacks(this)
+//                .addOnConnectionFailedListener(this)
+//                .addApi(LocationServices.API)
+//                .build();
 
         swSendLocation = (Switch)root.findViewById(R.id.swSendLocation);
 
@@ -169,18 +178,35 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     public void selectImage() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CAMERA);
+        startActivityForResult(intent, CAMERA_PICTURE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_CAMERA && resultCode == Activity.RESULT_OK) {
+        if (requestCode == CAMERA_PICTURE && resultCode == Activity.RESULT_OK) {
+            //Bundle extras = data.getExtras();
+
+            picUri = data.getData();
+            //bitmap = (Bitmap) extras.get("data");
+            //imgPicture.setImageBitmap(bitmap);
+            performCrop();
+        } else if (requestCode == PIC_CROP){
             Bundle extras = data.getExtras();
-            bitmap = (Bitmap) extras.get("data");
+            bitmap = extras.getParcelable("data");
             imgPicture.setImageBitmap(bitmap);
         }
+    }
+
+    private void performCrop(){
+        Intent cropIntent = new Intent("com.android.camera.action.CROP");
+        cropIntent.setDataAndType(picUri, "image/*");
+        cropIntent.putExtra("crop", true);
+        cropIntent.putExtra("aspectX", 16);
+        cropIntent.putExtra("aspectY", 9);
+        cropIntent.putExtra("return-data", true);
+        startActivityForResult(cropIntent, PIC_CROP);
     }
 
     public void uploadImage() {
@@ -224,25 +250,25 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     public void onConnected(@Nullable Bundle bundle) {
         // Khi connect thanh cong
         // Lay thong tin vi tri nguoi dung
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        double dbLat;
-        double dbLong;
-
-        dbLat = mCurrentLocation.getLatitude();
-        dbLong = mCurrentLocation.getLongitude();
-
-        strlat = Double.toString(dbLat);
-        strlong = Double.toString(dbLong);
+//        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+//        double dbLat;
+//        double dbLong;
+//
+//        dbLat = mCurrentLocation.getLatitude();
+//        dbLong = mCurrentLocation.getLongitude();
+//
+//        strlat = Double.toString(dbLat);
+//        strlong = Double.toString(dbLong);
     }
 
     @Override
@@ -257,6 +283,21 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     @Override
     public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
 
     }
 }

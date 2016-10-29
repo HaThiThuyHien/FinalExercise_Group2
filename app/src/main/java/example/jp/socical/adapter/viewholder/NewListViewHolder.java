@@ -91,9 +91,9 @@ public class NewListViewHolder extends OnClickViewHolder {
         StringUtil.displayText(newBean.image.location, tvPinMap);
 
         if (newBean.image.isFavourite) {
-            ivLike.setBackgroundColor(Color.parseColor("#FFEC2878"));
+            ivLike.setImageResource(R.drawable.icon_favorite);
         }else {
-            ivLike.setBackgroundColor(Color.parseColor("#42221f1f"));
+            ivLike.setImageResource(R.drawable.icon_no_favourite);
         }
         bLike = newBean.image.isFavourite;
 

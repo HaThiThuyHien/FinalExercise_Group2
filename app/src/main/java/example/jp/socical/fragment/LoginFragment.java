@@ -1,19 +1,27 @@
 package example.jp.socical.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.LoginRequest;
 import example.jp.socical.api.response.LoginResponse;
 import example.jp.socical.commonclass.StringEncryption;
+import example.jp.socical.constant.HeaderOption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
+import vn.app.base.util.DebugLog;
 import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.SharedPrefUtils;
 
@@ -46,28 +54,7 @@ public class LoginFragment extends NoHeaderFragment {
     protected void initView(View root) {
         super.initView(root);
 
-        btnLogin = (Button) root.findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
-                // gọi đến màn hình Home
-//                if (bcheck) {
-//                    FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
-//                } else { // gọi đến màn hình Tutorial
-//                    //FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
-//                    FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
-//                }
-            }
-        });
-
-        btnRegister = (Button)root.findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
-            }
-        });
+        ((MainActivity) getActivity()).setToolbar(0);
     }
 
     @Override
@@ -101,11 +88,31 @@ public class LoginFragment extends NoHeaderFragment {
 
             @Override
             public void onFail(int failCode, String message) {
-                Log.i("Connect API fail", message);
+                //Log.i("Connect API fail", message);
             }
         });
 
         loginRequest.execute();
     }
 
+    @OnClick(R.id.btnLogin)
+    public void clickBtnLogin() {
+        // test ++ >>
+        login();
+        //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
+        // test ++ <<
+
+        // gọi đến màn hình Home
+//                if (bcheck) {
+//                    FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
+//                } else { // gọi đến màn hình Tutorial
+//                    //FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+//                    FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
+//                }
+    }
+
+    @OnClick(R.id.btnRegister)
+    public void clickBtnRegister(){
+        FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
+    }
 }
