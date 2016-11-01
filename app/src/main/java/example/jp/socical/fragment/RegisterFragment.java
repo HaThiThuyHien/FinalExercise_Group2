@@ -58,14 +58,14 @@ public class RegisterFragment extends NoHeaderFragment {
     @Override
     protected void initView(View root) {
         super.initView(root);
-        btnRegister = (Button)root.findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Gọi đến giao diện Home
-                requestRegister();
-            }
-        });
+//        btnRegister = (Button)root.findViewById(R.id.btnRegister);
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Gọi đến giao diện Home
+//                requestRegister();
+//            }
+//        });
     }
 
     @Override
@@ -93,7 +93,7 @@ public class RegisterFragment extends NoHeaderFragment {
         registerRequest.setRequestCallBack(new ApiObjectCallBack<RegisterResponse>() {
             @Override
             public void onSuccess(RegisterResponse data) {
-                SharedPrefUtils.saveAccessToken(data.dataRegister.token);
+//                SharedPrefUtils.saveAccessToken(data.dataRegister.token);
                 FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
             }
 

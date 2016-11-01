@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +21,7 @@ import vn.app.base.util.SharedPrefUtils;
 public class LoginFragment extends NoHeaderFragment {
 
     @BindView(R.id.btnLogin)
-    Button btnLogin;
+    ImageButton btnLogin;
 
     @BindView(R.id.btnRegister)
     Button btnRegister;
@@ -46,18 +47,18 @@ public class LoginFragment extends NoHeaderFragment {
     protected void initView(View root) {
         super.initView(root);
 
-        btnLogin = (Button) root.findViewById(R.id.btnLogin);
+        btnLogin = (ImageButton) root.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 login();
-                // gọi đến màn hình Home
-//                if (bcheck) {
-//                    FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
-//                } else { // gọi đến màn hình Tutorial
-//                    //FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
-//                    FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
-//                }
+//                 gọi đến màn hình Home
+                if (bcheck) {
+                    FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null);
+                } else { // gọi đến màn hình Tutorial
+                    //FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+                    FragmentUtil.pushFragment(getActivity(), RegisterFragment.newInstance(), null);
+                }
             }
         });
 
@@ -89,23 +90,25 @@ public class LoginFragment extends NoHeaderFragment {
             e.printStackTrace();
         }
 
-        LoginRequest loginRequest = new LoginRequest(strUser, strPassSHA1);
-        loginRequest.setRequestCallBack(new ApiObjectCallBack<LoginResponse>() {
-            @Override
-            public void onSuccess(LoginResponse data) {
-                if (data.dataResponse != null) {
-                    SharedPrefUtils.saveAccessToken(data.dataResponse.token);
-                    FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
-                }
-            }
+        FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
 
-            @Override
-            public void onFail(int failCode, String message) {
-                Log.i("Connect API fail", message);
-            }
-        });
+//        LoginRequest loginRequest = new LoginRequest(strUser, strPassSHA1);
+//        loginRequest.setRequestCallBack(new ApiObjectCallBack<LoginResponse>() {
+//            @Override
+//            public void onSuccess(LoginResponse data) {
+////                if (data.dataResponse != null) {
+////                    SharedPrefUtils.saveAccessToken(data.dataResponse.token);
+//                    FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+////                }
+//            }
+//
+//            @Override
+//            public void onFail(int failCode, String message) {
+//                Log.i("Connect API fail", message);
+//            }
+//        });
 
-        loginRequest.execute();
+//        loginRequest.execute();
     }
 
 }
