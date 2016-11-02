@@ -24,6 +24,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import example.jp.socical.R;
+import vn.app.base.util.FragmentUtil;
 
 public class MenuFragment extends Fragment implements View.OnClickListener{
 
@@ -275,32 +276,36 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             case R.id.txtUser:
             case R.id.menu_avatar:
                 // chuyen sang man hinh Profile
-                Toast.makeText(getActivity(),"chuyen sang man hinh Profile", Toast.LENGTH_LONG).show();
+                FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(), null, "ProfileUserFragment");
+                setCurrentMenu(0);
                 break;
             case R.id.menu_2:
                 // chuyen sang man hinh Home
-                Toast.makeText(getActivity(),"chuyen sang man hinh Home", Toast.LENGTH_LONG).show();
+                FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null, "HomeFragment");
                 setCurrentMenu(1);
                 break;
             case R.id.menu_3:
                 // chuyen sang man hinh Post
+                FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null, "UploadFragment");
                 setCurrentMenu(2);
                 break;
             case R.id.menu_4:
-                setCurrentMenu(3);
                 // chuyen sang man hinh Favourite
+                //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null, "UploadFragment");
+                setCurrentMenu(3);
                 break;
             case R.id.menu_5:
-                setCurrentMenu(4);
                 // chuyen sang man hinh Nearby
+                FragmentUtil.pushFragment(getActivity(), NearbyFragment.newInstance(), null, "NearbyFragment");
+                setCurrentMenu(4);
                 break;
             case R.id.menu_6:
-                setCurrentMenu(5);
                 // chuyen sang man hinh Follow
+                setCurrentMenu(5);
                 break;
             case R.id.menu_7:
-                setCurrentMenu(6);
                 // chuyen sang man hinh Logout
+                setCurrentMenu(6);
                 break;
             default:
                 break;
