@@ -49,8 +49,8 @@ import vn.app.base.util.FragmentUtil;
 
 public class UploadFragment extends HeaderFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    final int CAMERA_PICTURE = 91;
-    final int PIC_CROP = 92;
+    final int CAMERA_PICTURE = 94;
+    final int PIC_CROP = 95;
 
     @BindView(R.id.fbUpload)
     FloatingActionButton fabCamera;
@@ -61,7 +61,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @BindView(R.id.btnPost)
     Button btnUploadPost;
 
-
     MainActivity mainActivity;
 
     String strimgPicture;
@@ -71,17 +70,21 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     String strlong;
     String strhashtag;
 
-    ImageView imgPicture;
-    Button btnPost;
+    @BindView(R.id.imgPostPicture)
+    ImageView ivPicture;
 
     Bitmap bitmap;
 
+    @BindView(R.id.etCaption)
     EditText etCaption;
+
+    @BindView(R.id.etHashtag)
     EditText etHashtag;
+
+    @BindView(R.id.swSendLocation)
     Switch swSendLocation;
 
     Uri picUri;
-
 
     final Linkify.TransformFilter filter = new Linkify.TransformFilter() {
         @Override
@@ -132,32 +135,12 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
         ((MainActivity) getActivity()).setToolbar(HeaderOption.MENU_UPLOAD);
 
-        imgPicture = (ImageView) root.findViewById(R.id.imgPostPicture);
-        fabCamera = (FloatingActionButton) root.findViewById(R.id.fbUpload);
-        fabCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage();
-            }
-        });
-
-        btnPost = (Button) root.findViewById(R.id.btnPost);
-        btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
-
 //        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
 //                .addConnectionCallbacks(this)
 //                .addOnConnectionFailedListener(this)
 //                .addApi(LocationServices.API)
 //                .build();
 
-        swSendLocation = (Switch)root.findViewById(R.id.swSendLocation);
-
-        etHashtag = (EditText)root.findViewById(R.id.etHashtag);
         etHashtag.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -175,8 +158,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
                 Linkify.addLinks(s, urlPattern, null, null, filter);
             }
         });
-
-        etCaption = (EditText) root.findViewById(R.id.etCaption);
 
     }
 
@@ -204,7 +185,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         } else if (requestCode == PIC_CROP){
             Bundle extras = data.getExtras();
             bitmap = extras.getParcelable("data");
-            imgPicture.setImageBitmap(bitmap);
+            ivPicture.setImageBitmap(bitmap);
         }
     }
 
@@ -317,6 +298,11 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     @OnClick(R.id.btnPost)
     public void clickBtnPost() {
-        //
+        uploadImage();
+    }
+
+    @OnClick(R.id.fbUpload)
+    public void clickFbUpload() {
+        selectImage();
     }
 }
