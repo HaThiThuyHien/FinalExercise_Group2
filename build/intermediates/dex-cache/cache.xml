@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_57768b53e3f584ffff4b6f8259c652eb522fc41e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_8f7028ae9704c884e51b5c67e8852fc241da1659.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_0837ad7d9cc18db9171024af7a504719cb752f3f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_4f1d2f8b4c64e5869b49f7bae88fe8be62d69fa8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.volley-volley-1.0.0_a86b764aef2531982b8696361a501f5cff95534c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient-android/4.3.5/82edcaec6c7b4599eaeaaf11167ceea41db42f33/httpclient-android-4.3.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="82edcaec6c7b4599eaeaaf11167ceea41db42f33">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/httpclient-android-4.3.5_38f5b7b78f77f595cde0ecbd0a4c3b68154917f8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/glide-3.7.0_2eeaa602e47075094126071a41293e9939b5fbbd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_d8000e7f2a7c0c5c29a2a7f72a2c8c7fa9adc945.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_ab0e6d0319c39d50d5efc4d08fbe46852a2d4db9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="db845b5a27edd9462518d02f9906aa19dd4b9718">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.jakewharton-butterknife-8.2.0_302174ff2be7f5ff1c1496b448e48af70401f324.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_6f88e467b904053eac0f2199f5f0b3813c9d979e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea5537e2a88ce0497d3e2272b1cf93f2e0c77b0d">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-location-9.6.0_6496cef750b9857c1f6749429ff96a8789922c2c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_d491b5cccbd2567a2a914b542695e278c621942c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_7d754f7544b1a4646cadbea365e1cbd0fac0fe64.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ccae248a69b5b41a8eaf8721895041291ae9868a">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/instant-run_25c1dd4cfa58df28a6b08a7322efd7e46cda0679.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_17aebeb3ce65725db82a0a68c33fba48b80c7da6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_b4453dd994c7031ce45f71fdeeb2caaf24f32222.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/gson-2.7_dcbc15ecc8d209864228e11d78133fb0c408c706.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="4cda2d902d103a4deea7c518f320ddd03d5cf59b">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_8bd9734e961f137e840cbbb7a8ec2712d844e095.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="93a0248fe0524b4fa2d16f5f7c3cff8452796454">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-9.6.0_601de85e88520d6575d3dabcb7324fdf68e3efa5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_55366bc897e9a00f6b92cc08ee73845fe048750e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.2.0/54af7c495f6c92e0eaba1e839bc03b85ff61fddb/butterknife-annotations-8.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="54af7c495f6c92e0eaba1e839bc03b85ff61fddb">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/butterknife-annotations-8.2.0_64fd884c7312e7940affffd7824e0f783f0386f2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_6730830ad6a999042c8e4a3a8df74b8f2f30eaec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_997bff33fc13eba67d42921748a41eafedc6642e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="f6afcfbf1989631424f9ceaae6ee24777d3cf6ba">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-9.6.0_a9a68f92b3f6912314f21f16b75fe4ae133d89f7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_5dc3de2a31773f7711dbf8138da6cd007e10a0ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="614b2ffd04818e865e1c02cc149c6b92e518e862">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-9.6.0_8bf814500439db331b148524b525707da6d1a3d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.1.0_2bc8b431012fe906ecca329bf278120adbe038c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_86d0bdcd25c1c48b6f4c6e78d680101facc8890f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_cc470f948bf7a4fa1cf0a74e08c156de77908d2e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/eventbus-3.0.0_cc2dd036e0e131f2ad163c9e8caded77126e62a3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/vincent/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.3.6/cf8bacbf0d476c7f2221f861269365b66447f7ec/httpmime-4.3.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="cf8bacbf0d476c7f2221f861269365b66447f7ec">
+        <dex dex="/Volumes/DATA/Vincent/PROJECT/Github/Bai Tap Android/FinalExercise_Group2/app/build/intermediates/pre-dexed/debug/httpmime-4.3.6_5f8481c8623f98b347b2b1ea7725f2dcc1e8f087.jar" />
+    </item>
+
+</items>
