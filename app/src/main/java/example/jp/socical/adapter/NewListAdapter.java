@@ -4,7 +4,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import example.jp.socical.adapter.viewholder.NewListViewHolder;
-import example.jp.socical.bean.NewBean;
+import example.jp.socical.bean.NewsBean;
 import vn.app.base.adapter.AdapterWithItemClick;
 import vn.app.base.util.UiUtil;
 
@@ -14,9 +14,9 @@ import vn.app.base.util.UiUtil;
 
 public class NewListAdapter extends AdapterWithItemClick<NewListViewHolder> {
 
-    public List<NewBean> newBeanList;
+    public List<NewsBean> newBeanList;
 
-    public NewListAdapter(List<NewBean> newBeanList) {
+    public NewListAdapter(List<NewsBean> newBeanList) {
         this.newBeanList = newBeanList;
     }
 

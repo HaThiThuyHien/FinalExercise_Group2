@@ -8,18 +8,20 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.CommentAdapter;
 import example.jp.socical.bean.CommentBean;
-import example.jp.socical.bean.NewBean;
+import example.jp.socical.bean.NewsBean;
 import example.jp.socical.constant.HeaderOption;
 
 public class ImageDetailFragment extends HeaderFragment {
 
+    @BindView(R.id.rvImgDetail)
     RecyclerView recyclerView;
 
-    NewBean newBean;
+    NewsBean newBean;
 
     public static ImageDetailFragment newInstance() {
         ImageDetailFragment imageDetailFragment = new ImageDetailFragment();
@@ -38,7 +40,7 @@ public class ImageDetailFragment extends HeaderFragment {
     @Override
     protected void initView(View root) {
         super.initView(root);
-        recyclerView = (RecyclerView)root.findViewById(R.id.rvImgDetail);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         List<CommentBean> commentBeanList = new ArrayList<>();

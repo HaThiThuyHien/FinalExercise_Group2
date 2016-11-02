@@ -5,11 +5,14 @@ package example.jp.socical.api.response;
  */
 import com.google.gson.annotations.SerializedName;
 
+import example.jp.socical.bean.ImageBean;
+import example.jp.socical.bean.UserBean;
+
 public class DataUploadResponse {
 
     @SerializedName("user")
-    public User user;
+    public UserBean user;
 
     @SerializedName("image")
-    public ImageUpload image;
+    public ImageBean image;
 }

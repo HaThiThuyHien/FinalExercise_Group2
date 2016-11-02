@@ -1,5 +1,7 @@
 package example.jp.socical;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -14,13 +16,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.camera.CropImageIntentBuilder;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import example.jp.socical.constant.FragmentActionConstant;
 import example.jp.socical.constant.HeaderOption;
 import example.jp.socical.fragment.HomeFragment;
 import example.jp.socical.fragment.LoginFragment;
 import example.jp.socical.fragment.MenuFragment;
+import example.jp.socical.fragment.ProfileUserFragment;
 import vn.app.base.activity.CommonActivity;
+import vn.app.base.util.FragmentUtil;
+import vn.app.base.util.ImagePickerUtil;
 
 public class MainActivity extends CommonActivity implements MenuFragment.NavigationDrawerCallbacks{
 
@@ -39,12 +47,16 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @BindView(R.id.headerRight)
     TextView tvHeaderRight;
 
-    MenuFragment menuFragment;
-
+    @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    MenuFragment menuFragment;
 
     ActionBarDrawerToggle drawerToggle;
 
+    ImagePickerUtil imagePickerUtil = new ImagePickerUtil();
+
+    int iScreenNo = 0;
 
     @Override
     protected String getNoConnectionMessage() {
@@ -69,16 +81,8 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @Override
     public void initView() {
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-        rlHeader = (RelativeLayout)findViewById(R.id.toolbar);
-        ivBack = (ImageView)findViewById(R.id.headerBack);
-        ivMenu = (ImageView)findViewById(R.id.headerMenu);
-        tvTitle = (TextView)findViewById(R.id.headerTitle);
-        tvHeaderRight = (TextView)findViewById(R.id.headerRight);
-
-        setUpInitScreen(LoginFragment.newInstance(), null);
+        setUpInitScreen(LoginFragment.newInstance(), "LoginFragment");
     }
 
     @Override
@@ -93,8 +97,21 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
     @Override
     public void onCommonUIHandle(Bundle bundle) {
+        if (bundle == null) {
+            return;
+        }
+
+        if (bundle.containsKey(FragmentActionConstant.FRAGMENT_ACTION)) {
+            int framentAction = bundle.getInt(FragmentActionConstant.FRAGMENT_ACTION);
+            if (framentAction == FragmentActionConstant.PICK_IMAGE) {
+                handlePickPhoto();
+            }
+        }
     }
 
+    private void handlePickPhoto() {
+        imagePickerUtil.pickImage(this, false);
+    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -108,6 +125,8 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         ivMenu.setVisibility(View.GONE);
         tvTitle.setVisibility(View.GONE);
         tvHeaderRight.setVisibility(View.GONE);
+
+        iScreenNo = screenNo;
 
         switch (screenNo) {
             case HeaderOption.MENU_HOME:
@@ -184,4 +203,40 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         }
     }
 
+    @OnClick(R.id.headerBack)
+    public void clickHeaderBack(){
+        FragmentUtil.popBackStack(this);
+    }
+
+    @OnClick(R.id.headerRight)
+    public void clickHeaderRight(){
+        if (iScreenNo == HeaderOption.MENU_PROFILE_USER){
+            //Nhấn nút [Update] gọi API thay đổi ảnh.
+
+        }else if (iScreenNo == HeaderOption.MENU_DETAIL_USER){
+            // Nhấn nút [Delete] hiện dialog xác nhận xóa > Ok gọi API xóa
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        imagePickerUtil.handleResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == ImagePickerUtil.PICTURE_PICKER_REQUEST_CODE) {
+                imagePickerUtil.createImageFile(this);
+                CropImageIntentBuilder cropImage = new CropImageIntentBuilder(800, 800, imagePickerUtil.outputFileUri);
+                cropImage.setOutlineColor(0xFF03A9F4);
+                cropImage.setSourceImage(data.getData());
+                startActivityForResult(cropImage.getIntent(this), ImagePickerUtil.PICTURE_CROP_REQUEST_CODE);
+            } else if (requestCode == ImagePickerUtil.PICTURE_CROP_REQUEST_CODE) {
+                if (fragmentListener != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ProfileUserFragment.USER_PHOTO, imagePickerUtil.outputFileUri.getPath());
+                    fragmentListener.onFragmentDataHandle(bundle);
+                }
+            }
+        }
+    }
 }
