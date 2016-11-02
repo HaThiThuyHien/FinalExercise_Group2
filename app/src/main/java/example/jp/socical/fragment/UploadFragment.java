@@ -37,6 +37,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.UploadImageRequest;
@@ -44,6 +45,7 @@ import example.jp.socical.api.response.UploadImageResponse;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.Base64;
+import vn.app.base.util.FragmentUtil;
 
 public class UploadFragment extends HeaderFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -52,6 +54,13 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     @BindView(R.id.fbUpload)
     FloatingActionButton fabCamera;
+
+    @BindView(R.id.btnCancel)
+    Button btnUploadCancel;
+
+    @BindView(R.id.btnPost)
+    Button btnUploadPost;
+
 
     MainActivity mainActivity;
 
@@ -299,5 +308,15 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    @OnClick(R.id.btnCancel)
+    public void clickBtnCancel(){
+        FragmentUtil.popBackStack(getActivity());
+    }
+
+    @OnClick(R.id.btnPost)
+    public void clickBtnPost() {
+        //
     }
 }
