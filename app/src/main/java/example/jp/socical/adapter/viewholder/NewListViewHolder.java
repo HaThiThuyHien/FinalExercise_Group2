@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import example.jp.socical.R;
 import example.jp.socical.bean.NewsBean;
 import vn.app.base.adapter.viewholder.OnClickViewHolder;
@@ -27,43 +28,36 @@ public class NewListViewHolder extends OnClickViewHolder {
     public static final int LAYOUT_ID = R.layout.item_list_news;
 
     // User
-    public ImageView ivAvatar;
+    @BindView(R.id.imgAvatar)
+    ImageView ivAvatar;
 
-    public TextView tvUser;
+    @BindView(R.id.txtUser)
+    TextView tvUser;
 
-    public Button btnFollow;
+    @BindView(R.id.btnFollow)
+    Button btnFollow;
 
     // Image
-    public ImageView ivPicture;
+    @BindView(R.id.imgPicture)
+    ImageView ivPicture;
 
-    public TextView tvPinMap;
+    @BindView(R.id.txtPinMap)
+    TextView tvPinMap;
 
-    public TextView tvCaption;
+    @BindView(R.id.txtCaption)
+    TextView tvCaption;
 
-    public TextView tvHashtag;
+    @BindView(R.id.txtHashtag)
+    TextView tvHashtag;
 
-    public ImageView ivLike;
+    @BindView(R.id.imgLike)
+    ImageView ivLike;
 
     boolean bFollow = false;
     boolean bLike = false;
 
     public NewListViewHolder(View itemView) {
         super(itemView);
-
-        ivAvatar = (ImageView)itemView.findViewById(R.id.imgAvatar);
-        tvUser = (TextView)itemView.findViewById(R.id.txtUser);
-        btnFollow = (Button)itemView.findViewById(R.id.btnFollow);
-
-        ivPicture = (ImageView)itemView.findViewById(R.id.imgPicture);
-        tvPinMap = (TextView)itemView.findViewById(R.id.txtPinMap);
-        tvCaption = (TextView)itemView.findViewById(R.id.txtCaption);
-        tvHashtag = (TextView)itemView.findViewById(R.id.txtHashtag);
-        ivLike = (ImageView)itemView.findViewById(R.id.imgLike);
-
-        //ivAvatar.setOnClickListener(this);
-        btnFollow.setOnClickListener(this);
-        ivLike.setOnClickListener(this);
-
     }
 
     public void bind (NewsBean newBean) {
@@ -101,29 +95,37 @@ public class NewListViewHolder extends OnClickViewHolder {
 
     }
 
-    @Override
-    public void onClick(View view) {
-        super.onClick(view);
-        switch (view.getId()) {
-            case R.id.imgAvatar:
-                DebugLog.i("select avatar");
-                break;
-            case R.id.imgPicture:
-                DebugLog.i("select imgPicture");
-                break;
-            case R.id.btnFollow:
-                if (bFollow) {
-                    bFollow = false;
-                    btnFollow.setBackgroundResource(R.drawable.btnfollow_bg);
-                    btnFollow.setText("Follow");
-                }else {
-                    bFollow = true;
-                    btnFollow.setBackgroundResource(R.drawable.btnfollowing_bg);
-                    btnFollow.setText("Following");
-                }
-                break;
-            default:
-                break;
+    @OnClick(R.id.imgAvatar)
+    public void clickImagAvatar() {
+        //DebugLog.i("select avatar");
+    }
+
+    @OnClick(R.id.imgPicture)
+    public void clickImgPicture(){
+        //DebugLog.i("select imgPicture");
+    }
+
+    @OnClick(R.id.btnFollow)
+    public void clickBtnFollow(){
+        if (bFollow) {
+            bFollow = false;
+            btnFollow.setBackgroundResource(R.drawable.btnfollow_bg);
+            btnFollow.setText("Follow");
+        }else {
+            bFollow = true;
+            btnFollow.setBackgroundResource(R.drawable.btnfollowing_bg);
+            btnFollow.setText("Following");
+        }
+    }
+
+    @OnClick(R.id.imgLike)
+    public void clickImgLike(){
+        if (bLike) {
+            bLike = false;
+            ivLike.setImageResource(R.drawable.icon_no_favourite);
+        }else {
+            bLike = true;
+            ivLike.setImageResource(R.drawable.icon_favorite);
         }
     }
 }

@@ -61,4 +61,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.google.android.gms:play-services-maps:9.8.0'
     testCompile 'junit:junit:4.12'
+    compile 'me.villani.lorenzo.android:android-cropimage:1.1.+'
 }
