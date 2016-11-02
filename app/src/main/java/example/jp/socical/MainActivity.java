@@ -1,5 +1,7 @@
 package example.jp.socical;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -14,14 +16,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.camera.CropImageIntentBuilder;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import example.jp.socical.constant.FragmentActionConstant;
 import example.jp.socical.constant.HeaderOption;
 import example.jp.socical.fragment.HomeFragment;
 import example.jp.socical.fragment.LoginFragment;
 import example.jp.socical.fragment.MenuFragment;
+import example.jp.socical.fragment.ProfileUserFragment;
 import vn.app.base.activity.CommonActivity;
 import vn.app.base.util.FragmentUtil;
+import vn.app.base.util.ImagePickerUtil;
 
 public class MainActivity extends CommonActivity implements MenuFragment.NavigationDrawerCallbacks{
 
@@ -46,6 +53,8 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     MenuFragment menuFragment;
 
     ActionBarDrawerToggle drawerToggle;
+
+    ImagePickerUtil imagePickerUtil = new ImagePickerUtil();
 
     int iScreenNo = 0;
 
@@ -88,8 +97,21 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
     @Override
     public void onCommonUIHandle(Bundle bundle) {
+        if (bundle == null) {
+            return;
+        }
+
+        if (bundle.containsKey(FragmentActionConstant.FRAGMENT_ACTION)) {
+            int framentAction = bundle.getInt(FragmentActionConstant.FRAGMENT_ACTION);
+            if (framentAction == FragmentActionConstant.PICK_IMAGE) {
+                handlePickPhoto();
+            }
+        }
     }
 
+    private void handlePickPhoto() {
+        imagePickerUtil.pickImage(this, false);
+    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -196,4 +218,25 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        imagePickerUtil.handleResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == ImagePickerUtil.PICTURE_PICKER_REQUEST_CODE) {
+                imagePickerUtil.createImageFile(this);
+                CropImageIntentBuilder cropImage = new CropImageIntentBuilder(800, 800, imagePickerUtil.outputFileUri);
+                cropImage.setOutlineColor(0xFF03A9F4);
+                cropImage.setSourceImage(data.getData());
+                startActivityForResult(cropImage.getIntent(this), ImagePickerUtil.PICTURE_CROP_REQUEST_CODE);
+            } else if (requestCode == ImagePickerUtil.PICTURE_CROP_REQUEST_CODE) {
+                if (fragmentListener != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ProfileUserFragment.USER_PHOTO, imagePickerUtil.outputFileUri.getPath());
+                    fragmentListener.onFragmentDataHandle(bundle);
+                }
+            }
+        }
+    }
 }

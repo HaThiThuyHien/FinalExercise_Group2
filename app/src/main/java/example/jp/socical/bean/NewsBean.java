@@ -11,4 +11,9 @@ public class NewsBean {
     public UserBean user;
 
     public ImageBean image;
+
+    public NewsBean(UserBean user, ImageBean image) {
+        this.user = user;
+        this.image = image;
+    }
 }

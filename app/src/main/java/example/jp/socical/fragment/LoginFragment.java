@@ -98,7 +98,8 @@ public class LoginFragment extends NoHeaderFragment {
     @OnClick(R.id.btnLogin)
     public void clickBtnLogin() {
         // test ++ >>
-        login();
+        //login();
+        FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(), null, "ProfileUserFragment");
         //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
         // test ++ <<
 
