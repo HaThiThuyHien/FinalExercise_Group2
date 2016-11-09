@@ -1,26 +1,19 @@
 package example.jp.socical.fragment;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.net.Uri;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.media.MediaBrowserCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -29,10 +22,12 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.fenlisproject.hashtagedittext.HashTagEditText;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,7 +63,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     String strlocation;
     String strlat;
     String strlong;
-    String strhashtag;
+    ArrayList<String> strhashtagView;
 
     @BindView(R.id.imgPostPicture)
     ImageView ivPicture;
@@ -78,25 +73,13 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @BindView(R.id.etCaption)
     EditText etCaption;
 
-    @BindView(R.id.etHashtag)
-    EditText etHashtag;
+    @BindView(R.id.hashtagView)
+    HashTagEditText etHashtagView;
 
     @BindView(R.id.swSendLocation)
     Switch swSendLocation;
 
     Uri picUri;
-
-    final Linkify.TransformFilter filter = new Linkify.TransformFilter() {
-        @Override
-        public String transformUrl(Matcher match, String url) {
-            return match.group();
-        }
-    };
-
-    final Pattern hashtagPattern = Pattern.compile("#([ء-يA-Za-z0-9_-]+)");
-    final String hashtagScheme = "content://com.hashtag.jojo/";
-
-    final Pattern urlPattern = Patterns.WEB_URL;
 
     //Location
     protected GoogleApiClient mGoogleApiClient;
@@ -141,24 +124,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 //                .addApi(LocationServices.API)
 //                .build();
 
-        etHashtag.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                System.out.println(count);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                Linkify.addLinks(s, hashtagPattern, hashtagScheme, null,filter);
-                Linkify.addLinks(s, urlPattern, null, null, filter);
-            }
-        });
-
     }
 
     @Override
@@ -201,10 +166,12 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     public void uploadImage() {
 
+        getValuesHashTagView();
+
         strimgPicture = getStringImage(bitmap);
         strcaption = etCaption.getText().toString();
 
-        UploadImageRequest uploadImageRequest = new UploadImageRequest(strimgPicture, strcaption, strlocation, strlat, strlong, strhashtag);
+        UploadImageRequest uploadImageRequest = new UploadImageRequest(strimgPicture, strcaption, strlocation, strlat, strlong, strhashtagView);
         uploadImageRequest.setRequestCallBack(new ApiObjectCallBack<UploadImageResponse>() {
             @Override
             public void onSuccess(UploadImageResponse data) {
@@ -217,6 +184,17 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
             }
         });
         uploadImageRequest.execute();
+    }
+
+    public void getValuesHashTagView() {
+
+        int size = etHashtagView.getValues().size();
+
+        strhashtagView = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            strhashtagView.add(etHashtagView.getValues().get(i));
+        }
     }
 
     public String getStringImage(Bitmap bmp) {
@@ -233,7 +211,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         strlocation = "";
         strlat = "";
         strlong = "";
-        strhashtag = "";
     }
 
     @Override

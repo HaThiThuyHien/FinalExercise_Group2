@@ -2,6 +2,7 @@ package example.jp.socical.api.request;
 
 import com.android.volley.Request;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,9 +21,9 @@ public class UploadImageRequest extends ObjectApiRequest<UploadImageResponse> {
     String strlocation;
     String strlat;
     String strlong;
-    String hashtag;
+    ArrayList<String> hashtag;
 
-    public UploadImageRequest(String strimgPicture, String strcaption, String strlocation, String strlat, String strlong, String hashtag) {
+    public UploadImageRequest(String strimgPicture, String strcaption, String strlocation, String strlat, String strlong, ArrayList<String> hashtag) {
         this.strimgPicture = strimgPicture;
         this.strcaption = strcaption;
         this.strlocation = strlocation;
