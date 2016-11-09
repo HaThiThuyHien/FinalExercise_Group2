@@ -75,22 +75,23 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"/>
 
-    <EditText
+    <com.fenlisproject.hashtagedittext.HashTagEditText
+        android:id="@+id/hashtagView"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/white"
-        android:textSize="17dp"
-        android:lines="1"
-        android:text="Hashtag"
-        android:ems="10"
         android:layout_below="@id/tvhashtag"
         android:layout_alignStart="@+id/textView"
+        android:textColor="@color/white"
+        app:bubbleTextColor="@color/white"
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
-        android:id="@+id/etHashtag"
-        android:layout_alignEnd="@+id/swSendLocation" />
+        android:layout_alignEnd="@+id/swSendLocation"
+        app:bubbleTextSize="16sp"
+        app:horizontalPadding="8dp"
+        app:horizontalSpacing="2dp"
+        app:maxSize="10"
+        app:verticalPadding="4dp"
+        app:verticalSpacing="2dp" />
 
     <Button
         android:text="Cancel"
