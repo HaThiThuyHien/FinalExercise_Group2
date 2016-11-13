@@ -47,7 +47,7 @@ public class NewsRequest extends ObjectApiRequest<NewsResponse>{
         Map<String, String> params = new HashMap<>();
         params.put("type", Integer.toString(0));
 //        params.put("last_query_timestamp", Long.toString(last_query_timestamp));
-//        params.put("num", Integer.toString(num));
+        params.put("num", Integer.toString(20));
         return params;
     }
 

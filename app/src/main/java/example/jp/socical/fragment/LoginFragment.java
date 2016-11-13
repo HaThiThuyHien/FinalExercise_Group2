@@ -83,12 +83,17 @@ public class LoginFragment extends NoHeaderFragment {
                 if (data.dataResponse != null) {
                     SharedPrefUtils.saveAccessToken(data.dataResponse.token);
                     FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
+
+                    // test
+                    //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
+                    // test
                 }
             }
 
             @Override
             public void onFail(int failCode, String message) {
                 //Log.i("Connect API fail", message);
+                String str = message;
             }
         });
 
