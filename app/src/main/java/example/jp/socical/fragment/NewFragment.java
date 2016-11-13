@@ -37,7 +37,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     List<NewsBean> newBeanList;
 
     int type;
-    long last_query_timestamp;
+    String last_query_timestamp;
     int num;
 
     public static NewFragment newInstance() {
@@ -59,14 +59,21 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     protected void initView(View root) {
         super.initView(root);
 
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setEnabled(true);
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
             public void onLoadMore(int currentPage) {
 
+                //newListAdapter.notifyDataSetChanged();
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     };
+
+    public void loadNextDataFromApi(int page) {
+
+    }
 
     @Override
     protected void initData() {
@@ -84,13 +91,21 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     }
 
     private void getNews(final boolean isRefresh) {
+        NewsRequest newsRequest;
 
-        NewsRequest newsRequest = new NewsRequest();
+        if (!isRefresh) {
+            newsRequest = new NewsRequest(0, "", 0);
+        } else {
+            String str_last_time;
+            newsRequest = new NewsRequest(0, last_query_timestamp, 10);
+        }
+
         newsRequest.setRequestCallBack(new ApiObjectCallBack<NewsResponse>() {
             @Override
             public void onSuccess(NewsResponse data) {
                 initialResponseHandled();
                 handleNewsData(data.data);
+                getLasttime(data.data);
             }
 
             @Override
@@ -99,6 +114,14 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             }
         });
         newsRequest.execute();
+    }
+
+    public void getLasttime(List<NewsBean> inNewsBean) {
+        if (inNewsBean != null) {
+            int size = inNewsBean.size();
+            NewsBean newsBeanLast = inNewsBean.get(size -1);
+            last_query_timestamp = newsBeanLast.image.createdAt;
+        }
     }
 
     private void handleNewsData(List<NewsBean> inNewsBean) {
@@ -110,7 +133,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
-
+        getNews(true);
     }
 
     @Override

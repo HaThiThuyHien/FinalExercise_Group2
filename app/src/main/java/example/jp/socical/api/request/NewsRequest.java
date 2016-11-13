@@ -16,14 +16,14 @@ import vn.app.base.util.SharedPrefUtils;
 public class NewsRequest extends ObjectApiRequest<NewsResponse>{
 
     int type;
-    long last_query_timestamp;
+    String last_query_timestamp;
     int num;
 
-//    public NewsRequest(int type, long last_query_timestamp, int num) {
-//        this.type = type;
-//        this.last_query_timestamp = last_query_timestamp;
-//        this.num = num;
-//    }
+    public NewsRequest(int type, String last_query_timestamp, int num) {
+        this.type = type;
+        this.last_query_timestamp = last_query_timestamp;
+        this.num = num;
+    }
 
     @Override
     public boolean isRequiredAuthorization() {
@@ -45,9 +45,13 @@ public class NewsRequest extends ObjectApiRequest<NewsResponse>{
     public Map<String, String> getRequestParams() {
 
         Map<String, String> params = new HashMap<>();
-        params.put("type", Integer.toString(0));
-//        params.put("last_query_timestamp", Long.toString(last_query_timestamp));
-        params.put("num", Integer.toString(20));
+        params.put("type", Integer.toString(type));
+        if (!last_query_timestamp.isEmpty()) {
+            params.put("last_query_timestamp", last_query_timestamp);
+        }
+        //if (num != 0) {
+        //    params.put("num", Integer.toString(num));
+        //}
         return params;
     }
 
