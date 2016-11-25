@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HashTagEditText"><attr format="reference|dimension" name="horizontalSpacing"/><attr format="reference|dimension" name="verticalSpacing"/><attr format="reference|dimension" name="horizontalPadding"/><attr format="reference|dimension" name="verticalPadding"/><attr format="integer" name="maxSize"/><attr format="reference|color" name="bubbleTextColor"/><attr format="reference|dimension" name="bubbleTextSize"/><attr format="reference|color" name="bubbleBackground"/></declare-styleable>
+    <string name="app_name">HashTagEditText</string>
+</resources>
