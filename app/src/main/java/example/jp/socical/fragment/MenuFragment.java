@@ -134,8 +134,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         llMenu6.setOnClickListener(this);
 
         currentUser = UserManager.getCurrentUser();
-        ImageLoader.loadImage(view.getContext(), R.drawable.loading_list_image_220, currentUser.avatar, civAvatar);
-        StringUtil.displayText(currentUser.username, tvUserName);
+        if (currentUser != null) {
+            ImageLoader.loadImage(view.getContext(), R.drawable.loading_list_image_220, currentUser.avatar, civAvatar);
+            StringUtil.displayText(currentUser.username, tvUserName);
+        }
     }
 
     public boolean isDrawerOpen() {
