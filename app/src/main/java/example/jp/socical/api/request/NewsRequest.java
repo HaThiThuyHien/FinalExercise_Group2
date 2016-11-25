@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import example.jp.socical.api.response.NewsResponse;
+import example.jp.socical.constant.APIConstant;
 import vn.app.base.api.volley.core.ObjectApiRequest;
 import vn.app.base.util.SharedPrefUtils;
 
@@ -16,14 +17,14 @@ import vn.app.base.util.SharedPrefUtils;
 public class NewsRequest extends ObjectApiRequest<NewsResponse>{
 
     int type;
-    long last_query_timestamp;
+    String last_query_timestamp;
     int num;
 
-//    public NewsRequest(int type, long last_query_timestamp, int num) {
-//        this.type = type;
-//        this.last_query_timestamp = last_query_timestamp;
-//        this.num = num;
-//    }
+    public NewsRequest(int type, String last_query_timestamp, int num) {
+        this.type = type;
+        this.last_query_timestamp = last_query_timestamp;
+        this.num = num;
+    }
 
     @Override
     public boolean isRequiredAuthorization() {
@@ -32,8 +33,7 @@ public class NewsRequest extends ObjectApiRequest<NewsResponse>{
 
     @Override
     public String getRequestURL() {
-        String url = "https://polar-plains-86888.herokuapp.com/api/home";
-        return url;
+        return APIConstant.HOME;
     }
 
     @Override
@@ -45,16 +45,20 @@ public class NewsRequest extends ObjectApiRequest<NewsResponse>{
     public Map<String, String> getRequestParams() {
 
         Map<String, String> params = new HashMap<>();
-        params.put("type", Integer.toString(0));
-//        params.put("last_query_timestamp", Long.toString(last_query_timestamp));
-//        params.put("num", Integer.toString(num));
+        params.put(APIConstant.HOME_TYPE, Integer.toString(type));
+        if (!last_query_timestamp.isEmpty()) {
+            params.put(APIConstant.LAST_TIMESTAMP, last_query_timestamp);
+        }
+        //if (num != 0) {
+        //    params.put("num", Integer.toString(num));
+        //}
         return params;
     }
 
     @Override
     public Map<String, String> getRequestHeaders() {
         Map<String,String> header = new HashMap<>();
-        header.put("token", SharedPrefUtils.getAccessToken());
+        header.put(APIConstant.TOKEN, SharedPrefUtils.getAccessToken());
         return header;
     }
 

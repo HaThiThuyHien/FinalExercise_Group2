@@ -134,7 +134,7 @@
                         android:layout_height="35dp"
                         android:layout_marginLeft="10dp"
                         android:padding="6dp"
-                        android:src="@drawable/icon_favorite"/>
+                        android:src="@drawable/menu_favourite"/>
 
                     <TextView
                         android:layout_width="0dp"

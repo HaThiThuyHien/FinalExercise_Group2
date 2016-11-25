@@ -1,8 +1,10 @@
 package example.jp.socical.adapter.viewholder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.Image;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +16,15 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import example.jp.socical.R;
 import example.jp.socical.bean.NewsBean;
+import example.jp.socical.callback.OnChangeFavourite;
+import example.jp.socical.callback.OnChangeFollow;
+import example.jp.socical.callback.OnClickAvatar;
+import example.jp.socical.callback.OnClickPicture;
+import example.jp.socical.fragment.ImageDetailFragment;
 import vn.app.base.adapter.viewholder.OnClickViewHolder;
 import vn.app.base.imageloader.ImageLoader;
 import vn.app.base.util.DebugLog;
+import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.StringUtil;
 
 /**
@@ -56,11 +64,35 @@ public class NewListViewHolder extends OnClickViewHolder {
     boolean bFollow = false;
     boolean bLike = false;
 
+    NewsBean userProfile;
+
+    FragmentActivity fragmentActivity;
+
+    OnClickPicture onClickPicture;
+
+    OnChangeFollow onChangeFollow;
+
+    OnChangeFavourite onChangeFavourite;
+
+    OnClickAvatar onClickAvatar;
+
     public NewListViewHolder(View itemView) {
         super(itemView);
+        fragmentActivity = (FragmentActivity)itemView.getContext();
     }
 
-    public void bind (NewsBean newBean) {
+    public void bind (NewsBean newBean, OnClickPicture clickPicture,
+                      OnChangeFollow follow,
+                      OnChangeFavourite favourite,
+                      OnClickAvatar onClickAvatar) {
+
+        this.userProfile = newBean;
+
+        this.onClickPicture = clickPicture;
+        this.onChangeFollow = follow;
+        this.onChangeFavourite = favourite;
+        this.onClickAvatar = onClickAvatar;
+
         // User
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, newBean.user.avatar, ivAvatar);
         StringUtil.displayText(newBean.user.username,tvUser);
@@ -85,7 +117,7 @@ public class NewListViewHolder extends OnClickViewHolder {
         StringUtil.displayText(newBean.image.location, tvPinMap);
 
         if (newBean.image.isFavourite) {
-            ivLike.setImageResource(R.drawable.icon_favorite);
+            ivLike.setImageResource(R.drawable.icon_favourite);
         }else {
             ivLike.setImageResource(R.drawable.icon_no_favourite);
         }
@@ -97,35 +129,37 @@ public class NewListViewHolder extends OnClickViewHolder {
 
     @OnClick(R.id.imgAvatar)
     public void clickImagAvatar() {
-        //DebugLog.i("select avatar");
+        if (onClickAvatar != null) {
+            onClickAvatar.onClickAvatar(userProfile.user.id);
+        }
     }
 
     @OnClick(R.id.imgPicture)
     public void clickImgPicture(){
-        //DebugLog.i("select imgPicture");
+        if (onClickPicture != null) {
+            onClickPicture.callImageDetailFrament(userProfile);
+        }
     }
 
     @OnClick(R.id.btnFollow)
     public void clickBtnFollow(){
-        if (bFollow) {
-            bFollow = false;
-            btnFollow.setBackgroundResource(R.drawable.btnfollow_bg);
-            btnFollow.setText("Follow");
-        }else {
-            bFollow = true;
-            btnFollow.setBackgroundResource(R.drawable.btnfollowing_bg);
-            btnFollow.setText("Following");
+
+        if (onChangeFollow != null) {
+            if (bFollow) {
+                onChangeFollow.changeFollow(userProfile.user.id, 0);
+            } else {
+                onChangeFollow.changeFollow(userProfile.user.id, 1);
+            }
         }
     }
 
     @OnClick(R.id.imgLike)
     public void clickImgLike(){
         if (bLike) {
-            bLike = false;
-            ivLike.setImageResource(R.drawable.icon_no_favourite);
-        }else {
-            bLike = true;
-            ivLike.setImageResource(R.drawable.icon_favorite);
+            onChangeFavourite.changeFavourite(userProfile.image.id, 0);
+        } else {
+            onChangeFavourite.changeFavourite(userProfile.image.id, 1);
         }
+
     }
 }

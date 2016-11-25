@@ -4,13 +4,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import example.jp.socical.R;
-import example.jp.socical.bean.ProfileUserHeaderBean;
+import example.jp.socical.bean.DataLoginBean;
+import example.jp.socical.bean.ProfileUserBean;
 import example.jp.socical.callback.OnUserEdit;
+import example.jp.socical.manager.UserManager;
 import vn.app.base.adapter.viewholder.OnClickViewHolder;
 import vn.app.base.imageloader.ImageLoader;
 import vn.app.base.util.StringUtil;
@@ -43,7 +43,7 @@ public class ProfileUserHeaderViewHolder extends OnClickViewHolder {
 
     OnUserEdit onUserEdit;
 
-    ProfileUserHeaderBean profileUserHeaderBean;
+    //ProfileUserHeaderBean profileUserHeaderBean;
 
     public void setOnUserEdit(OnUserEdit onUserEdit) {
         this.onUserEdit = onUserEdit;
@@ -53,13 +53,21 @@ public class ProfileUserHeaderViewHolder extends OnClickViewHolder {
         super(itemView);
     }
 
-    public void bind(ProfileUserHeaderBean profileUserHeaderBean) {
-        this.profileUserHeaderBean = profileUserHeaderBean;
+    public void bind(ProfileUserBean profileUserHeaderBean) {
+        DataLoginBean currentUser = UserManager.getCurrentUser();
+
+        if (currentUser.id.equals(profileUserHeaderBean.id)) {
+            ivAvatarChg.setVisibility(View.GONE);
+        } else {
+            ivAvatarChg.setVisibility(View.VISIBLE);
+        }
+
+        //this.profileUserHeaderBean = profileUserHeaderBean;
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, profileUserHeaderBean.avatar, ivAvatar);
-        StringUtil.displayText(profileUserHeaderBean.userName, tvUserName);
-        StringUtil.displayText(Integer.toString(profileUserHeaderBean.followCount), tvFollowSum);
-        StringUtil.displayText(Integer.toString(profileUserHeaderBean.followerCount), tvFollowerSum);
-        StringUtil.displayText(Integer.toString(profileUserHeaderBean.postCount), tvPostSum);
+        StringUtil.displayText(profileUserHeaderBean.username, tvUserName);
+        StringUtil.displayText(Integer.toString(profileUserHeaderBean.follow), tvFollowSum);
+        StringUtil.displayText(Integer.toString(profileUserHeaderBean.follower), tvFollowerSum);
+        StringUtil.displayText(Integer.toString(profileUserHeaderBean.post), tvPostSum);
     }
 
     @OnClick(R.id.user_profile_avatar_edit)

@@ -145,7 +145,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
-                tvTitle.setText("Profile");
+                tvTitle.setText("User");
                 tvHeaderRight.setVisibility(View.VISIBLE);
                 tvHeaderRight.setText("Update");
                 break;

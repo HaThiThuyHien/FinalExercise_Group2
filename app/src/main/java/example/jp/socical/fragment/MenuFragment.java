@@ -1,10 +1,14 @@
 package example.jp.socical.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Loader;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,7 +28,12 @@ import android.widget.Toast;
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import example.jp.socical.R;
+import example.jp.socical.bean.DataLoginBean;
+import example.jp.socical.bean.UserBean;
+import example.jp.socical.manager.UserManager;
+import vn.app.base.imageloader.ImageLoader;
 import vn.app.base.util.FragmentUtil;
+import vn.app.base.util.StringUtil;
 
 public class MenuFragment extends Fragment implements View.OnClickListener{
 
@@ -67,6 +76,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     int currentMenuPos = 0;
 
     View rootView;
+
+    DataLoginBean currentUser;
 
     public MenuFragment() {
 
@@ -121,6 +132,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         llMenu4.setOnClickListener(this);
         llMenu5.setOnClickListener(this);
         llMenu6.setOnClickListener(this);
+
+        currentUser = UserManager.getCurrentUser();
+        ImageLoader.loadImage(view.getContext(), R.drawable.loading_list_image_220, currentUser.avatar, civAvatar);
+        StringUtil.displayText(currentUser.username, tvUserName);
     }
 
     public boolean isDrawerOpen() {
@@ -276,7 +291,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             case R.id.txtUser:
             case R.id.menu_avatar:
                 // chuyen sang man hinh Profile
-                FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(), null, "ProfileUserFragment");
+                FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(currentUser.id), null, "ProfileUserFragment");
                 setCurrentMenu(0);
                 break;
             case R.id.menu_2:
@@ -301,15 +316,41 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.menu_6:
                 // chuyen sang man hinh Follow
+                FragmentUtil.pushFragment(getActivity(), FollowFragment.newInstance(), null, "FollowFragment");
                 setCurrentMenu(5);
                 break;
             case R.id.menu_7:
                 // chuyen sang man hinh Logout
                 setCurrentMenu(6);
+                logout();
                 break;
             default:
                 break;
         }
+
+    }
+
+    private void logout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Exit");
+        builder.setMessage("Are you sure you want to exit application?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                UserManager.clearUserData();
+                FragmentUtil.replaceFragment(getActivity(), LoginFragment.newInstance(), null);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.show();
 
     }
 
@@ -322,5 +363,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
          */
         void onNavigationDrawerItemSelected(int position);
     }
+
+
 
 }
