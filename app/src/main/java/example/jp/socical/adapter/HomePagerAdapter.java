@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import example.jp.socical.fragment.FollowFragment;
+import example.jp.socical.constant.CommonConstant;
 import example.jp.socical.fragment.NewFragment;
 
 /**
@@ -23,11 +23,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return NewFragment.newInstance();
+                return NewFragment.newInstance(CommonConstant.HOME_NEW);
             case 1:
-                return FollowFragment.newInstance();
+                return NewFragment.newInstance(CommonConstant.HOME_FOLLOW);
             default:
-                return NewFragment.newInstance();
+                return NewFragment.newInstance(CommonConstant.HOME_NEW);
         }
     }
 

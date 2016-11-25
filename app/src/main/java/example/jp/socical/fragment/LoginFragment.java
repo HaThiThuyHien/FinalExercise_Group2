@@ -20,6 +20,7 @@ import example.jp.socical.api.request.LoginRequest;
 import example.jp.socical.api.response.LoginResponse;
 import example.jp.socical.commonclass.StringEncryption;
 import example.jp.socical.constant.HeaderOption;
+import example.jp.socical.manager.UserManager;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.DebugLog;
 import vn.app.base.util.FragmentUtil;
@@ -82,10 +83,13 @@ public class LoginFragment extends NoHeaderFragment {
             public void onSuccess(LoginResponse data) {
                 if (data.dataResponse != null) {
                     SharedPrefUtils.saveAccessToken(data.dataResponse.token);
+                    UserManager.saveCurrentUser(data.dataResponse);
                     FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null);
 
                     // test
-                    //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
+                    //FragmentUtil.pushFragment(getActivity(), NearbyFragment.newInstance(),null, "NearbyFragment");
+                    //FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(),null, "ImageDetailFragment");
+                    //FragmentUtil.pushFragment(getActivity(), FollowFragment.newInstance(),null, "FollowFragment");
                     // test
                 }
             }
@@ -104,8 +108,10 @@ public class LoginFragment extends NoHeaderFragment {
     public void clickBtnLogin() {
         // test ++ >>
         login();
+        //FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(),null, "ImageDetailFragment");
         //FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(), null, "ProfileUserFragment");
         //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(),null, "UploadFragment");
+        //FragmentUtil.pushFragment(getActivity(), FollowFragment.newInstance(),null, "FollowFragment");
         // test ++ <<
 
         // gọi đến màn hình Home

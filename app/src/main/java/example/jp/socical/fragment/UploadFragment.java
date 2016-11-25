@@ -50,6 +50,7 @@ import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.UploadImageRequest;
 import example.jp.socical.api.response.UploadImageResponse;
+import example.jp.socical.constant.APIConstant;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.imageloader.ImageLoader;
 import vn.app.base.util.Base64;
@@ -200,37 +201,35 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         //strimgPicture = getStringImage(bitmap);
         //strcaption = etCaption.getText().toString();
 
-        String url = "https://polar-plains-86888.herokuapp.com/api/image/upload";
 
         Map<String, String> header = new HashMap<>();
-        header.put("token", SharedPrefUtils.getAccessToken());
+        header.put(APIConstant.TOKEN, SharedPrefUtils.getAccessToken());
 
         //param value
         strcaption = etCaption.getText().toString();
         //getValuesHashTagView();
         strhashtagView = etHashtagView.getValues().toString();
 
-
         Map<String, String> params = new HashMap<>();
 
         if (!strcaption.isEmpty()) {
-            params.put("caption", strcaption);
+            params.put(APIConstant.FILE_CAPTION, strcaption);
         }
 
         if (!strhashtagView.isEmpty()) {
-            params.put("hashtag", strhashtagView);
+            params.put(APIConstant.FILE_HASHTAG, strhashtagView);
         }
 
         if (swSendLocation.isChecked()) {
-            params.put("location", strlocation);
-            params.put("lat", strlat);
-            params.put("long", strlong);
+            params.put(APIConstant.FILE_LOCATION, strlocation);
+            params.put(APIConstant.LAT, strlat);
+            params.put(APIConstant.LONG, strlong);
         }
 
         Map<String, File> filePart = new HashMap<>();
-        filePart.put("image", fileCapture);
+        filePart.put(APIConstant.FILE_IMAGE, fileCapture);
 
-        UploadImageRequest uploadImageRequest_test = new UploadImageRequest(Request.Method.POST, url, new Response.ErrorListener() {
+        UploadImageRequest uploadImageRequest_test = new UploadImageRequest(Request.Method.POST, APIConstant.IMAGE_UPLOAD, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("Fail", error.getMessage());
