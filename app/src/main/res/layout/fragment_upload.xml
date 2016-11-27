@@ -9,9 +9,10 @@
     <ImageView
         android:id="@+id/imgPostPicture"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="?attr/actionBarSize"
-        android:src="@drawable/placeholer_image_800"
+        android:layout_marginBottom="390dp"
+        android:src="@drawable/placeholer_image_1600"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
