@@ -13,11 +13,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,10 +35,13 @@ import com.fenlisproject.hashtagedittext.HashTagEditText;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +59,9 @@ import example.jp.socical.constant.APIConstant;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.imageloader.ImageLoader;
 import vn.app.base.util.Base64;
+import vn.app.base.util.BitmapUtil;
 import vn.app.base.util.FragmentUtil;
+import vn.app.base.util.ImagePickerUtil;
 import vn.app.base.util.NetworkUtils;
 import vn.app.base.util.SharedPrefUtils;
 
@@ -147,13 +154,18 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     }
 
     public void selectImage() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        fileCapture = new File(getActivity().getExternalCacheDir(),
-                String.valueOf(System.currentTimeMillis() + ".jpg"));
-        picUri = Uri.fromFile(fileCapture);
+        ImagePickerUtil imagePickerUtil = new ImagePickerUtil();
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        picUri = Uri.fromFile(imagePickerUtil.createFileUri(getActivity()));
         intent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
         startActivityForResult(intent, CAMERA_PICTURE);
+
+//        fileCapture = new File(getActivity().getExternalCacheDir(),
+//                String.valueOf(System.currentTimeMillis() + ".jpg"));
+//        picUri = Uri.fromFile(fileCapture);
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
+//        startActivityForResult(intent, CAMERA_PICTURE);
     }
 
     @Override
@@ -161,46 +173,40 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CAMERA_PICTURE && resultCode == Activity.RESULT_OK) {
-            //Bundle extras = data.getExtras();
+            CropImage.activity(picUri).setAspectRatio(16, 9).start(getContext(), this);
+        } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == Activity.RESULT_OK) {
+                Uri resultUri = result.getUri();
 
-            //picUri = data.getData();
+                fileCapture = creatFileUri(getContext());
 
-            //bitmap = (Bitmap) extras.get("data");
-            //ivPicture.setImageBitmap(bitmap);
-
-            //picUri = getImageUri(getActivity().getApplicationContext(), bitmap);
-            //performCrop();
-        } else if (requestCode == PIC_CROP) {
-            Bundle extras = data.getExtras();
-            //bitmap = extras.getParcelable("data");
-            //ivPicture.setImageBitmap(bitmap);
+                Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
+                ivPicture.setImageBitmap(bitmap);
+            }
         }
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
-    }
+    public File creatFileUri(Context context) {
 
-    private void performCrop() {
-        Intent cropIntent = new Intent("com.android.camera.action.CROP");
-        cropIntent.setDataAndType(picUri, "image/*");
-        cropIntent.putExtra("crop", true);
-        cropIntent.putExtra("aspectX", 16);
-        cropIntent.putExtra("aspectY", 9);
-        cropIntent.putExtra("return-data", true);
-        startActivityForResult(cropIntent, PIC_CROP);
+        File[] externalFile = ContextCompat.getExternalFilesDirs(context, null);
+
+        if (externalFile == null) {
+            externalFile = new File[]{context.getExternalFilesDir(null)};
+        }
+
+        final File root = new File(externalFile[0] + File.separator + "SocicalApp" + File.separator);
+
+        root.mkdirs();
+        final String fname = "Image_upload.jpg";
+        final File sdImageMainDirectory = new File(root, fname);
+        if (sdImageMainDirectory.exists()) {
+            sdImageMainDirectory.delete();
+        }
+        return sdImageMainDirectory;
     }
 
     public void uploadImage() {
-
-        //getValuesHashTagView();
-
-        //strimgPicture = getStringImage(bitmap);
-        //strcaption = etCaption.getText().toString();
-
 
         Map<String, String> header = new HashMap<>();
         header.put(APIConstant.TOKEN, SharedPrefUtils.getAccessToken());
@@ -232,7 +238,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         UploadImageRequest uploadImageRequest_test = new UploadImageRequest(Request.Method.POST, APIConstant.IMAGE_UPLOAD, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Fail", error.getMessage());
+                initialNetworkError();
             }
         }, UploadImageResponse.class, header, new Response.Listener<UploadImageResponse>() {
             @Override
@@ -247,21 +253,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         NetworkUtils.getInstance(getActivity().getApplicationContext()).addToRequestQueue(uploadImageRequest_test);
     }
 
-    private String getRealPathFromUri(Uri tempUri) {
-        Cursor cursor = null;
-        try {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = getActivity().getContentResolver().query(tempUri, proj, null, null, null);
-            if (cursor == null) return null;
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-    }
 
     public void getValuesHashTagView() {
 
@@ -272,14 +263,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 //        for (int i = 0; i < size; i++) {
 //            strhashtagView.add(etHashtagView.getValues().get(i));
 //        }
-    }
-
-    public String getStringImage(Bitmap bmp) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
     }
 
     private void initValue() {
