@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="f43aacca429cf4c2a8eff43a308212674d5fdb05">
+        sha1="f54796f93d9dcff0d004687c75d4a96e4ad46266">
         <dex dex="F:\Android\BTCK\FinalExercise_Group2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_868aeffccbf1a241d6de78b86e9dfab31480b85d\classes.dex" />
     </item>
     <item
@@ -102,6 +102,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="F:\Android\BTCK\FinalExercise_Group2\app\build\intermediates\exploded-aar\com.theartofdev.edmodo\android-image-cropper\2.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="1a32a39a9fcae3d354a312cdb78c18159fa702e6">
+        <dex dex="F:\Android\BTCK\FinalExercise_Group2\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.theartofdev.edmodo-android-image-cropper-2.3.1_09c48cc1a1e30110aad4defce5d4eee43556639c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Hien_BRSE\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -178,7 +187,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="91e3d4336191ce0857424155f2fcfe50cbc7c0ca">
+        sha1="66c380154df266d742cf96df1940c9fcb0aa4253">
         <dex dex="F:\Android\BTCK\FinalExercise_Group2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_5a97e906d04d981df8832a718f0b8b6000994908\classes.dex" />
     </item>
     <item

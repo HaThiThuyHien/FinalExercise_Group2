@@ -1,30 +1,18 @@
 package example.jp.socical.adapter.viewholder;
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.media.Image;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import example.jp.socical.R;
 import example.jp.socical.bean.NewsBean;
-import example.jp.socical.callback.OnChangeFavourite;
-import example.jp.socical.callback.OnChangeFollow;
-import example.jp.socical.callback.OnClickAvatar;
-import example.jp.socical.callback.OnClickPicture;
-import example.jp.socical.fragment.ImageDetailFragment;
+import example.jp.socical.callback.OnNewItemClick;
 import vn.app.base.adapter.viewholder.OnClickViewHolder;
 import vn.app.base.imageloader.ImageLoader;
-import vn.app.base.util.DebugLog;
-import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.StringUtil;
 
 /**
@@ -68,30 +56,18 @@ public class NewListViewHolder extends OnClickViewHolder {
 
     FragmentActivity fragmentActivity;
 
-    OnClickPicture onClickPicture;
-
-    OnChangeFollow onChangeFollow;
-
-    OnChangeFavourite onChangeFavourite;
-
-    OnClickAvatar onClickAvatar;
+    OnNewItemClick onNewItemClick;
 
     public NewListViewHolder(View itemView) {
         super(itemView);
         fragmentActivity = (FragmentActivity)itemView.getContext();
     }
 
-    public void bind (NewsBean newBean, OnClickPicture clickPicture,
-                      OnChangeFollow follow,
-                      OnChangeFavourite favourite,
-                      OnClickAvatar onClickAvatar) {
+    public void bind (NewsBean newBean, OnNewItemClick itemClick) {
 
         this.userProfile = newBean;
 
-        this.onClickPicture = clickPicture;
-        this.onChangeFollow = follow;
-        this.onChangeFavourite = favourite;
-        this.onClickAvatar = onClickAvatar;
+        this.onNewItemClick = itemClick;
 
         // User
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, newBean.user.avatar, ivAvatar);
@@ -129,37 +105,46 @@ public class NewListViewHolder extends OnClickViewHolder {
 
     @OnClick(R.id.imgAvatar)
     public void clickImagAvatar() {
-        if (onClickAvatar != null) {
-            onClickAvatar.onClickAvatar(userProfile.user.id);
+        if (onNewItemClick != null) {
+            onNewItemClick.onAvatarClick(userProfile.user.id);
         }
     }
 
     @OnClick(R.id.imgPicture)
     public void clickImgPicture(){
-        if (onClickPicture != null) {
-            onClickPicture.callImageDetailFrament(userProfile);
+        if (onNewItemClick != null) {
+            onNewItemClick.onPictureClick(userProfile);
         }
     }
 
     @OnClick(R.id.btnFollow)
     public void clickBtnFollow(){
 
-        if (onChangeFollow != null) {
+        if (onNewItemClick != null) {
             if (bFollow) {
-                onChangeFollow.changeFollow(userProfile.user.id, 0);
+                onNewItemClick.onFollowClick(userProfile.user.id, 0);
             } else {
-                onChangeFollow.changeFollow(userProfile.user.id, 1);
+                onNewItemClick.onFollowClick(userProfile.user.id, 1);
             }
         }
     }
 
     @OnClick(R.id.imgLike)
     public void clickImgLike(){
-        if (bLike) {
-            onChangeFavourite.changeFavourite(userProfile.image.id, 0);
-        } else {
-            onChangeFavourite.changeFavourite(userProfile.image.id, 1);
+        if (onNewItemClick != null) {
+            if (bLike) {
+                onNewItemClick.onFavouriteClick(userProfile.image.id, 0);
+            } else {
+                onNewItemClick.onFavouriteClick(userProfile.image.id, 1);
+            }
         }
 
+    }
+
+    @OnClick(R.id.txtPinMap)
+    public void clickPinMap() {
+        if (onNewItemClick != null) {
+            onNewItemClick.onPinMapClick(userProfile.image.lat, userProfile.image._long);
+        }
     }
 }

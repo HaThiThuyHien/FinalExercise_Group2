@@ -178,16 +178,31 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == Activity.RESULT_OK) {
                 Uri resultUri = result.getUri();
-
-                fileCapture = creatFileUri(getContext());
-
-                Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
-                ivPicture.setImageBitmap(bitmap);
+                try {
+                    Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
+                    creatFilefromBitmap(bitmap);
+                    ivPicture.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public File creatFileUri(Context context) {
+    private File creatFilefromBitmap(Bitmap bitmap) throws IOException {
+
+        File imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InstagramFaker");
+        imageDir.mkdir();
+        fileCapture = new File(imageDir, "avatarCropped.jpg");
+        OutputStream fOut = new FileOutputStream(fileCapture);
+        Bitmap getBitmap = bitmap;
+        getBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+        fOut.flush();
+        fOut.close();
+        return fileCapture;
+    }
+
+    public File creatFileUriUpload(Context context) {
 
         File[] externalFile = ContextCompat.getExternalFilesDirs(context, null);
 

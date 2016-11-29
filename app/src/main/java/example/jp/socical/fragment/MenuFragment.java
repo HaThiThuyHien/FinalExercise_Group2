@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
@@ -14,10 +15,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -78,6 +81,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     View rootView;
 
     DataLoginBean currentUser;
+
+    ActionBarDrawerToggle mDrawerToggle;
 
     public MenuFragment() {
 
@@ -243,6 +248,24 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
             }
         });
+
+        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout,
+                null,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close) {
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+
+                mFragmentContainerView.setTranslationX(slideOffset *drawerView.getWidth());
+                mDrawerLayout.bringChildToFront(drawerView);
+                mDrawerLayout.requestLayout();
+
+                mDrawerLayout.setScrimColor(Color.TRANSPARENT);
+            }
+        };
+
         setCurrentMenu(3);
 
     }

@@ -1,13 +1,13 @@
 package example.jp.socical.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,22 +21,15 @@ import example.jp.socical.api.request.FollowRequest;
 import example.jp.socical.api.request.NewsRequest;
 import example.jp.socical.api.response.NewsResponse;
 import example.jp.socical.bean.NewsBean;
-import example.jp.socical.callback.OnChangeFavourite;
-import example.jp.socical.callback.OnChangeFollow;
-import example.jp.socical.callback.OnClickAvatar;
-import example.jp.socical.callback.OnClickPicture;
+import example.jp.socical.callback.OnNewItemClick;
 import vn.app.base.api.response.BaseResponse;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
-import vn.app.base.callback.OnRecyclerViewItemClick;
 import vn.app.base.customview.endlessrecycler.EndlessRecyclerOnScrollListener;
 import vn.app.base.util.DebugLog;
 import vn.app.base.util.FragmentUtil;
 
 public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.OnRefreshListener,
-        OnClickPicture,
-        OnChangeFollow,
-        OnChangeFavourite,
-        OnClickAvatar{
+        OnNewItemClick{
 
     public static final String HOME_TYPE = "HOME_TYPE";
 
@@ -181,10 +174,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             this.newBeanList = inNewsBean;
             newListAdapter = new NewListAdapter(newBeanList);
             recyclerView.setAdapter(newListAdapter);
-            newListAdapter.setOnClickPicture(this);
-            newListAdapter.setOnChangeFollow(this);
-            newListAdapter.setOnChangeFavourite(this);
-            newListAdapter.setOnClickAvatar(this);
+            newListAdapter.setOnNewItemClick(this);
 
             DebugLog.i(inNewsBean.toString());
         }
@@ -204,13 +194,26 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     }
 
     @Override
-    public void callImageDetailFrament(NewsBean imageProfile) {
-        FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(imageProfile),null, "ImageDetailFragment");
+    public void onFavouriteClick(String imageId, int favourite) {
+        FavouriteRequest favouriteRequest = new FavouriteRequest(imageId, favourite);
+        favouriteRequest.setRequestCallBack(new ApiObjectCallBack<BaseResponse>() {
+            @Override
+            public void onSuccess(BaseResponse data) {
+                if (data.status == 1) {
+                    newListAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFail(int failCode, String message) {
+                initialNetworkError();
+            }
+        });
+        favouriteRequest.execute();
     }
 
     @Override
-    public void changeFollow(final String userId, final int follow) {
-
+    public void onFollowClick(final String userId, final int follow) {
         FollowRequest followRequest = new FollowRequest(userId, follow);
         followRequest.setRequestCallBack(new ApiObjectCallBack<BaseResponse>() {
             @Override
@@ -230,6 +233,36 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         followRequest.execute();
     }
 
+    @Override
+    public void onAvatarClick(String userId) {
+        FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(userId),null, "ProfileUserFragment");
+    }
+
+    @Override
+    public void onPictureClick(NewsBean imageProfile) {
+        FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(imageProfile),null, "ImageDetailFragment");
+    }
+
+    @Override
+    public void onPinMapClick(String strlat, String strlong) {
+        openMap(strlat, strlong);
+    }
+
+    private void openMap(String strLat, String strLong) {
+        //double dbLat = Double.valueOf(strLat);
+        //double dbLong = Double.valueOf(strLong);
+
+        String strGeo = "geo:" + strLat + "," + strLong + "?z=zom";
+
+        Uri uri = Uri.parse(strGeo);
+
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            getActivity().startActivity(mapIntent);
+        }
+    }
+
     private void setChangeFollow(String userId, int follow) {
         int size = newBeanList.size();
 
@@ -243,29 +276,5 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
                 }
             }
         }
-    }
-
-    @Override
-    public void changeFavourite(String imageId, int favourite) {
-        FavouriteRequest favouriteRequest = new FavouriteRequest(imageId, favourite);
-        favouriteRequest.setRequestCallBack(new ApiObjectCallBack<BaseResponse>() {
-            @Override
-            public void onSuccess(BaseResponse data) {
-                if (data.status == 1) {
-                    newListAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFail(int failCode, String message) {
-                initialNetworkError();
-            }
-        });
-        favouriteRequest.execute();
-    }
-
-    @Override
-    public void onClickAvatar(String userId) {
-        FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(userId),null, "ProfileUserFragment");
     }
 }
