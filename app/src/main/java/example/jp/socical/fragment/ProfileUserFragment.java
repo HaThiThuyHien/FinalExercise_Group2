@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.ProfileUserAdapter;
@@ -30,6 +31,7 @@ import vn.app.base.adapter.DividerItemDecoration;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.callback.OnRecyclerViewItemClick;
 import vn.app.base.fragment.CommonFragment;
+import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.SharedPrefUtils;
 
 public class ProfileUserFragment extends CommonFragment implements OnUserEdit, SwipeRefreshLayout.OnRefreshListener, OnRecyclerViewItemClick {
@@ -59,12 +61,12 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
 
     String userPhotoPath;
 
-    String currentUserId;
+    String selectUserId;
 
-    public static ProfileUserFragment newInstance(String currentUserId) {
+    public static ProfileUserFragment newInstance(String selectUserIdUserId) {
         ProfileUserFragment profileUserFragment = new ProfileUserFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("USER_ID", currentUserId);
+        bundle.putString("USER_ID", selectUserIdUserId);
         profileUserFragment.setArguments(bundle);
         return profileUserFragment;
     }
@@ -84,7 +86,7 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
 
         currentUser = UserManager.getCurrentUser();
 
-        if (currentUserId.equals(currentUser.id)) {
+        if (selectUserId.equals(currentUser.id)) {
             ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_PROFILE_USER);
             fbCamera.setVisibility(View.VISIBLE);
         } else {
@@ -101,7 +103,7 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
 
     @Override
     protected void getArgument(Bundle bundle) {
-        currentUserId = bundle.getString(USER_ID);
+        selectUserId = bundle.getString(USER_ID);
     }
 
     @Override
@@ -119,7 +121,7 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
     }
 
     private void setUpData(){
-        profileUserAdapter = new ProfileUserAdapter();
+        //profileUserAdapter = new ProfileUserAdapter();
         //getHeaderData();
         //getImageDataList();
         rvProfileUser.setAdapter(profileUserAdapter);
@@ -130,10 +132,10 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
     private void getHeaderData(){
         ProfileUserRequest userRequest;
 
-        if (currentUserId.equals(currentUser.id)) {
+        if (selectUserId.equals(currentUser.id)) {
             userRequest = new ProfileUserRequest("");
         } else {
-            userRequest = new ProfileUserRequest(currentUserId);
+            userRequest = new ProfileUserRequest(selectUserId);
         }
 
         userRequest.setRequestCallBack(new ApiObjectCallBack<ProfileUserResponse>() {
@@ -156,10 +158,10 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
     private void getImageDataList() {
         ImageListRequest imageListRequest;
 
-        if (currentUserId.equals(currentUser.id)) {
+        if (selectUserId.equals(currentUser.id)) {
             imageListRequest = new ImageListRequest("");
         } else {
-            imageListRequest = new ImageListRequest(currentUserId);
+            imageListRequest = new ImageListRequest(selectUserId);
         }
 
         imageListRequest.setRequestCallBack(new ApiObjectCallBack<NewsResponse>() {
@@ -178,7 +180,10 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
     }
 
     private void setHeaderProfilUser(ProfileUserBean profilUser) {
-        profileUserAdapter.setHeader(profilUser);
+        if (profileUserAdapter == null) {
+            profileUserAdapter = new ProfileUserAdapter();
+            profileUserAdapter.setHeader(profilUser);
+        }
     }
 
     private void setImageList(List<NewsBean> imageList) {
@@ -218,17 +223,26 @@ public class ProfileUserFragment extends CommonFragment implements OnUserEdit, S
         if (bundle != null) {
             userPhotoPath = bundle.getString(USER_PHOTO, null);
             if (userPhotoPath != null) {
-                updateProfilePhoto("");
+                profileUserAdapter.notifyDataSetChanged();
             }
         }
     }
 
-    private void updateProfilePhoto(String photoPath) {
-        profileUserAdapter.notifyDataSetChanged();
-    }
+
 
     @Override
     public void onItemClick(View view, int position) {
 
+    }
+
+    @OnClick(R.id.fabCamera)
+    public void onClickCamera() {
+        FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null);
+    }
+
+    @Override
+    public void onFragmentUIHandle(Bundle bundle) {
+        super.onFragmentUIHandle(bundle);
+        //int isUpdate = bundle.getInt("")
     }
 }

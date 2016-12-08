@@ -1,23 +1,135 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
     tools:context="example.jp.socical.fragment.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Register Fragment" />
-
-    <Button
-        android:text="Sign up"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="212dp"
-        android:id="@+id/btnRegister" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="700dp"
+            android:src="@drawable/bg_login"
+            android:scaleType="centerCrop"/>
 
-</RelativeLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/icon_avatar"
+            android:layout_centerHorizontal="true"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="3dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rlUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgAvatar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/labelUsername"
+                style="@style/tv_register"
+                android:layout_height="wrap_content"
+                android:text="Username"/>
+
+            <EditText
+                android:id="@+id/userName"
+                style="@style/et_register"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelUsername"
+                android:hint="jenifer.wilson" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/rlUsername"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/labelEmail"
+                style="@style/tv_register"
+                android:layout_height="wrap_content"
+                android:text="Email"/>
+
+            <EditText
+                android:id="@+id/email"
+                style="@style/et_register"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelEmail"
+                android:hint="jenifer.wilson@gmail.com"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/rlEmail"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/et_register"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelPassword"
+                android:hint="********************"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/labelPassword"
+                style="@style/tv_register"
+                android:layout_height="wrap_content"
+                android:text="Password"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlConfirmPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/rlPassword"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/labelConfirm"
+                style="@style/tv_register"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"/>
+
+            <EditText
+                android:id="@+id/confirmPass"
+                style="@style/et_register"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelConfirm"
+                android:hint="********************"
+                android:inputType="textPassword"/>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/btn_sign_up"
+            android:layout_below="@+id/rlConfirmPass"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</ScrollView>

@@ -10,12 +10,6 @@ import vn.app.base.api.response.BaseResponse;
 
 public class ProfileUserResponse extends BaseResponse{
 
-    @SerializedName("status")
-    public Integer status;
-
-    @SerializedName("message")
-    public String message;
-
     @SerializedName("data")
     public ProfileUserBean profileUserData;
 }

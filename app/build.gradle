@@ -65,4 +65,5 @@ dependencies {
     compile 'me.villani.lorenzo.android:android-cropimage:1.1.+'
     compile 'com.google.android.gms:play-services-location:9.8.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    compile 'me.relex:circleindicator:1.2.2@aar'
 }

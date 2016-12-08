@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterResponse extends BaseResponse {
 
+
     @SerializedName("data")
     public DataLoginResponse dataRegister;
 }

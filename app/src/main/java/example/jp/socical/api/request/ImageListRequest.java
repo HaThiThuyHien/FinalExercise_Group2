@@ -63,6 +63,6 @@ public class ImageListRequest extends ObjectApiRequest<NewsResponse> {
 
     @Override
     public int getMethod() {
-        return Request.Method.GET;
+        return Request.Method.POST;
     }
 }

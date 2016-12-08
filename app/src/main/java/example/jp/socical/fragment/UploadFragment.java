@@ -54,6 +54,7 @@ import butterknife.OnClick;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.UploadImageRequest;
+import example.jp.socical.api.response.DataUploadResponse;
 import example.jp.socical.api.response.UploadImageResponse;
 import example.jp.socical.constant.APIConstant;
 import example.jp.socical.constant.HeaderOption;
@@ -64,6 +65,7 @@ import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.ImagePickerUtil;
 import vn.app.base.util.NetworkUtils;
 import vn.app.base.util.SharedPrefUtils;
+import vn.app.base.util.StringUtil;
 
 public class UploadFragment extends HeaderFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -78,16 +80,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
 
     @BindView(R.id.btnPost)
     Button btnUploadPost;
-
-    MainActivity mainActivity;
-
-    String strimgPicture;
-    String strcaption;
-    String strlocation;
-    String strlat;
-    String strlong;
-    //ArrayList<String> strhashtagView;
-    String strhashtagView;
 
     @BindView(R.id.imgPostPicture)
     ImageView ivPicture;
@@ -106,6 +98,13 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     Uri picUri;
 
     File fileCapture;
+
+    String strimgPicture;
+    String strcaption;
+    String strlocation;
+    String strlat;
+    String strlong;
+    String strhashtagView;
 
     double dbLat;
     double dbLong;
@@ -143,9 +142,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
     @Override
     protected void initView(View root) {
         super.initView(root);
-
         ((MainActivity) getActivity()).setToolbar(HeaderOption.MENU_UPLOAD);
-
     }
 
     @Override
@@ -160,12 +157,6 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         picUri = Uri.fromFile(imagePickerUtil.createFileUri(getActivity()));
         intent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
         startActivityForResult(intent, CAMERA_PICTURE);
-
-//        fileCapture = new File(getActivity().getExternalCacheDir(),
-//                String.valueOf(System.currentTimeMillis() + ".jpg"));
-//        picUri = Uri.fromFile(fileCapture);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
-//        startActivityForResult(intent, CAMERA_PICTURE);
     }
 
     @Override
@@ -178,32 +169,28 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == Activity.RESULT_OK) {
                 Uri resultUri = result.getUri();
-
-                fileCapture = creatFileUri(getContext());
-
-                Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
-                ivPicture.setImageBitmap(bitmap);
+                try {
+                    Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
+                    creatFilefromBitmap(bitmap);
+                    ivPicture.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public File creatFileUri(Context context) {
+    private File creatFilefromBitmap(Bitmap bitmap) throws IOException {
 
-        File[] externalFile = ContextCompat.getExternalFilesDirs(context, null);
-
-        if (externalFile == null) {
-            externalFile = new File[]{context.getExternalFilesDir(null)};
-        }
-
-        final File root = new File(externalFile[0] + File.separator + "SocicalApp" + File.separator);
-
-        root.mkdirs();
-        final String fname = "Image_upload.jpg";
-        final File sdImageMainDirectory = new File(root, fname);
-        if (sdImageMainDirectory.exists()) {
-            sdImageMainDirectory.delete();
-        }
-        return sdImageMainDirectory;
+        File imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InstagramFaker");
+        imageDir.mkdir();
+        fileCapture = new File(imageDir, "avatarCropped.jpg");
+        OutputStream fOut = new FileOutputStream(fileCapture);
+        Bitmap getBitmap = bitmap;
+        getBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+        fOut.flush();
+        fOut.close();
+        return fileCapture;
     }
 
     public void uploadImage() {
@@ -235,7 +222,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         Map<String, File> filePart = new HashMap<>();
         filePart.put(APIConstant.FILE_IMAGE, fileCapture);
 
-        UploadImageRequest uploadImageRequest_test = new UploadImageRequest(Request.Method.POST, APIConstant.IMAGE_UPLOAD, new Response.ErrorListener() {
+        UploadImageRequest uploadImageRequest = new UploadImageRequest(Request.Method.POST, APIConstant.IMAGE_UPLOAD, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 initialNetworkError();
@@ -243,26 +230,26 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
         }, UploadImageResponse.class, header, new Response.Listener<UploadImageResponse>() {
             @Override
             public void onResponse(UploadImageResponse response) {
-                //Log.i("Success", response.toString());
+                hideCoverNetworkLoading();
                 if (response != null) {
-                    ImageLoader.loadImage(getActivity(), response.data.image.url, ivPicture);
+                    reInit(response.data);
                 }
             }
         }, params, filePart);
 
-        NetworkUtils.getInstance(getActivity().getApplicationContext()).addToRequestQueue(uploadImageRequest_test);
+        NetworkUtils.getInstance(getActivity().getApplicationContext()).addToRequestQueue(uploadImageRequest);
+        showCoverNetworkLoading();
     }
 
-
-    public void getValuesHashTagView() {
-
-//        int size = etHashtagView.getValues().size();
-//
-//        strhashtagView = new ArrayList<>();
-//
-//        for (int i = 0; i < size; i++) {
-//            strhashtagView.add(etHashtagView.getValues().get(i));
-//        }
+    private void reInit(DataUploadResponse data){
+        ImageLoader.loadImage(getContext(), R.drawable.loading_list_image_220, data.image.url, ivPicture);
+        etCaption.setText(data.image.caption);
+        if (data.image.lat.isEmpty() || data.image._long.isEmpty() ) {
+            swSendLocation.setEnabled(false);
+        } else {
+            swSendLocation.setEnabled(true);
+        }
+        etHashtagView.setText(data.image.hashtag.toString());
     }
 
     private void initValue() {

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
@@ -14,10 +15,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,6 +64,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
     private int mCurrentSelectedPosition = 0;
     private boolean mUserLearnedDrawer;
+    private float lastTranslate = 0.0f;
 
     TextView tvUserName;
 
@@ -78,6 +82,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
     View rootView;
 
     DataLoginBean currentUser;
+
+    ActionBarDrawerToggle mDrawerToggle;
 
     public MenuFragment() {
 
@@ -207,10 +213,22 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
+        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
+                float moveFactor = (drawerView.getWidth() * slideOffset);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    contentView.setTranslationX(moveFactor);
+                } else {
+                    TranslateAnimation anim = new TranslateAnimation(lastTranslate, moveFactor, 0.0f, 0.0f);
+                    anim.setDuration(0);
+                    anim.setFillAfter(true);
+                    contentView.startAnimation(anim);
 
+                    lastTranslate = moveFactor;
+                }
+
+                mDrawerLayout.requestLayout();
             }
 
             @Override
@@ -243,7 +261,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-        setCurrentMenu(3);
+
+        setCurrentMenu(0);
 
     }
 
@@ -294,36 +313,37 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
             case R.id.menu_avatar:
                 // chuyen sang man hinh Profile
                 FragmentUtil.pushFragment(getActivity(), ProfileUserFragment.newInstance(currentUser.id), null, "ProfileUserFragment");
-                setCurrentMenu(0);
+                selectItem(0);
                 break;
             case R.id.menu_2:
                 // chuyen sang man hinh Home
                 FragmentUtil.pushFragment(getActivity(), HomeFragment.newInstance(), null, "HomeFragment");
-                setCurrentMenu(1);
+                selectItem(1);
                 break;
             case R.id.menu_3:
                 // chuyen sang man hinh Post
                 FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null, "UploadFragment");
-                setCurrentMenu(2);
+                selectItem(2);
                 break;
             case R.id.menu_4:
                 // chuyen sang man hinh Favourite
                 //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null, "UploadFragment");
-                setCurrentMenu(3);
+                selectItem(3);
                 break;
             case R.id.menu_5:
                 // chuyen sang man hinh Nearby
                 FragmentUtil.pushFragment(getActivity(), NearbyFragment.newInstance(), null, "NearbyFragment");
-                setCurrentMenu(4);
+                selectItem(4);
                 break;
             case R.id.menu_6:
                 // chuyen sang man hinh Follow
                 FragmentUtil.pushFragment(getActivity(), FollowFragment.newInstance(), null, "FollowFragment");
-                setCurrentMenu(5);
+                //setCurrentMenu(5);
+                selectItem(5);
                 break;
             case R.id.menu_7:
                 // chuyen sang man hinh Logout
-                setCurrentMenu(6);
+                selectItem(6);
                 logout();
                 break;
             default:

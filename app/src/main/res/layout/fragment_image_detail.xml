@@ -1,25 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="520dp"
+    android:layout_height="match_parent"
     android:background="@color/purple_view"
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/image_detail_swipe_height">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycerList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <EditText
-        android:text="Post Commet"
+    <example.jp.socical.commonclass.CustomEditText
+        android:hint="Input Comment"
         android:layout_width="match_parent"
+        android:layout_gravity="left"
         android:drawableRight="@drawable/ic_send"
-        android:layout_height="46dp"
+        android:layout_height="50dp"
+        android:background="@color/white"
         android:id="@+id/txtPostCmt" />
 
 </LinearLayout>

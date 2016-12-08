@@ -6,6 +6,7 @@ import android.view.View;
 
 import java.util.List;
 
+import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.adapter.FollowListAdapter;
 import example.jp.socical.api.request.FollowListRequest;
@@ -13,6 +14,7 @@ import example.jp.socical.api.request.FollowRequest;
 import example.jp.socical.api.response.FollowListResponse;
 import example.jp.socical.bean.DataLoginBean;
 import example.jp.socical.bean.FollowDataBean;
+import example.jp.socical.constant.HeaderOption;
 import vn.app.base.adapter.DividerItemDecoration;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.callback.OnRecyclerViewItemClick;
@@ -36,7 +38,7 @@ public class FollowFragment extends BaseSwipeRefreshFragment implements OnRecycl
 
     @Override
     protected int getLayoutId() {
-        return super.getLayoutId();
+        return R.layout.fragment_follow;
     }
 
     @Override
@@ -57,6 +59,8 @@ public class FollowFragment extends BaseSwipeRefreshFragment implements OnRecycl
 
     @Override
     protected void initData() {
+
+        ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_FOLLOW);
         if (followDataBeanList == null) {
             getFollowData();
         }

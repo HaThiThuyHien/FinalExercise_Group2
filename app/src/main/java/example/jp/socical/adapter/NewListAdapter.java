@@ -5,10 +5,7 @@ import java.util.List;
 
 import example.jp.socical.adapter.viewholder.NewListViewHolder;
 import example.jp.socical.bean.NewsBean;
-import example.jp.socical.callback.OnChangeFavourite;
-import example.jp.socical.callback.OnChangeFollow;
-import example.jp.socical.callback.OnClickAvatar;
-import example.jp.socical.callback.OnClickPicture;
+import example.jp.socical.callback.OnNewItemClick;
 import vn.app.base.adapter.AdapterWithItemClick;
 import vn.app.base.util.UiUtil;
 
@@ -20,28 +17,10 @@ public class NewListAdapter extends AdapterWithItemClick<NewListViewHolder> {
 
     public List<NewsBean> newBeanList;
 
-    OnClickPicture onClickPicture;
+    OnNewItemClick onNewItemClick;
 
-    OnChangeFollow onChangeFollow;
-
-    OnChangeFavourite onChangeFavourite;
-
-    OnClickAvatar onClickAvatar;
-
-    public void setOnClickPicture(OnClickPicture onClickPicture) {
-        this.onClickPicture = onClickPicture;
-    }
-
-    public void setOnChangeFollow(OnChangeFollow onChangeFollow) {
-        this.onChangeFollow = onChangeFollow;
-    }
-
-    public void setOnChangeFavourite(OnChangeFavourite onChangeFavourite) {
-        this.onChangeFavourite = onChangeFavourite;
-    }
-
-    public void setOnClickAvatar(OnClickAvatar onClickAvatar) {
-        this.onClickAvatar = onClickAvatar;
+    public void setOnNewItemClick(OnNewItemClick onNewItemClick) {
+        this.onNewItemClick = onNewItemClick;
     }
 
     public NewListAdapter(List<NewsBean> newBeanList) {
@@ -61,10 +40,6 @@ public class NewListAdapter extends AdapterWithItemClick<NewListViewHolder> {
     @Override
     public void onBindViewHolder(NewListViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        holder.bind(newBeanList.get(position),
-                onClickPicture,
-                onChangeFollow,
-                onChangeFavourite,
-                onClickAvatar);
+        holder.bind(newBeanList.get(position), onNewItemClick);
     }
 }

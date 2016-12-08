@@ -4,13 +4,9 @@ import android.view.ViewGroup;
 
 import example.jp.socical.adapter.viewholder.NewListViewHolder;
 import example.jp.socical.adapter.viewholder.ProfileUserHeaderViewHolder;
-import example.jp.socical.api.response.ProfileUserResponse;
 import example.jp.socical.bean.NewsBean;
 import example.jp.socical.bean.ProfileUserBean;
-import example.jp.socical.callback.OnChangeFavourite;
-import example.jp.socical.callback.OnChangeFollow;
-import example.jp.socical.callback.OnClickAvatar;
-import example.jp.socical.callback.OnClickPicture;
+import example.jp.socical.callback.OnNewItemClick;
 import example.jp.socical.callback.OnUserEdit;
 import vn.app.base.adapter.HeaderAdapterWithItemClick;
 import vn.app.base.adapter.viewholder.OnClickViewHolder;
@@ -24,32 +20,14 @@ public class ProfileUserAdapter extends HeaderAdapterWithItemClick<OnClickViewHo
 
     OnUserEdit onUserEdit;
 
-    OnClickPicture onClickPicture;
+    OnNewItemClick onNewItemClick;
 
-    OnChangeFollow onChangeFollow;
-
-    OnChangeFavourite onChangeFavourite;
-
-    OnClickAvatar onClickAvatar;
-
-    public void setOnClickPicture(OnClickPicture onClickPicture) {
-        this.onClickPicture = onClickPicture;
-    }
-
-    public void setOnChangeFollow(OnChangeFollow onChangeFollow) {
-        this.onChangeFollow = onChangeFollow;
+    public void setOnNewItemClick(OnNewItemClick onNewItemClick) {
+        this.onNewItemClick = onNewItemClick;
     }
 
     public void setOnUserEdit(OnUserEdit onUserEdit) {
         this.onUserEdit = onUserEdit;
-    }
-
-    public void setOnChangeFavourite(OnChangeFavourite onChangeFavourite) {
-        this.onChangeFavourite = onChangeFavourite;
-    }
-
-    public void setOnClickAvatar(OnClickAvatar onClickAvatar) {
-        this.onClickAvatar = onClickAvatar;
     }
 
     @Override
@@ -73,10 +51,6 @@ public class ProfileUserAdapter extends HeaderAdapterWithItemClick<OnClickViewHo
     protected void onBindItemViewHolder(OnClickViewHolder holder, int position) {
         super.onBindItemViewHolder(holder, position);
         NewsBean profileUserBean = getItem(position);
-        ((NewListViewHolder)holder).bind(profileUserBean,
-                onClickPicture,
-                onChangeFollow,
-                onChangeFavourite,
-                onClickAvatar);
+        ((NewListViewHolder)holder).bind(profileUserBean, onNewItemClick);
     }
 }
