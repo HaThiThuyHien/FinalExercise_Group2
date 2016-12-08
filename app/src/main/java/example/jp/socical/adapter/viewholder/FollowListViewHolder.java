@@ -34,7 +34,17 @@ public class FollowListViewHolder extends OnClickViewHolder {
     }
 
     public void bind(FollowDataBean followDataBean) {
+
+        if (followDataBean == null) {
+            return;
+        }
+
+        //if (followDataBean.user.avatar != null) {
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, followDataBean.user.avatar, ivAvatar);
+        //} else {
+        //    ivAvatar.setImageResource(R.drawable.loading_list_image_220);
+        //}
+
         StringUtil.displayText(followDataBean.user.username,tvUserName);
         if (followDataBean.user.isFollowing) {
             btnFollow.setBackgroundResource(R.drawable.btnfollowing_bg);

@@ -14,41 +14,59 @@ import java.util.List;
 
 public class ImageBean {
 
-    public String publicId;
-
-    public Integer version;
-
-    public Integer width;
-
-    public Integer height;
-
-    public String format;
-
-    public String resourceType;
-
-    public String createdAt;
-
-    public Integer bytes;
-
-    public String type;
-
-    public String url;
-
-    public String secureUrl;
-
-    public String userId;
-
-    public String caption;
-
-    public String location;
-
-    public String lat;
-
-    public String _long;
-
-    public List<String> hashtag = new ArrayList<String>();
-
+    @SerializedName("_id")
     public String id;
 
+    @SerializedName("public_id")
+    public String publicId;
+
+    @SerializedName("version")
+    public Integer version;
+
+    @SerializedName("width")
+    public Integer width;
+
+    @SerializedName("height")
+    public Integer height;
+
+    @SerializedName("format")
+    public String format;
+
+    @SerializedName("resource_type")
+    public String resourceType;
+
+    @SerializedName("created_at")
+    public String createdAt;
+
+    @SerializedName("bytes")
+    public Integer bytes;
+
+    @SerializedName("type")
+    public String type;
+
+    @SerializedName("url")
+    public String url;
+
+    @SerializedName("secure_url")
+    public String secureUrl;
+
+    @SerializedName("user_id")
+    public String userId;
+
+    @SerializedName("caption")
+    public String caption;
+
+    @SerializedName("location")
+    public String location;
+    @SerializedName("lat")
+    public String lat;
+
+    @SerializedName("long")
+    public String _long;
+
+    @SerializedName("hashtag")
+    public List<String> hashtag = new ArrayList<String>();
+
+    @SerializedName("is_favourite")
     public Boolean isFavourite;
 }

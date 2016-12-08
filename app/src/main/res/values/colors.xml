@@ -21,4 +21,8 @@
     <color name="enable_thumb_blue">#4cc1ff</color>
 
     <color name="pink">#FFEC2878</color>
+
+    <color name="regist_label_background">#3b305f</color>
+    <color name="color_btn_skip_bg">#4bc1fe</color>
+    <color name="colorPurpleTransparent">#7f68d3</color>
 </resources>

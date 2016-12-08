@@ -20,12 +20,14 @@ import com.android.camera.CropImageIntentBuilder;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import example.jp.socical.callback.OnUpdateProfile;
 import example.jp.socical.constant.FragmentActionConstant;
 import example.jp.socical.constant.HeaderOption;
 import example.jp.socical.fragment.HomeFragment;
 import example.jp.socical.fragment.LoginFragment;
 import example.jp.socical.fragment.MenuFragment;
 import example.jp.socical.fragment.ProfileUserFragment;
+import example.jp.socical.fragment.RegisterFragment;
 import vn.app.base.activity.CommonActivity;
 import vn.app.base.util.FragmentUtil;
 import vn.app.base.util.ImagePickerUtil;
@@ -83,6 +85,7 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         setUpInitScreen(LoginFragment.newInstance(), "LoginFragment");
+        //setUpInitScreen(RegisterFragment.newInstance(), "RegisterFragment");
     }
 
     @Override
@@ -212,6 +215,11 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     public void clickHeaderRight(){
         if (iScreenNo == HeaderOption.MENU_PROFILE_USER){
             //Nhấn nút [Update] gọi API thay đổi ảnh.
+            if(fragmentListener != null){
+                Bundle bundle = new Bundle();
+                bundle.putInt("UPDATE_CLICK", 1);
+                fragmentListener.onFragmentUIHandle(bundle);
+            }
 
         }else if (iScreenNo == HeaderOption.MENU_DETAIL_USER){
             // Nhấn nút [Delete] hiện dialog xác nhận xóa > Ok gọi API xóa

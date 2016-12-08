@@ -6,4 +6,7 @@
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+
+    <string name="Error">Error</string>
+    <string name="Error_Msg">Input Value Error</string>
 </resources>

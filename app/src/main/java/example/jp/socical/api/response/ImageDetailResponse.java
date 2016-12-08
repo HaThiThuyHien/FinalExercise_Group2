@@ -12,12 +12,6 @@ import vn.app.base.api.response.BaseResponse;
 
 public class ImageDetailResponse extends BaseResponse{
 
-    @SerializedName("status")
-    public Integer status;
-
-    @SerializedName("message")
-    public String message;
-
     @SerializedName("data")
     public List<ImageDetailData> data = new ArrayList<ImageDetailData>();
 

@@ -57,9 +57,9 @@ public class ProfileUserHeaderViewHolder extends OnClickViewHolder {
         DataLoginBean currentUser = UserManager.getCurrentUser();
 
         if (currentUser.id.equals(profileUserHeaderBean.id)) {
-            ivAvatarChg.setVisibility(View.GONE);
-        } else {
             ivAvatarChg.setVisibility(View.VISIBLE);
+        } else {
+            ivAvatarChg.setVisibility(View.GONE);
         }
 
         //this.profileUserHeaderBean = profileUserHeaderBean;

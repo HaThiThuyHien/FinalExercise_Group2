@@ -16,6 +16,12 @@ import vn.app.base.util.SharedPrefUtils;
 
 public class ImageDetailRequest extends ObjectApiRequest<ImageDetailResponse>{
 
+    String imageId;
+
+    public ImageDetailRequest(String imageId) {
+        this.imageId = imageId;
+    }
+
     @Override
     public boolean isRequiredAuthorization() {
         return false;
@@ -40,7 +46,13 @@ public class ImageDetailRequest extends ObjectApiRequest<ImageDetailResponse>{
 
     @Override
     public Map<String, String> getRequestParams() {
-        return null;
+        Map<String,String> params = new HashMap<>();
+        if (imageId != null) {
+            params.put(APIConstant.IMAGE_ID, imageId);
+            return params;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -50,6 +62,6 @@ public class ImageDetailRequest extends ObjectApiRequest<ImageDetailResponse>{
 
     @Override
     public int getMethod() {
-        return Request.Method.GET;
+        return Request.Method.POST;
     }
 }

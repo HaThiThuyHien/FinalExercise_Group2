@@ -144,8 +144,6 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         } else {
             newBeanList = new ArrayList<>();
         }
-
-
     }
 
     public void getLasttime(List<NewsBean> inNewsBean) {
@@ -161,7 +159,6 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     }
 
     private void handleNewsData(List<NewsBean> inNewsBean, boolean isrefresh) {
-
         if (isrefresh) {
             int size = inNewsBean.size();
             for (int i = 0; i < size -1 ; i++) {
@@ -253,9 +250,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         //double dbLong = Double.valueOf(strLong);
 
         String strGeo = "geo:" + strLat + "," + strLong + "?z=zom";
-
         Uri uri = Uri.parse(strGeo);
-
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
@@ -265,7 +260,6 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
 
     private void setChangeFollow(String userId, int follow) {
         int size = newBeanList.size();
-
         for (int i = 0; i < size; i++) {
             NewsBean newsBean = newBeanList.get(i);
             if ((newsBean != null) && (newsBean.user.id.equals(userId))) {

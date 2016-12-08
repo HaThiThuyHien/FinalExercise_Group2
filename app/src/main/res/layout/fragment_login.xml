@@ -4,27 +4,116 @@
     android:layout_height="match_parent"
     tools:context="example.jp.socical.fragment.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Login Fragment" />
+        android:src="@drawable/bg_login"
+        android:scaleType="centerCrop"/>
 
-    <Button
-        android:text="Login"
-        android:layout_margin="130dp"
+
+    <ImageView
+        android:id="@+id/imgCamera"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/icon_camera"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:id="@+id/rlUsername"
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@+id/imgCamera"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/ivIconUser"
+            android:src="@drawable/icon_user"
+            android:layout_marginTop="5dp"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="100dp"/>
+        <EditText
+            android:id="@+id/tvUserName"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/ivIconUser"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Jenifer.wilson"
+            android:background="@android:color/transparent"/>
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="2dp"
+            android:src="@drawable/icon_underline"
+            android:layout_below="@+id/ivIconUser"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@+id/rlUsername"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/ivIconPassword"
+            android:src="@drawable/icon_password"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="5dp"/>
+        <EditText
+            android:id="@+id/tvPassword"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/ivIconPassword"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="textPassword"
+            android:hint="************"
+            android:background="@android:color/transparent"/>
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="2dp"
+            android:src="@drawable/icon_underline"
+            android:layout_below="@+id/ivIconPassword"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/rlPassword"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogin" />
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/btn_login"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <Button
-        android:text="Register"
+        android:id="@+id/btnRegister"
+        android:layout_below="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnLogin"
-        android:layout_alignStart="@+id/btnLogin"
-        android:layout_marginTop="82dp"
-        android:id="@+id/btnRegister" />
+        android:text="CREATE NEW ACCOUNT"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/darker_gray"/>
 
 </RelativeLayout>

@@ -1,37 +1,44 @@
 package example.jp.socical.api.request;
 
 import com.android.volley.Request;
+import com.android.volley.VolleyError;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import example.jp.socical.api.response.RegisterResponse;
+import example.jp.socical.constant.APIConstant;
 import vn.app.base.api.volley.core.ObjectApiRequest;
+import vn.app.base.api.volley.core.UploadBinaryApiRequest;
 
 /**
  * Created by Toi on 10/24/2016.
  */
 
-public class RegisterRequest extends ObjectApiRequest<RegisterResponse>{
-    String userId;
+public class RegisterRequest extends UploadBinaryApiRequest<RegisterResponse>{
+
+    File fileAvatar;
+    String userName;
     String email;
     String pass;
 
-    public RegisterRequest(String userId, String email, String pass) {
-        this.userId = userId;
+    public RegisterRequest(File fileAvatar, String userName, String email, String pass) {
+        this.fileAvatar = fileAvatar;
+        this.userName = userName;
         this.email = email;
         this.pass = pass;
-    }
 
-    @Override
-    public boolean isRequiredAuthorization() {
-        return false;
+        if (fileAvatar != null) {
+            Map<String, File> avatar = new HashMap<>();
+            avatar.put(APIConstant.AVATAR, fileAvatar);
+            setRequestFiles(avatar);
+        }
     }
 
     @Override
     public String getRequestURL() {
-        String url = "https://polar-plains-86888.herokuapp.com/api/regist";
-        return url;
+        return APIConstant.RIGISTER;
     }
 
     @Override
@@ -41,10 +48,11 @@ public class RegisterRequest extends ObjectApiRequest<RegisterResponse>{
 
     @Override
     public Map<String, String> getRequestParams() {
-        Map<String, String> params = new HashMap<>();
-        params.put("username", userId);
-        params.put("email", email);
-        params.put("password", pass);
+        Map<String,String> params = new HashMap<>();
+        params.put(APIConstant.USER_NAME, userName);
+        params.put(APIConstant.EMAIL, email);
+        params.put(APIConstant.PASS, pass);
+
         return params;
     }
 
@@ -56,5 +64,14 @@ public class RegisterRequest extends ObjectApiRequest<RegisterResponse>{
     @Override
     public int getMethod() {
         return Request.Method.POST;
+    }
+
+    @Override
+    public void onRequestSuccess(RegisterResponse response) {
+    }
+
+    @Override
+    public void onRequestError(VolleyError error) {
+
     }
 }

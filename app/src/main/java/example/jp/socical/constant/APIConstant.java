@@ -71,4 +71,9 @@ public class APIConstant {
     public static final String LAST_TIMESTAMP = "last_query_timestamp";
     public static final String HOME_NUM = "num";
 
+    // Register
+    public static final String USER_NAME = "username";
+    public static final String EMAIL = "email";
+    public static final String PASS = "password";
+
 }

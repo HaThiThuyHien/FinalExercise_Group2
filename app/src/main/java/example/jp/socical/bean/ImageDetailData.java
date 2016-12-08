@@ -14,5 +14,5 @@ public class ImageDetailData {
     public String comment;
 
     @SerializedName("created_at")
-    public Integer createdAt;
+    public String createdAt;
 }
