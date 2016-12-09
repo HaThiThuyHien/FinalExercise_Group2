@@ -25,4 +25,9 @@
     <color name="regist_label_background">#3b305f</color>
     <color name="color_btn_skip_bg">#4bc1fe</color>
     <color name="colorPurpleTransparent">#7f68d3</color>
+
+    <color name="login_bg_color">#4cc1ff</color>
+    <color name="login_bg_select_color">#748086</color>
+
+    <color name="hint_color">#a5a3a3</color>
 </resources>

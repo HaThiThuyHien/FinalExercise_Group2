@@ -3,327 +3,327 @@
 
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.theartofdev.edmodo\android-image-cropper\2.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="1a32a39a9fcae3d354a312cdb78c18159fa702e6">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.theartofdev.edmodo-android-image-cropper-2.3.1_fde76f7db0b66066952b77b8302aef705ef855b6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_a0ba3c5874b0013635088f14bb6f7f220d94705b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_42098d93c5eba657e9ee682478ba260212dfd2f9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\org.greenrobot\eventbus\3.0.0\ddd99896e9569eaababbe81b35d80e1b91c4ad85\eventbus-3.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\eventbus-3.0.0_0a0278187e2aea3d5314fbf0c1f57a1e1946e18a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_863340b2b9da77b9466ecc1679a45e5a3a310f96\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.3.6\cf8bacbf0d476c7f2221f861269365b66447f7ec\httpmime-4.3.6.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="cf8bacbf0d476c7f2221f861269365b66447f7ec">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpmime-4.3.6_5e5387df57b7f97f39c25d13e62fef257cc60872\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_9baa74d18ca352713967f0dc5d34ba371a692f7c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.2.1\d6f54d76edfbe779a50a8636b10fd3f555d8f780\butterknife-annotations-8.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.2.1_61cf141614f456bdd5a92728ccd1d18be8d0f2c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.8.0_54dffc9b1dba672f8245bb9a8498577e1b6a3b97\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_cb94f197df0632644beb1bf10655b52900a4ad3d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_37139d44061e5c2e82cc0a1509878be204617ab8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_277f6f5909bb34d1884499f5ede333ec1d59b37b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\me.villani.lorenzo.android\android-cropimage\1.1.2\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="25d6d7292704b74d3f239b913c280b716be759d0">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.villani.lorenzo.android-android-cropimage-1.1.2_bdecdf4dddc4c3adb132d82e81533843a6655164\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_49f68540064f89e15d7c00d303e7f3876804a456\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_a1201b5d392acb69a68b85f08ed6fa86b2c07fc9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_e1750a0c6738c62da03e747569f1ea47e296791d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.8.0_9e82b0c2ef653263c0d55b874dfe2d83d1ef954d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_9f030a976d438b67008dfacfe9f6bc873e29d39c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="aeeac45b599ace8780715ef82b77102e746a50a8">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_660556f4f4b51b0c3e2d68a4eec5a9ef35d1f71d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_10ce5f9f324782d3463567c80c27a24d21dbc6d9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\de.hdodenhof-circleimageview-2.1.0_97e8f3308201469acdf3ed6cb9d0f5381c705c62\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.jakewharton-butterknife-8.2.1_00cae90053828498afe3c9356e5668590d9601f7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.8.0_a10f0dda8cb0d57384451d11c4bbea47dfc5a2e7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_07cf5e1fff84fac0fe5197661c5e6e023d8247d5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.relex-circleindicator-1.2.2_706e0d197d405f3f4cdc7eb9fa264db809e6f2f1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.8.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="04bbbddf868aa02dd33f9e90d8f5d908c360f638">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.8.0_346d922a6dfa5995be5f3cc5cdb558f410c39192\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_09a759644cf57246553187819c9f6ec299356360\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.8.0_254d372e2200d270e4dfbba50da024299210b9bd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient-android\4.3.5\82edcaec6c7b4599eaeaaf11167ceea41db42f33\httpclient-android-4.3.5.jar"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient-android\4.3.5\82edcaec6c7b4599eaeaaf11167ceea41db42f33\httpclient-android-4.3.5.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
         sha1="82edcaec6c7b4599eaeaaf11167ceea41db42f33">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-android-4.3.5_da066478dc699ea6456efbf5bf4b91fd3975f99f\classes.dex" />
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-android-4.3.5_5be2564aff67a523de130d6e67b6bbad93287000\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_6d1bbec7cbeafa9ad5113f53718e8081b249e09c\classes.dex" />
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_e63fda5e1f3f78a11dc174f96152393080d57997\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_76ea5eb818ca3edf0c3e68797e53b73f6ff8be38\classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_01009bf9158f619c6ff7d195b8e8c687ab02d693\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="04bbbddf868aa02dd33f9e90d8f5d908c360f638">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.8.0_364982a0687f353439eb52e89095d634e08e03ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_9752eaae8ccc8c46ab153ce0de7b31906357f777\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.8.0_fa38f90d45996cbf24c106748e940830583a62ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_120910e6c0af28cbfb6dfaa760627588638e6dfc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_d07b7b9b6bd7cbe98947486a1c792655ba716f89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.8.0_2f504abb2f2f214d79bb33907bf1f4cfcaec5681\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.jakewharton-butterknife-8.2.1_450b66521f838b375e6d0797f1d2daf30ab27bac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_0e75fddfc0ddafafddf27ac5809ed6276212c46e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8ca38b540a4c92fa6b015a568b1779fa57ab06e7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.relex-circleindicator-1.2.2_220b5dea471275f256ee497bfb2b6cb430ea398d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.8.0_eda2b1093aca8be1fcd97ca7be6f2b20edbcab6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="6e5a5e61c57a7e86645ca88a83c4ac92195ce95d">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7ccd8ad19be3b3adb7ae5461142c9c7d734f0949\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_a90794c67cc11cb74f44c95b43a621eb7fe1c17a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.8.0_db3a348d502aeaeb89bf6738cecde237365f4ebd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.2.1\d6f54d76edfbe779a50a8636b10fd3f555d8f780\butterknife-annotations-8.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.2.1_07fbc944036ce0d2f3703b26c07ba2ba38921e18\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
         sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_a476706fdfa7c2d48e836b928071ebeb80ea43de\classes.dex" />
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_6c34c2b408befcc697b235f4e41aa492f4d5a142\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.theartofdev.edmodo\android-image-cropper\2.3.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_93e8c3a9842ae9ae77f69ef7b125766aa4ccc156\classes.dex" />
+        sha1="1a32a39a9fcae3d354a312cdb78c18159fa702e6">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.theartofdev.edmodo-android-image-cropper-2.3.1_2cc238dc6ed5978d1e7e61df52c51e7ad7c87700\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_986d66aca31f705d2d489aeba675dfbc2f57fbe8\classes.dex" />
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_34e6124788d367b4efeff72d59dec8e7ab219388\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Hien_BRSE\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_71bb309c35225ac6005d7694b2022bffc749b753\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_49c31c59a19fce6bbe09752fb87e01f48e1d43e6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\org.greenrobot\eventbus\3.0.0\ddd99896e9569eaababbe81b35d80e1b91c4ad85\eventbus-3.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\eventbus-3.0.0_bf0c066ed5e1e5a6b81a14697a1f165e7617f93f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_2c18587ef63f72c0c40cc9abe56d099a18f9a488\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\de.hdodenhof-circleimageview-2.1.0_f0c16aac2ef4e479f73771e1426e23b5edc6445b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_82f8a8815b1d106062d80f46ad0fce31f89e6d60\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_fcbe905e025d3b698bc9af084650d21fbb212d8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_99a7cb87f46f3b7026fb4ac34e18d1f673083588\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_f901edacf980ca941cce93954e7763d5ea7ee509\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\me.villani.lorenzo.android\android-cropimage\1.1.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="25d6d7292704b74d3f239b913c280b716be759d0">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.villani.lorenzo.android-android-cropimage-1.1.2_82008cd05a63d2804297147ff05208eb337b9244\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_9cab1b34f735d40ac764acced2479112442ad21e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
         sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_8f8a148a9adc427b318ff9d910cf71c876bc37c2\classes.dex" />
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_e6b8e6269583ceea3123439360996389de13df30\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="07c14877266a922dc87a7a3da569b8533e441f63">
-        <dex dex="F:\Android\BTCK\FinalExercise_Group2_20161208\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8fcf4a39142b06d5dc0396d341c3459a608be433\classes.dex" />
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_c9ba100296134c43eae50e6d9e2b738602c1812f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Toi\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.3.6\cf8bacbf0d476c7f2221f861269365b66447f7ec\httpmime-4.3.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="cf8bacbf0d476c7f2221f861269365b66447f7ec">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpmime-4.3.6_c62d604400d3d90c4a31432717a16b0829d66ba7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="faddffeafb2a971353279679ec8032c6b0246b02">
+        <dex dex="D:\Android\BTCK\FinalExercise_Group2_20161209_finish\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_0fecc8e44c41e4f5b187d4a90d92df4169784e37\classes.dex" />
     </item>
 
 </items>

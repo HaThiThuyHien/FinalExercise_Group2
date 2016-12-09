@@ -28,14 +28,13 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/dummy_avatar"
-            android:layout_marginBottom="15dp"
-            />
+            android:layout_marginBottom="15dp" />
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:text="ABC"
-            android:textSize="30sp"
+            android:text="Welcome, Jennifer"
+            android:textSize="20dp"
             android:textColor="@color/white"
             android:textAlignment="center"/>
     </LinearLayout>

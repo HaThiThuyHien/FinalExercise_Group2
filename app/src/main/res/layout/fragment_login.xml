@@ -14,48 +14,12 @@
 
     <ImageView
         android:id="@+id/imgCamera"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="110dp"
+        android:layout_width="@dimen/lg_camera_width"
+        android:layout_height="@dimen/lg_camera_height"
+        android:layout_marginTop="@dimen/lg_camera_marginTopt"
         android:src="@drawable/icon_camera"
         android:scaleType="centerCrop"
         android:layout_centerHorizontal="true"/>
-
-    <RelativeLayout
-        android:id="@+id/rlUsername"
-        android:layout_marginTop="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_below="@+id/imgCamera"
-        android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:id="@+id/ivIconUser"
-            android:src="@drawable/icon_user"
-            android:layout_marginTop="5dp"
-            android:scaleType="fitCenter"
-            android:layout_marginLeft="100dp"/>
-        <EditText
-            android:id="@+id/tvUserName"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@+id/ivIconUser"
-            android:layout_marginLeft="10dp"
-            android:textSize="18dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:hint="Jenifer.wilson"
-            android:background="@android:color/transparent"/>
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:src="@drawable/icon_underline"
-            android:layout_below="@+id/ivIconUser"
-            android:layout_marginTop="20dp"/>
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rlPassword"
@@ -64,46 +28,51 @@
         android:layout_below="@+id/rlUsername"
         android:layout_centerHorizontal="true">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:id="@+id/ivIconPassword"
-            android:src="@drawable/icon_password"
-            android:scaleType="fitCenter"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="5dp"/>
         <EditText
             android:id="@+id/tvPassword"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/lg_et_width"
+            android:layout_height="@dimen/lg_et_height"
             android:layout_toRightOf="@+id/ivIconPassword"
             android:layout_marginLeft="10dp"
-            android:textSize="18dp"
+            android:textSize="@dimen/lg_et_textsize"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColorHint="@color/hint_color"
             android:inputType="textPassword"
-            android:hint="************"
+            android:hint="*********************"
             android:background="@android:color/transparent"/>
+
         <ImageView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:src="@drawable/icon_underline"
-            android:layout_below="@+id/ivIconPassword"
-            android:layout_marginTop="20dp"/>
+            android:layout_width="@dimen/lg_icon_user_width"
+            android:layout_height="@dimen/lg_icon_user_height"
+            android:id="@+id/ivIconPassword"
+            android:src="@drawable/icon_password"
+            android:layout_marginTop="@dimen/lg_icon_user_marginTop"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="@dimen/lg_icon_user_marginLeft"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:layout_width="@dimen/lg_icon_line_width"
+            android:layout_height="@dimen/lg_icon_line_height"
+            android:background="@color/white"
+            android:layout_alignBottom="@+id/tvPassword"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView3" />
 
     </RelativeLayout>
 
-    <ImageButton
+    <Button
         android:id="@+id/btnLogin"
         android:layout_below="@+id/rlPassword"
+        android:text="LOGIN"
+        android:textColor="@color/white"
         android:gravity="center"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/lg_icon_line_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/btn_login"
         android:scaleType="fitCenter"
-        android:background="@android:color/transparent"/>
+        android:background="@drawable/login_select"/>
 
     <Button
         android:id="@+id/btnRegister"
@@ -111,9 +80,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CREATE NEW ACCOUNT"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/lg_Register_marginTop"
         android:layout_centerHorizontal="true"
         android:background="@android:color/transparent"
         android:textColor="@android:color/darker_gray"/>
+
+    <RelativeLayout
+        android:id="@+id/rlUsername"
+        android:layout_marginTop="@dimen/lg_rlUsername_marginTop"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@+id/imgCamera"
+        android:layout_alignStart="@+id/rlPassword">
+
+        <ImageView
+            android:layout_width="@dimen/lg_icon_user_width"
+            android:layout_height="@dimen/lg_icon_user_height"
+            android:id="@+id/ivIconUser"
+            android:src="@drawable/icon_user"
+            android:layout_marginTop="@dimen/lg_icon_user_marginTop"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="@dimen/lg_icon_user_marginLeft"/>
+        <EditText
+            android:id="@+id/tvUserName"
+            android:layout_width="@dimen/lg_et_width"
+            android:layout_height="@dimen/lg_et_height"
+            android:layout_toRightOf="@id/ivIconUser"
+            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/lg_et_textsize"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/hint_color"
+            android:hint="Jenifer.wilson"
+            android:background="@android:color/transparent"/>
+        <TextView
+            android:layout_width="@dimen/lg_icon_line_width"
+            android:layout_height="@dimen/lg_icon_line_height"
+            android:src="@drawable/icon_underline"
+            android:background="@color/white"
+            android:layout_below="@id/tvUserName" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -81,7 +81,7 @@ public class RegisterFragment extends NoHeaderFragment {
     EditText etConfirmPass;
 
     @BindView(R.id.btnSignUp)
-    ImageButton btnSignUp;
+    Button btnSignUp;
 
     public static RegisterFragment newInstance() {
         RegisterFragment registerFragment = new RegisterFragment();

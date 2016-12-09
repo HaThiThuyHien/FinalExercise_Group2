@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Android\\BTCK\\FinalExercise_Group2_20161205\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\Android\\BTCK\\FinalExercise_Group2_20161209_finish\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,103 +11,7 @@
                     "endOffset": 618
                 },
                 "from": {
-                    "file": "D:\\Android\\BTCK\\FinalExercise_Group2_20161205\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 570,
-                        "endColumn": 52,
-                        "endOffset": 618
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\Android\\BTCK\\FinalExercise_Group2_20161206\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 570,
-                    "endColumn": 52,
-                    "endOffset": 618
-                },
-                "from": {
-                    "file": "D:\\Android\\BTCK\\FinalExercise_Group2_20161206\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 570,
-                        "endColumn": 52,
-                        "endOffset": 618
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "F:\\Android\\BTCK\\FinalExercise_Group2_20161208\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 570,
-                    "endColumn": 52,
-                    "endOffset": 618
-                },
-                "from": {
-                    "file": "F:\\Android\\BTCK\\FinalExercise_Group2_20161208\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 570,
-                        "endColumn": 52,
-                        "endOffset": 618
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\Android\\BTCK\\FinalExercise_Group2_20161208_2100\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 570,
-                    "endColumn": 52,
-                    "endOffset": 618
-                },
-                "from": {
-                    "file": "D:\\Android\\BTCK\\FinalExercise_Group2_20161208_2100\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 570,
-                        "endColumn": 52,
-                        "endOffset": 618
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "F:\\Android\\BTCK\\FinalExercise_Group2_20161205\\libs\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 570,
-                    "endColumn": 52,
-                    "endOffset": 618
-                },
-                "from": {
-                    "file": "F:\\Android\\BTCK\\FinalExercise_Group2_20161205\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\Android\\BTCK\\FinalExercise_Group2_20161209_finish\\libs\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
