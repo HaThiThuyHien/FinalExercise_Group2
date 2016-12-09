@@ -21,13 +21,15 @@
     <Button
         android:id="@+id/btnSkip"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/btn_height"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:text="SKIP TUTORIAL"
-        android:background="@color/color_btn_skip_bg"/>
+        android:text="Skip Tutorial"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/login_select"/>
 
 </RelativeLayout>

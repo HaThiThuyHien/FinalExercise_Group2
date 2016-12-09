@@ -38,7 +38,7 @@ public class LoginFragment extends NoHeaderFragment {
     EditText etPass;
 
     @BindView(R.id.btnLogin)
-    ImageButton btnLogin;
+    Button btnLogin;
 
     @BindView(R.id.btnRegister)
     Button btnRegister;
@@ -75,8 +75,8 @@ public class LoginFragment extends NoHeaderFragment {
 
         user = etUserName.getText().toString().trim();
 
-        user = "ThinhHoang";
-        etPass.setText("123456789");
+        //user = "ThinhHoang";
+        //etPass.setText("123456789");
 
         try {
             pass = StringEncryption.SHA1(etPass.getText().toString().trim());

@@ -31,24 +31,25 @@
     </style>
 
     <style name="tv_register" parent="android:Widget.TextView">
-        <item name="android:layout_width">280dp</item>
-        <item name="android:layout_marginRight">60dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
-        <item name="android:paddingLeft">3dp</item>
+        <item name="android:layout_width">@dimen/rg_tv_width</item>
+        <item name="android:layout_marginRight">@dimen/rg_tv_marginRight</item>
+        <item name="android:layout_marginLeft">@dimen/rg_tv_marginLeftt</item>
+        <item name="android:paddingLeft">@dimen/rg_tv_paddingLeft</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/regist_label_background</item>
-        <item name="android:textSize">17dp</item>
+        <item name="android:textSize">@dimen/rg_tv_textsize</item>
     </style>
 
     <style name="et_register" parent="android:Widget.EditText">
-        <item name="android:layout_width">280dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_width">@dimen/rg_et_width</item>
+        <item name="android:layout_marginRight">@dimen/rg_et_marginRight</item>
+        <item name="android:layout_marginTop">@dimen/rg_et_marginTop</item>
+        <!--item name="android:layout_marginLeft">@dimen/rg_et_marginLeft</item-->
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">17dp</item>
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">@dimen/rg_et_textsize</item>
+        <item name="android:textColorHint">@color/hint_color</item>
         <item name="android:backgroundTint">@color/white</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
 </resources>
