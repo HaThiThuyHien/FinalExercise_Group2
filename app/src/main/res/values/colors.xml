@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#8069d4</color>
+    <color name="colorPrimaryDark">#8069d4</color>
     <color name="colorAccent">#f7f6f6</color>
     <color name="colorHighlight">#f7f6f7</color>
 
@@ -9,6 +9,7 @@
     <color name="purple_backgroud">#aba3c8</color>
     <color name="purple_view">#7e68d3</color>
     <color name="white">#f0f0f2</color>
+    <color name="black">#1b1b1c</color>
     <color name="linemenu">#2c2449</color>
     <color name="colortoolbar">#7e68d3</color>
 
@@ -21,6 +22,7 @@
     <color name="enable_thumb_blue">#4cc1ff</color>
 
     <color name="pink">#FFEC2878</color>
+    <color name="purple">#8069d4</color>
 
     <color name="regist_label_background">#3b305f</color>
     <color name="color_btn_skip_bg">#4bc1fe</color>

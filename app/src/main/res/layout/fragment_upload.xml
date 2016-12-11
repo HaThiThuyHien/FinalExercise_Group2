@@ -3,32 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="@color/upload_background"
     tools:context="example.jp.socical.fragment.UploadFragment">
 
     <ImageView
         android:id="@+id/imgPostPicture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="390dp"
+        android:layout_height="@dimen/imgUpload_img_height"
         android:src="@drawable/placeholer_image_1600"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/tvCaption"
         android:text="Caption"
-        android:textColor="@color/white"
-        android:textSize="19dp"
-        android:layout_width="@dimen/caption_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/upload_view_background"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="250dp"
-        android:id="@+id/textView" />
+        style="@style/imgUpload_tv"
+        android:layout_below="@id/imgPostPicture"
+        android:layout_marginTop="30dp" />
 
     <EditText
         android:layout_width="280dp"
@@ -37,55 +30,42 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
         android:gravity="top"
-        android:textSize="17dp"
+        android:textSize="@dimen/imgUpload_et_textsize"
         android:lines="3"
-        android:text="Name"
+        android:hint="This is a good place..."
+        android:textColorHint="@color/hint_color"
         android:ems="10"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tvCaption"
+        android:layout_alignStart="@+id/tvCaption"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="@dimen/imgUpload_marginTop"
         android:id="@+id/etCaption"
         android:layout_alignEnd="@+id/swSendLocation" />
 
     <TextView
         android:id="@+id/tvSendLocal"
         android:text="Send location"
-        android:textColor="@color/white"
-        android:textSize="19dp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/imgUpload_tv"
         android:layout_below="@id/etCaption"
-        android:background="@color/upload_view_background"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="@dimen/imgUpload_marginTop"/>
 
     <TextView
         android:id="@+id/tvhashtag"
         android:text="Hashtag"
-        android:textColor="@color/white"
-        android:textSize="19dp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_below="@id/tvSendLocal"
-        android:background="@color/upload_view_background"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"/>
+        style="@style/imgUpload_tv"
+        android:layout_marginTop="@dimen/imgUpload_marginTop"
+        android:layout_below="@id/swSendLocation" />
 
     <com.fenlisproject.hashtagedittext.HashTagEditText
         android:id="@+id/hashtagView"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvhashtag"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/tvCaption"
         android:textColor="@color/white"
         app:bubbleTextColor="@color/white"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="@dimen/imgUpload_marginTop"
         android:layout_alignEnd="@+id/swSendLocation"
         app:bubbleTextSize="16sp"
         app:horizontalPadding="8dp"
@@ -94,31 +74,25 @@
         app:verticalPadding="4dp"
         app:verticalSpacing="2dp" />
 
-    <Button
-        android:text="Cancel"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:textSize="19dp"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/tvhashtag"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="16dp"
-        android:textAllCaps="false"
-        android:id="@+id/btnCancel" />
+    <LinearLayout
+        android:layout_below="@id/hashtagView"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:text="Post"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:textSize="19dp"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnCancel"
-        android:layout_marginLeft="200dp"
-        android:textAllCaps="false"
-        android:id="@+id/btnPost" />
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/imgUpload_button"
+            android:text="Cancel"/>
+
+        <Button
+            android:id="@+id/btnPost"
+            style="@style/imgUpload_button"
+            android:layout_marginLeft="25dp"
+            android:text="Post"/>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fbUpload"
@@ -133,17 +107,16 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="27dp"
-        android:layout_alignBottom="@+id/textView"
+        android:layout_alignBottom="@+id/tvCaption"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="12dp" />
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvSendLocal"
-        android:layout_alignEnd="@+id/fbUpload"
-        android:layout_marginEnd="11dp"
         android:theme="@style/SCBSwitch"
-        android:id="@+id/swSendLocation" />
+        android:id="@+id/swSendLocation"
+        android:layout_alignTop="@+id/tvSendLocal"
+        android:layout_alignStart="@+id/fbUpload" />
 
 </RelativeLayout>

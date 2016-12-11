@@ -64,6 +64,9 @@ public class FollowFragment extends BaseSwipeRefreshFragment implements OnRecycl
         if (followDataBeanList == null) {
             getFollowData();
         }
+        else {
+            reLoad(followDataBeanList);
+        }
     }
 
     private void getFollowData() {
@@ -82,6 +85,10 @@ public class FollowFragment extends BaseSwipeRefreshFragment implements OnRecycl
             }
         });
         followListRequest.execute();
+    }
+
+    private void reLoad(List<FollowDataBean> followData){
+        setData(followData);
     }
 
     private void setData(List<FollowDataBean> followData) {

@@ -55,7 +55,6 @@ public class ImageDetailHeaderViewHolder extends OnClickViewHolder {
         this.newsBean = newsBean;
 
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, newsBean.user.avatar, ivAvatar);
-        //ivAvatar.setImageResource(R.drawable.dummy_avatar);
         StringUtil.displayText(newsBean.user.username,tvUserName);
 
         if (newsBean.user.isFollowing) {
@@ -84,6 +83,5 @@ public class ImageDetailHeaderViewHolder extends OnClickViewHolder {
         }
 
         ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, newsBean.image.url, ivPicture);
-        //ivPicture.setImageResource(R.drawable.placeholer_image_1600);
     }
 }

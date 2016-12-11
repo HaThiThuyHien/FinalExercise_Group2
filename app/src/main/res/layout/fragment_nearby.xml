@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/mapNearby"
-        tools:context=".MainActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 </RelativeLayout>

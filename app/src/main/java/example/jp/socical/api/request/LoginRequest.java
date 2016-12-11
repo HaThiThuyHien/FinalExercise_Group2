@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import example.jp.socical.api.response.LoginResponse;
+import example.jp.socical.constant.APIConstant;
 import vn.app.base.api.volley.core.ObjectApiRequest;
 
 /**
@@ -29,8 +30,7 @@ public class LoginRequest extends ObjectApiRequest<LoginResponse> {
 
     @Override
     public String getRequestURL() {
-        String url = "https://polar-plains-86888.herokuapp.com/api/login";
-        return url;
+        return APIConstant.LOGIN;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class LoginRequest extends ObjectApiRequest<LoginResponse> {
     @Override
     public Map<String, String> getRequestParams() {
         Map<String, String> params = new HashMap<>();
-        params.put("username", userId);
-        params.put("password", pass);
+        params.put(APIConstant.USER_NAME, userId);
+        params.put(APIConstant.PASS, pass);
         return params;
     }
 

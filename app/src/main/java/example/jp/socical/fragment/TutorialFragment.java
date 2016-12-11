@@ -78,6 +78,7 @@ public class TutorialFragment extends NoHeaderFragment {
         tutorialRequest.setRequestCallBack(new ApiObjectCallBack<TutorialResponse>() {
             @Override
             public void onSuccess(TutorialResponse data) {
+                hideCoverNetworkLoading();
                 initialResponseHandled();
                 handleTutorialData(data.dataTutorial);
             }
@@ -88,6 +89,7 @@ public class TutorialFragment extends NoHeaderFragment {
             }
         });
         tutorialRequest.execute();
+        showCoverNetworkLoading();
     }
 
     private void handleTutorialData(DataTutorial dataTutorial) {

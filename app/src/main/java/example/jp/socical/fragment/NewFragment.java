@@ -77,27 +77,23 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         super.initView(root);
 
         swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.setEnabled(true);
+        //swipeRefreshLayout.setEnabled(true);
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
             public void onLoadMore(int currentPage) {
                 getNews(true);
-                //newListAdapter.notifyDataSetChanged();
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        setCanRefresh(false);
     };
-
-    public void loadNextDataFromApi(int page) {
-
-    }
 
     @Override
     protected void initData() {
         if (newBeanList == null) {
             getNews(false);
         } else {
-            handleNewsData(newBeanList, true);
+            reLoad(newBeanList);
         }
     }
 
@@ -109,24 +105,17 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
 
     private void getNews(final boolean isRefresh) {
         NewsRequest newsRequest;
-
         if (!isRefresh) {
             newsRequest = new NewsRequest(home_type, "", 0);
         } else {
-            String str_last_time;
             newsRequest = new NewsRequest(home_type, last_query_timestamp, 0);
         }
 
         newsRequest.setRequestCallBack(new ApiObjectCallBack<NewsResponse>() {
             @Override
             public void onSuccess(NewsResponse data) {
+                hideCoverNetworkLoading();
                 initialResponseHandled();
-                //setupData(isRefresh);
-
-                //if (data.data != null) {
-                //    newBeanList = data.data;
-                //}
-
                 handleNewsData(data.data, isRefresh);
             }
 
@@ -136,14 +125,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             }
         });
         newsRequest.execute();
-    }
-
-    private void setupData(boolean refresh, List<NewsBean> inNewsBean) {
-        if (refresh && newBeanList != null) {
-            newBeanList.clear();
-        } else {
-            newBeanList = new ArrayList<>();
-        }
+        showCoverNetworkLoading();
     }
 
     public void getLasttime(List<NewsBean> inNewsBean) {
@@ -167,16 +149,24 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
                 newListAdapter.notifyDataSetChanged();
             }
         } else {
-
             this.newBeanList = inNewsBean;
             newListAdapter = new NewListAdapter(newBeanList);
             recyclerView.setAdapter(newListAdapter);
             newListAdapter.setOnNewItemClick(this);
-
-            DebugLog.i(inNewsBean.toString());
         }
-
         getLasttime(newBeanList);
+    }
+
+    private void reLoad(List<NewsBean> inNewsBean){
+        this.newBeanList = inNewsBean;
+        newListAdapter = new NewListAdapter(newBeanList);
+        recyclerView.setAdapter(newListAdapter);
+        newListAdapter.setOnNewItemClick(this);
+    }
+
+    @Override
+    protected boolean isStartWithLoading() {
+        return newBeanList == null;
     }
 
     @Override
@@ -190,13 +180,21 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
         swipeRefreshLayout.setRefreshing(false);
     }
 
+    public void setCanRefresh(boolean canRefresh) {
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setEnabled(canRefresh);
+        }
+    }
+
     @Override
-    public void onFavouriteClick(String imageId, int favourite) {
+    public void onFavouriteClick(final String imageId, final int favourite) {
         FavouriteRequest favouriteRequest = new FavouriteRequest(imageId, favourite);
         favouriteRequest.setRequestCallBack(new ApiObjectCallBack<BaseResponse>() {
             @Override
             public void onSuccess(BaseResponse data) {
                 if (data.status == 1) {
+                    hideCoverNetworkLoading();
+                    setChangeFavourite(imageId, favourite);
                     newListAdapter.notifyDataSetChanged();
                 }
             }
@@ -207,6 +205,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             }
         });
         favouriteRequest.execute();
+        showCoverNetworkLoading();
     }
 
     @Override
@@ -216,6 +215,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             @Override
             public void onSuccess(BaseResponse data) {
                 if (data.status == 1) {
+                    hideCoverNetworkLoading();
                     setChangeFollow(userId, follow);
                     newListAdapter.notifyDataSetChanged();
                 }
@@ -224,10 +224,10 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
             @Override
             public void onFail(int failCode, String message) {
                 initialNetworkError();
-                DebugLog.i(message);
             }
         });
         followRequest.execute();
+        showCoverNetworkLoading();
     }
 
     @Override
@@ -242,14 +242,7 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
 
     @Override
     public void onPinMapClick(String strlat, String strlong) {
-        openMap(strlat, strlong);
-    }
-
-    private void openMap(String strLat, String strLong) {
-        //double dbLat = Double.valueOf(strLat);
-        //double dbLong = Double.valueOf(strLong);
-
-        String strGeo = "geo:" + strLat + "," + strLong + "?z=zom";
+        String strGeo = "geo:" + strlat + "," + strlong + "?z=zom";
         Uri uri = Uri.parse(strGeo);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
         mapIntent.setPackage("com.google.android.apps.maps");
@@ -259,6 +252,9 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
     }
 
     private void setChangeFollow(String userId, int follow) {
+        if (newBeanList == null) {
+            return;
+        }
         int size = newBeanList.size();
         for (int i = 0; i < size; i++) {
             NewsBean newsBean = newBeanList.get(i);
@@ -267,6 +263,23 @@ public class NewFragment extends NoHeaderFragment implements SwipeRefreshLayout.
                     newBeanList.get(i).user.isFollowing = false;
                 } else if (follow == 1) {
                     newBeanList.get(i).user.isFollowing = true;
+                }
+            }
+        }
+    }
+
+    private void setChangeFavourite(String imageId, int favourite) {
+        if (newBeanList == null) {
+            return;
+        }
+        int size = newBeanList.size();
+        for (int i = 0; i < size; i++) {
+            NewsBean newsBean = newBeanList.get(i);
+            if ((newsBean != null) && (newsBean.image.id.equals(imageId))) {
+                if (favourite == 0) {
+                    newBeanList.get(i).image.isFavourite= false;
+                } else if (favourite == 1) {
+                    newBeanList.get(i).image.isFavourite = true;
                 }
             }
         }

@@ -2,15 +2,17 @@ package example.jp.socical.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -20,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -31,8 +34,11 @@ import example.jp.socical.R;
 import example.jp.socical.api.request.NearbyRequest;
 import example.jp.socical.api.response.NearbyResponse;
 import example.jp.socical.bean.NewsBean;
+import example.jp.socical.constant.CommonConstant;
 import example.jp.socical.constant.HeaderOption;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
+import vn.app.base.util.DialogUtil;
+import vn.app.base.util.FragmentUtil;
 
 public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
@@ -41,6 +47,8 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
     GoogleMap mMap;
     GoogleApiClient googleApiClient;
     Location mCurrentLocation;
+
+    SupportMapFragment fragment;
 
     double dbLat;
     double dbLong;
@@ -53,11 +61,24 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
     @Override
     protected void initView(View root) {
         super.initView(root);
-
         ((MainActivity)getActivity()).setToolbar(HeaderOption.MENU_NEARBY);
-
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapNearby);
         mapFragment.getMapAsync(this);
+
+        //SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+        //FragmentTransaction fragmentTransaction =
+        //        mapFragment.getChildFragmentManager().beginTransaction();
+        //fragmentTransaction.add(R.id.mapNearby, mapFragment);
+        //fragmentTransaction.commit();
+
+//        FragmentManager fm = getChildFragmentManager();
+//        fragment = (SupportMapFragment)fm.findFragmentById(R.id.mapNearby);
+//        if (fragment == null) {
+//            fragment = SupportMapFragment.newInstance();
+//            fm.beginTransaction().replace(R.id.mapNearby, fragment).addToBackStack("NearbyFragment").commit();
+//        } else {
+//            fm.beginTransaction().replace(R.id.mapNearby, fragment).addToBackStack("NearbyFragment").commit();
+//        }
 
         googleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
@@ -84,10 +105,8 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         mMap = googleMap;
-
-        mMap.getUiSettings().setAllGesturesEnabled(false);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -103,8 +122,6 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
-
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
@@ -115,14 +132,11 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
             public View getInfoContents(Marker marker) {
 
                 View v = getActivity().getLayoutInflater().inflate(R.layout.custome_info_window, null);
-
-                LatLng latLng = marker.getPosition();
-
+                NewsBean newsBean = (NewsBean)marker.getTag();
                 TextView tvName = (TextView)v.findViewById(R.id.txtName);
                 TextView tvCaption = (TextView)v.findViewById(R.id.txtCaption);
-
-                tvName.setText("Latidue:" + latLng.latitude);
-                tvCaption.setText("Longtidue" + latLng.longitude);
+                tvName.setText(newsBean.user.username);
+                tvCaption.setText(newsBean.image.caption);
 
                 return v;
             }
@@ -149,16 +163,8 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
         if (mCurrentLocation != null) {
             dbLat = mCurrentLocation.getLatitude();
             dbLong = mCurrentLocation.getLongitude();
-
-//            LatLng latLng = new LatLng(dbLat, dbLong);
-//            mMap.addMarker(new MarkerOptions().position(latLng));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-            Toast.makeText(getActivity(),"onConnected", Toast.LENGTH_LONG).show();
-
             onRequestNearby();
         }
-
     }
 
     public void onRequestNearby() {
@@ -166,17 +172,18 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
         nearbyRequest.setRequestCallBack(new ApiObjectCallBack<NearbyResponse>() {
             @Override
             public void onSuccess(NearbyResponse data) {
-                Toast.makeText(getActivity(),"success", Toast.LENGTH_LONG).show();
+                hideCoverNetworkLoading();
                 setMarketNearby(data.data);
             }
 
             @Override
             public void onFail(int failCode, String message) {
-                Toast.makeText(getActivity(),"fail", Toast.LENGTH_LONG).show();
+                initialNetworkError();
             }
         });
 
         nearbyRequest.execute();
+        showCoverNetworkLoading();
     }
 
     public void setMarketNearby(List<NewsBean> inNewsBean) {
@@ -184,8 +191,6 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
             int size = inNewsBean.size();
             String strLat;
             String strLong;
-            String strName;
-
             LatLng latLng;
 
             for (int i = 0; i < size; i++) {
@@ -193,27 +198,27 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
                 if (newsBean != null) {
                     strLat = newsBean.image.lat;
                     strLong = newsBean.image._long;
-                    strName =  newsBean.user.username;
 
                     double dbLat = Double.valueOf(strLat).doubleValue();
                     double dbLong = Double.valueOf(strLong).doubleValue();
 
                     latLng = new LatLng(dbLat, dbLong);
-                    mMap.addMarker(new MarkerOptions().position(latLng));
+                    mMap.addMarker(new MarkerOptions().position(latLng)
+                    .icon(BitmapDescriptorFactory.fromBitmap(getPinMapIcon())))
+                    .setTag(newsBean);
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 }
             }
 
             latLng = new LatLng(dbLat, dbLong);
-            mMap.addMarker(new MarkerOptions().position(latLng));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.setMaxZoomPreference(14.0f);
-            mMap.setMinZoomPreference(6.0f);
-
-            //LatLng latLng = new LatLng(dbLat, dbLong);
-            //mMap.addMarker(new MarkerOptions().position(latLng));
-            //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
+    }
+
+    private Bitmap getPinMapIcon() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map_pin);
+        Bitmap pinMap = Bitmap.createScaledBitmap(bitmap, 90, 160, true);
+        return pinMap;
     }
 
     @Override
@@ -225,7 +230,6 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
     @Override
     public void onStop() {
         super.onStop();
-
         if (googleApiClient.isConnected()) {
             googleApiClient.disconnect();
         }
@@ -238,22 +242,26 @@ public class NearbyFragment extends HeaderFragment implements OnMapReadyCallback
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 
     @Override
     public void onLocationChanged(Location location) {
-
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(getActivity(), "InforWindow Click", Toast.LENGTH_LONG).show();
+        if (marker != null) {
+            NewsBean newsBean = (NewsBean) marker.getTag();
+            if (newsBean != null) {
+                FragmentUtil.pushFragment(getActivity(), ImageDetailFragment.newInstance(newsBean), null, "ImageDetailFragment");
+                return;
+            }
+        }
+        DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "Can not make trasition to ImageDetail srceen");
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-
         marker.showInfoWindow();
         return false;
     }

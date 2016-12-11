@@ -23,7 +23,7 @@
 
     <RelativeLayout
         android:id="@+id/rlEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/rlUsername"
@@ -38,6 +38,10 @@
         <EditText
             android:id="@+id/email"
             style="@style/et_register"
+            android:maxLength="21"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"
             android:layout_height="wrap_content"
             android:layout_below="@+id/labelEmail"
             android:hint="jenifer.wilson@gmail.com"/>
@@ -46,7 +50,7 @@
 
     <RelativeLayout
         android:id="@+id/rlPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/rlEmail"
@@ -55,6 +59,7 @@
         <EditText
             android:id="@+id/password"
             style="@style/et_register"
+            android:imeOptions="actionNext"
             android:layout_height="wrap_content"
             android:layout_below="@+id/labelPassword"
             android:hint="***********************"
@@ -70,7 +75,7 @@
 
     <RelativeLayout
         android:id="@+id/rlConfirmPass"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/rlPassword"
@@ -87,6 +92,7 @@
             style="@style/et_register"
             android:layout_height="wrap_content"
             android:layout_below="@+id/labelConfirm"
+            android:imeOptions="actionDone"
             android:hint="***********************"
             android:inputType="textPassword"/>
 
@@ -101,15 +107,15 @@
         android:layout_marginLeft="@dimen/rg_et_marginLeft"
         android:layout_below="@+id/rlConfirmPass"
         android:layout_marginTop="15dp"
-        android:background="@drawable/login_select"
+        android:background="@color/login_bg_color"
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"/>
 
     <RelativeLayout
         android:id="@+id/rlUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="@dimen/rg_rlUsername_marginTop"
         android:layout_below="@+id/imgAvatar"
         android:layout_alignStart="@+id/rlEmail">
 
@@ -123,6 +129,10 @@
             android:id="@+id/userName"
             style="@style/et_register"
             android:layout_height="wrap_content"
+            android:maxLength="21"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"
             android:layout_below="@+id/labelUsername"
             android:hint="jenifer.wilson" />
 

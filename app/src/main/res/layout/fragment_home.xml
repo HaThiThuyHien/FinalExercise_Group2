@@ -15,6 +15,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/layout_tab"
         app:tabMaxWidth="0dp"
+        android:layout_below="@id/tvLine"
         style="@style/CustomTabLayout"
         android:layout_gravity="center"
         android:layout_width="match_parent"

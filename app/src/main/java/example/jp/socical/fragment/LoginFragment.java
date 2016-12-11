@@ -1,11 +1,12 @@
 package example.jp.socical.fragment;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -15,14 +16,15 @@ import butterknife.OnClick;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.LoginRequest;
-import example.jp.socical.api.request.RegisterRequest;
 import example.jp.socical.api.response.LoginResponse;
 import example.jp.socical.bean.DataLoginBean;
 import example.jp.socical.commonclass.StringEncryption;
+import example.jp.socical.constant.CommonConstant;
 import example.jp.socical.manager.UserManager;
 import vn.app.base.api.volley.callback.ApiObjectCallBack;
 import vn.app.base.util.DialogUtil;
 import vn.app.base.util.FragmentUtil;
+import vn.app.base.util.KeyboardUtil;
 import vn.app.base.util.SharedPrefUtils;
 import vn.app.base.util.StringUtil;
 
@@ -55,14 +57,23 @@ public class LoginFragment extends NoHeaderFragment {
 
     @Override
     protected void getArgument(Bundle bundle) {
-
     }
 
     @Override
     protected void initView(View root) {
         super.initView(root);
-
         ((MainActivity) getActivity()).setToolbar(0);
+        etPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    login();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etUserName.requestFocus();
     }
 
     @Override
@@ -72,11 +83,16 @@ public class LoginFragment extends NoHeaderFragment {
 
     @OnClick(R.id.btnLogin)
     public void login() {
-
         user = etUserName.getText().toString().trim();
+        if (!StringUtil.checkStringValid(user)) {
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "User name is blank");
+            return;
+        }
 
-        //user = "ThinhHoang";
-        //etPass.setText("123456789");
+        if (!StringUtil.checkStringValid(etPass.getText().toString().trim())) {
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "Pass is blank");
+            return;
+        }
 
         try {
             pass = StringEncryption.SHA1(etPass.getText().toString().trim());
@@ -85,22 +101,17 @@ public class LoginFragment extends NoHeaderFragment {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-        if (!StringUtil.checkStringValid(user) || !StringUtil.checkStringValid(pass)) {
-            DialogUtil.showOkBtnDialog(getActivity(), getString(R.string.Error), getString(R.string.Error_Msg)).setCancelable(true);
-        }
-
         loginRequest();
     }
 
     public void loginRequest(){
-
+        showCoverNetworkLoading();
         LoginRequest loginRequest = new LoginRequest(user, pass);
         loginRequest.setRequestCallBack(new ApiObjectCallBack<LoginResponse>() {
             @Override
             public void onSuccess(LoginResponse data) {
                 if (data.dataResponse != null) {
-
+                    hideCoverNetworkLoading();
                     String user1 = "";
                     String user2 = "";
 
@@ -108,10 +119,8 @@ public class LoginFragment extends NoHeaderFragment {
                     if (userData != null) {
                         user1 = userData.username;
                     }
-
                     SharedPrefUtils.saveAccessToken(data.dataResponse.token);
                     UserManager.saveCurrentUser(data.dataResponse);
-
                     user2 = data.dataResponse.username;
 
                     if (!user2.equals(user1)) {
@@ -124,11 +133,13 @@ public class LoginFragment extends NoHeaderFragment {
 
             @Override
             public void onFail(int failCode, String message) {
-                initialNetworkError();
+                hideCoverNetworkLoading();
+                DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "User or password incorrect");
+                KeyboardUtil.hideKeyboard(getActivity());
             }
         });
-
         loginRequest.execute();
+        KeyboardUtil.hideKeyboard(getActivity());
     }
 
     @OnClick(R.id.btnRegister)

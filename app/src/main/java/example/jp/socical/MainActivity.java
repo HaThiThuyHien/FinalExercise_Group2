@@ -85,7 +85,6 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
 
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         setUpInitScreen(LoginFragment.newInstance(), "LoginFragment");
-        //setUpInitScreen(RegisterFragment.newInstance(), "RegisterFragment");
     }
 
     @Override
@@ -122,13 +121,11 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     }
 
     public void setToolbar(int screenNo) {
-
         rlHeader.setVisibility(View.GONE);
         ivBack.setVisibility(View.GONE);
         ivMenu.setVisibility(View.GONE);
         tvTitle.setVisibility(View.GONE);
         tvHeaderRight.setVisibility(View.GONE);
-
         iScreenNo = screenNo;
 
         switch (screenNo) {
@@ -142,13 +139,13 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
                 rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
-                tvTitle.setText("Profile");
+                tvTitle.setText("User");
                 break;
             case HeaderOption.MENU_PROFILE_USER:
                 rlHeader.setVisibility(View.VISIBLE);
                 ivBack.setVisibility(View.VISIBLE);
                 tvTitle.setVisibility(View.VISIBLE);
-                tvTitle.setText("User");
+                tvTitle.setText("Profile");
                 tvHeaderRight.setVisibility(View.VISIBLE);
                 tvHeaderRight.setText("Update");
                 break;
@@ -196,11 +193,9 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
             menuFragment = (MenuFragment)
                     getSupportFragmentManager().findFragmentById(R.id.nagigation_drawer);
-
             menuFragment.setUp(
                     R.id.nagigation_drawer,
                     drawerLayout);
-
         } else {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
@@ -214,15 +209,16 @@ public class MainActivity extends CommonActivity implements MenuFragment.Navigat
     @OnClick(R.id.headerRight)
     public void clickHeaderRight(){
         if (iScreenNo == HeaderOption.MENU_PROFILE_USER){
-            //Nhấn nút [Update] gọi API thay đổi ảnh.
             if(fragmentListener != null){
                 Bundle bundle = new Bundle();
-                bundle.putInt("UPDATE_CLICK", 1);
+                bundle.putInt(FragmentActionConstant.HEADER_CLICK, FragmentActionConstant.UPDATE);
                 fragmentListener.onFragmentUIHandle(bundle);
             }
 
         }else if (iScreenNo == HeaderOption.MENU_DETAIL_USER){
-            // Nhấn nút [Delete] hiện dialog xác nhận xóa > Ok gọi API xóa
+            Bundle bundle = new Bundle();
+            bundle.putInt(FragmentActionConstant.HEADER_CLICK, FragmentActionConstant.DELETE);
+            fragmentListener.onFragmentUIHandle(bundle);
         }
     }
 

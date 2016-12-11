@@ -31,7 +31,7 @@ public class ImageDetailComentViewHolder extends OnClickViewHolder {
     }
 
     public void bind(ImageDetailData detailData) {
-        //ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, detailData.user.avatar, ivUser);
+        ImageLoader.loadImage(itemView.getContext(), R.drawable.loading_list_image_220, detailData.user.avatar, ivUser);
         StringUtil.displayText(detailData.comment,tvComment);
     }
 }

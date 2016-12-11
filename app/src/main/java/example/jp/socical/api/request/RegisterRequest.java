@@ -1,77 +1,20 @@
 package example.jp.socical.api.request;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
+import com.android.volley.Response;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 
 import example.jp.socical.api.response.RegisterResponse;
-import example.jp.socical.constant.APIConstant;
-import vn.app.base.api.volley.core.ObjectApiRequest;
-import vn.app.base.api.volley.core.UploadBinaryApiRequest;
+import vn.app.base.api.volley.core.MultiPartRequest;
 
 /**
- * Created by Toi on 10/24/2016.
+ * Created by Toi on 12/10/2016.
  */
 
-public class RegisterRequest extends UploadBinaryApiRequest<RegisterResponse>{
+public class RegisterRequest extends MultiPartRequest<RegisterResponse>{
 
-    File fileAvatar;
-    String userName;
-    String email;
-    String pass;
-
-    public RegisterRequest(File fileAvatar, String userName, String email, String pass) {
-        this.fileAvatar = fileAvatar;
-        this.userName = userName;
-        this.email = email;
-        this.pass = pass;
-
-        if (fileAvatar != null) {
-            Map<String, File> avatar = new HashMap<>();
-            avatar.put(APIConstant.AVATAR, fileAvatar);
-            setRequestFiles(avatar);
-        }
-    }
-
-    @Override
-    public String getRequestURL() {
-        return APIConstant.RIGISTER;
-    }
-
-    @Override
-    public boolean isRequiredAccessToken() {
-        return false;
-    }
-
-    @Override
-    public Map<String, String> getRequestParams() {
-        Map<String,String> params = new HashMap<>();
-        params.put(APIConstant.USER_NAME, userName);
-        params.put(APIConstant.EMAIL, email);
-        params.put(APIConstant.PASS, pass);
-
-        return params;
-    }
-
-    @Override
-    public Class<RegisterResponse> getResponseClass() {
-        return RegisterResponse.class;
-    }
-
-    @Override
-    public int getMethod() {
-        return Request.Method.POST;
-    }
-
-    @Override
-    public void onRequestSuccess(RegisterResponse response) {
-    }
-
-    @Override
-    public void onRequestError(VolleyError error) {
-
+    public RegisterRequest(int method, String url, Response.ErrorListener listener, Class<RegisterResponse> mClass, Map<String, String> mHeader, Response.Listener<RegisterResponse> mListener, Map<String, String> mStringParts, Map<String, File> mFileParts) {
+        super(method, url, listener, mClass, mHeader, mListener, mStringParts, mFileParts);
     }
 }

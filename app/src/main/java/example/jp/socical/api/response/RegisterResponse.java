@@ -1,5 +1,6 @@
 package example.jp.socical.api.response;
 
+import example.jp.socical.bean.DataLoginBean;
 import vn.app.base.api.response.BaseResponse;
 
 /**
@@ -9,7 +10,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterResponse extends BaseResponse {
 
-
     @SerializedName("data")
-    public DataLoginResponse dataRegister;
+    public DataLoginBean dataRegister;
 }

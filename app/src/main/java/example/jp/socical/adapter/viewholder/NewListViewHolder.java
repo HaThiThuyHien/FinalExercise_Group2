@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -49,6 +50,9 @@ public class NewListViewHolder extends OnClickViewHolder {
     @BindView(R.id.imgLike)
     ImageView ivLike;
 
+    @BindView(R.id.rlPinMap)
+    LinearLayout rlPinMap;
+
     boolean bFollow = false;
     boolean bLike = false;
 
@@ -90,7 +94,11 @@ public class NewListViewHolder extends OnClickViewHolder {
             strHashtag += " ";
         }
         StringUtil.displayText(strHashtag, tvHashtag);
-        StringUtil.displayText(newBean.image.location, tvPinMap);
+        if (newBean.image.location != "") {
+            StringUtil.displayText(newBean.image.location, tvPinMap);
+        } else {
+            rlPinMap.setVisibility(View.GONE);
+        }
 
         if (newBean.image.isFavourite) {
             ivLike.setImageResource(R.drawable.icon_favourite);
@@ -138,7 +146,6 @@ public class NewListViewHolder extends OnClickViewHolder {
                 onNewItemClick.onFavouriteClick(userProfile.image.id, 1);
             }
         }
-
     }
 
     @OnClick(R.id.txtPinMap)

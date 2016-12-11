@@ -11,4 +11,9 @@ public class FragmentActionConstant {
     public static final int PICK_IMAGE = 99;
 
     public static final int REQUEST_CAMERA = 98;
+
+    public static final String HEADER_CLICK = "HEADER_CLICK";
+
+    public static final int DELETE = 1;
+    public static final int UPDATE = 2;
 }

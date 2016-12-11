@@ -8,4 +8,7 @@ public class CommonConstant {
 
     public static final int HOME_NEW = 0;
     public static final int HOME_FOLLOW = 1;
+
+    public static final String title = "Social Error";
+    public static final String message_error = "Please check value user and password";
 }

@@ -1,23 +1,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="@color/purple_view"
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/imgDetail_Swipe_height">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycerList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <example.jp.socical.commonclass.CustomEditText
-        android:hint="Input Comment"
+    <LinearLayout
+        android:id="@+id/layout_comment"
         android:layout_width="match_parent"
-        android:layout_gravity="left"
-        android:drawableRight="@drawable/ic_send"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/imgDetail_cmt_height"
         android:background="@color/white"
-        android:id="@+id/txtPostCmt" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtPostCmt"
+            android:hint="Input Comment"
+            android:layout_width="@dimen/imgDetail_et_cmt_width"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:inputType="textMultiLine"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgSend"
+            android:layout_width="@dimen/imgDetail_icon_send_width"
+            android:layout_height="@dimen/imgDetail_icon_send_height"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:src="@drawable/ic_send"/>
+
+    </LinearLayout>
 
 </LinearLayout>

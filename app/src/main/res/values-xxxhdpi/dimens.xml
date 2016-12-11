@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="caption_width">300dp</dimen>
-
     <dimen name="lg_camera_width">120dp</dimen>
     <dimen name="lg_camera_height">120dp</dimen>
     <dimen name="lg_camera_marginTopt">150dp</dimen>
@@ -18,13 +16,13 @@
     <dimen name="lg_icon_line_height">1dp</dimen>
     <dimen name="lg_Register_marginTop">10dp</dimen>
 
-    <dimen name="rg_imgAvatar_width">80dp</dimen>
-    <dimen name="rg_imgAvatar_height">80dp</dimen>
+    <dimen name="rg_imgAvatar_width">90dp</dimen>
+    <dimen name="rg_imgAvatar_height">90dp</dimen>
     <dimen name="rg_imgAvatar_marginTop">30dp</dimen>
     <dimen name="rg_rlUsername_marginTop">30dp</dimen>
-    <dimen name="rg_tv_width">280dp</dimen>
+    <dimen name="rg_tv_width">270dp</dimen>
     <dimen name="rg_tv_marginRight">60dp</dimen>
-    <dimen name="rg_tv_marginLeftt">8dp</dimen>
+    <dimen name="rg_tv_marginLeftt">15dp</dimen>
     <dimen name="rg_tv_paddingLeft">3dp</dimen>
     <dimen name="rg_tv_textsize">17dp</dimen>
     <dimen name="rg_et_width">250dp</dimen>
@@ -33,4 +31,23 @@
     <dimen name="rg_et_marginLeft">30dp</dimen>
     <dimen name="rg_et_textsize">17dp</dimen>
     <dimen name="btn_height">50dp</dimen>
+
+    <dimen name="tutorial_avatar_height">100dp</dimen>
+    <dimen name="tutorial_avatar_width">100dp</dimen>
+    <dimen name="tutorial_text_size">20dp</dimen>
+
+    <dimen name="imgUpload_img_height">170dp</dimen>
+    <dimen name="imgUpload_textsize">19dp</dimen>
+    <dimen name="imgUpload_et_textsize">18dp</dimen>
+    <dimen name="imgUpload_tv_width">170dp</dimen>
+    <dimen name="imgUpload_tv_marginLeft">15dp</dimen>
+    <dimen name="imgUpload_button_width">130dp</dimen>
+    <dimen name="imgUpload_button_textsize">17dp</dimen>
+    <dimen name="imgUpload_marginTop">7dp</dimen>
+
+    <dimen name="imgDetail_Swipe_height">458dp</dimen>
+    <dimen name="imgDetail_cmt_height">52dp</dimen>
+    <dimen name="imgDetail_et_cmt_width">300dp</dimen>
+    <dimen name="imgDetail_icon_send_height">40dp</dimen>
+    <dimen name="imgDetail_icon_send_width">40dp</dimen>
 </resources>

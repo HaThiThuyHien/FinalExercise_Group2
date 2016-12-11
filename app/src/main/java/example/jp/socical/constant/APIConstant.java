@@ -38,6 +38,8 @@ public class APIConstant {
 
     public static final String IMAGE_LIST = API_URL + "image/list";
 
+    public static final String FAVOURITE_LIST = API_URL + "favouritelist";
+
     public static final String TOKEN = "token";
 
     // Image List

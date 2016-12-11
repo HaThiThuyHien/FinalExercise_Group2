@@ -170,7 +170,7 @@ public class UploadFragment extends HeaderFragment implements GoogleApiClient.Co
             if (resultCode == Activity.RESULT_OK) {
                 Uri resultUri = result.getUri();
                 try {
-                    Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 800, 800);
+                    Bitmap bitmap = BitmapUtil.decodeFromFile(resultUri.getPath(), 1200, 800);
                     creatFilefromBitmap(bitmap);
                     ivPicture.setImageBitmap(bitmap);
                 } catch (IOException e) {

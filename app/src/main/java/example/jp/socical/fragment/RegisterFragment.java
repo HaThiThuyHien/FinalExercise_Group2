@@ -9,12 +9,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -37,18 +36,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import example.jp.socical.MainActivity;
 import example.jp.socical.R;
 import example.jp.socical.api.request.RegisterRequest;
-import example.jp.socical.api.request.RegisterRequest_01;
 import example.jp.socical.api.response.RegisterResponse;
-import example.jp.socical.bean.RegisterBean;
 import example.jp.socical.commonclass.StringEncryption;
 import example.jp.socical.constant.APIConstant;
+import example.jp.socical.constant.CommonConstant;
 import example.jp.socical.constant.FragmentActionConstant;
-import vn.app.base.api.volley.callback.ApiObjectCallBack;
+import example.jp.socical.manager.UserManager;
 import vn.app.base.util.BitmapUtil;
-import vn.app.base.util.DebugLog;
 import vn.app.base.util.DialogUtil;
 import vn.app.base.util.FragmentUtil;
-import vn.app.base.util.ImagePickerUtil;
+import vn.app.base.util.KeyboardUtil;
 import vn.app.base.util.NetworkUtils;
 import vn.app.base.util.SharedPrefUtils;
 import vn.app.base.util.StringUtil;
@@ -102,6 +99,17 @@ public class RegisterFragment extends NoHeaderFragment {
     protected void initView(View root) {
         super.initView(root);
         ((MainActivity) getActivity()).setToolbar(0);
+        etConfirmPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    register();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etUserName.requestFocus();
     }
 
     @Override
@@ -111,7 +119,6 @@ public class RegisterFragment extends NoHeaderFragment {
 
     @OnClick(R.id.imgAvatar)
     public void onSelectPicture() {
-        ImagePickerUtil imagePickerUtil = new ImagePickerUtil();
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         uriFile = Uri.fromFile(creatFileUri(getActivity()));
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uriFile);
@@ -135,18 +142,32 @@ public class RegisterFragment extends NoHeaderFragment {
 
     @OnClick(R.id.btnSignUp)
     public void clickBtnSignUp(){
+        register();
+    }
 
+    private void register(){
         userName = etUserName.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         String password = etPass.getText().toString().trim();
         confirmPass = etConfirmPass.getText().toString().trim();
 
-        if (!StringUtil.checkStringValid(userName) ||
-                !StringUtil.checkStringValid(email) ||
-                !StringUtil.checkStringValid(password) ||
-                !StringUtil.checkStringValid(confirmPass) ||
-                !password.equals(confirmPass)) {
-            DialogUtil.showOkBtnDialog(getActivity(), "Error", "Input data is incorrect. Please check !");
+        if (!StringUtil.checkStringValid(userName)){
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "User name is blank");
+            return;
+        }
+
+        if (!StringUtil.checkStringValid(email)) {
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "Email is blank");
+            return;
+        }
+
+        if (!StringUtil.checkStringValid(password)) {
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "Password is blank");
+            return;
+        }
+
+        if (!password.equals(confirmPass)) {
+            DialogUtil.showOkBtnDialog(getActivity(), CommonConstant.title, "Password and ConfirmPassword are not the same");
             return;
         }
 
@@ -158,17 +179,6 @@ public class RegisterFragment extends NoHeaderFragment {
             e.printStackTrace();
         }
 
-//        RegisterRequest registerRequest;
-//
-//        if (avatarFile != null) {
-//            registerRequest = new RegisterRequest(avatarFile, userName, email, pass);
-//        } else {
-//            registerRequest = new RegisterRequest(null, userName, email, pass);
-//        }
-//
-//        registerRequest.execute();
-//        showCoverNetworkLoading();
-
         Map<String, File> filePart = new HashMap<>();
         if (avatarFile != null) {
             filePart.put(APIConstant.AVATAR, avatarFile);
@@ -179,7 +189,7 @@ public class RegisterFragment extends NoHeaderFragment {
         params.put(APIConstant.EMAIL, email);
         params.put(APIConstant.PASS, pass);
 
-        RegisterRequest_01 registerRequest_01 = new RegisterRequest_01(Request.Method.POST, APIConstant.RIGISTER, new Response.ErrorListener() {
+        RegisterRequest registerRequest = new RegisterRequest(Request.Method.POST, APIConstant.RIGISTER, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 initialNetworkError();
@@ -189,12 +199,15 @@ public class RegisterFragment extends NoHeaderFragment {
             public void onResponse(RegisterResponse response) {
                 if (response.status == 1) {
                     hideCoverNetworkLoading();
+                    SharedPrefUtils.saveAccessToken(response.dataRegister.token);
+                    UserManager.saveCurrentUser(response.dataRegister);
                     FragmentUtil.pushFragment(getActivity(), TutorialFragment.newInstance(), null, "TutorialFragment");
                 }
             }
         }, params, filePart);
 
-        NetworkUtils.getInstance(getActivity().getApplicationContext()).addToRequestQueue(registerRequest_01);
+        NetworkUtils.getInstance(getActivity().getApplicationContext()).addToRequestQueue(registerRequest);
+        KeyboardUtil.hideKeyboard(getActivity());
         showCoverNetworkLoading();
     }
 
@@ -218,7 +231,6 @@ public class RegisterFragment extends NoHeaderFragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }

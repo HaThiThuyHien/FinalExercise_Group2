@@ -138,12 +138,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         llMenu4.setOnClickListener(this);
         llMenu5.setOnClickListener(this);
         llMenu6.setOnClickListener(this);
-
-        currentUser = UserManager.getCurrentUser();
-        if (currentUser != null) {
-            ImageLoader.loadImage(view.getContext(), R.drawable.loading_list_image_220, currentUser.avatar, civAvatar);
-            StringUtil.displayText(currentUser.username, tvUserName);
-        }
     }
 
     public boolean isDrawerOpen() {
@@ -197,6 +191,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
         contentView = getActivity().findViewById(R.id.container);
 
         mDrawerLayout.setScrimColor(Color.TRANSPARENT);
+
+        setInformationUser();
 
         ImageView imgDrawer = (ImageView)getActivity().findViewById(R.id.headerMenu);
 
@@ -327,7 +323,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.menu_4:
                 // chuyen sang man hinh Favourite
-                //FragmentUtil.pushFragment(getActivity(), UploadFragment.newInstance(), null, "UploadFragment");
+                FragmentUtil.pushFragment(getActivity(), FavouriteFragment.newInstance(), null, "FavouriteFragment");
                 selectItem(3);
                 break;
             case R.id.menu_5:
@@ -374,6 +370,14 @@ public class MenuFragment extends Fragment implements View.OnClickListener{
 
         builder.show();
 
+    }
+
+    private void setInformationUser(){
+        currentUser = UserManager.getCurrentUser();
+        if (currentUser != null) {
+            ImageLoader.loadImage(getContext(), R.drawable.loading_list_image_220, currentUser.avatar, civAvatar);
+            StringUtil.displayText(currentUser.username, tvUserName);
+        }
     }
 
     /**
